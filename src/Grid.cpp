@@ -13,10 +13,14 @@ Grid::Grid(int n_rows, int n_cols, int n_align, int n_el)
     n_el_          = n_el;
     score_         = 0;
     limit_reached_ = false;
+
+    gridMode_ = new GridModeNormal();
 }
 
 Grid::~Grid()
 {
+    if(gridMode_ != NULL)
+        delete gridMode_;
 }
 
 bool Grid::swap(int tuple1[3], int tuple2[3])
@@ -114,139 +118,7 @@ void Grid::update_gravity()
 
 bool Grid::purge()
 {
-    vector<vector<array<int, 2> > > unloved;
-    bool destroyed = false; // booléen pour déterminer si la méthode a détruit ou non des éléments
-
-    for(int i=0; i<n_rows_; i++)
-    {
-        // On récupère toutes les positions des éléments à retirer des lignes
-        unloved.push_back(check_row(grid_, i));
-    }
-
-    for(int i=0; i<n_cols_; i++)
-    {
-        // On récupère toutes les positions des éléments à retirer des lignes
-        unloved.push_back(check_col(grid_, i));
-    }
-
-    // On supprime tous les éléments à partir de unloved
-    for(vector<array<int, 2> > list : unloved)
-    {
-        // S'il y a des éléments à supprimer
-        if(list.size() != 0)
-        {
-            destroyed = true; // il y a des éléments à supprimer
-
-            for(array<int, 2> & position : list)
-            {
-                grid_[position[0]][position[1]].setType(0);
-                score_ += 10; // Prise en compte du score
-            }
-        }
-    }
-    return destroyed;
-}
-
-vector<array<int, 2> > Grid::check_row(vector<vector<Element> > grid, int i_row)
-{
-    vector<array<int, 2> > unloved; // liste des positions des éléments à supprimer
-    int previous = 0; // type de l'élément précédemment itéré
-    int match = 0; // nombre de correspondances successives pour un type d'élément
-
-    for(unsigned int i=0; i<grid[i_row].size(); i++)
-    {
-        array<int, 2> position;
-        position[0] = i_row;
-
-        if(grid[i_row][i].getType() != NEUTRAL_ELEMENT)
-        {
-            if(match == 0) // Première itération d'un non élément neutre
-            {
-                position[1] = i;
-                previous = grid[i_row][i].getType();
-                unloved.push_back(position);
-                match = 1;
-            }
-            else if(grid[i_row][i].getType() != previous)
-            {
-                if(match < n_align_)
-                {
-                    for(int j=0; j<match; j++)
-                        unloved.pop_back();
-                    previous = grid[i_row][i].getType();
-                    position[1] = i;
-                    unloved.push_back(position);
-                    match = 1;
-                }
-            }
-            else
-            {
-                position[1] = i;
-                unloved.push_back(position);
-                match++;
-            }
-        }
-    }
-    if(match != 0 && match < n_align_)
-    {
-        for(int j=0; j<match; j++)
-            unloved.pop_back();
-    }
-
-    return unloved;
-}
-
-vector<array<int, 2> > Grid::check_col(vector<vector<Element> > grid, int i_col)
-{
-    // Vérifier une colonne revient à vérifier sa ligne correspondante dans sa transposé
-    // On économise une méthode :)
-    vector<array<int, 2> > unloved; // liste des positions des éléments à supprimer
-    int previous = 0; // type de l'élément précédemment itéré
-    int match = 0; // nombre de correspondances successives pour un type d'élément
-
-    grid = transpose(grid);
-
-    for(unsigned int i=0; i<grid[i_col].size(); i++)
-    {
-        array<int, 2> position;
-        position[0] = i;
-
-        if(grid[i_col][i].getType() != NEUTRAL_ELEMENT)
-        {
-            if(match == 0) // Première itération d'un non élément neutre
-            {
-                position[1] = i_col;
-                previous = grid[i_col][i].getType();
-                unloved.push_back(position);
-                match = 1;
-            }
-            else if(grid[i_col][i].getType() != previous)
-            {
-                if(match < n_align_)
-                {
-                    for(int j=0; j<match; j++)
-                        unloved.pop_back();
-                    previous = grid[i_col][i].getType();
-                    position[1] = i_col;
-                    unloved.push_back(position);
-                    match = 1;
-                }
-            }
-            else
-            {
-                position[1] = i_col;
-                unloved.push_back(position);
-                match++;
-            }
-        }
-    }
-    if(match != 0 && match < n_align_)
-    {
-        for(int j=0; j<match; j++)
-            unloved.pop_back();
-    }
-
-    return unloved;
+    return gridMode_->purge(this);
 }
 
 string Grid::print(vector<vector<Element> > grid)
@@ -300,6 +172,12 @@ vector<vector<Element> > Grid::getGrid()
 {
 	return grid_;
 }
+
+vector<vector<Element> >* Grid::getPointerGrid()
+{
+    return &grid_;
+}
+
 int Grid::getScore()
 {
     return score_;
@@ -315,4 +193,22 @@ int Grid::getN_Col()
 int Grid::getN_El()
 {
     return n_el_;
+}
+
+int Grid::getN_Align()
+{
+    return n_align_;
+}
+
+/**********
+* SETTERS *
+**********/
+void Grid::setScore(int score)
+{
+    score_ = score;
+}
+
+void Grid::setElementType(int i, int j, int type)
+{
+   grid_[i][j].setType(type);
 }

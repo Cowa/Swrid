@@ -6,6 +6,8 @@
 #include <array>
 #include <string>
 #include "Element.h"
+#include "GridMode.h"
+#include "GridModeNormal.h"
 
 using namespace std;
 
@@ -14,6 +16,8 @@ class Grid
 private:
     // The grid (matrix)
     vector<vector<Element> > grid_;
+    // Grid mode (normal, hard)
+    GridMode *gridMode_;
     // Number of rows
     int n_rows_;
     // Number of columns
@@ -38,12 +42,6 @@ public:
     // Utilise les méthodes check_row et check_col
     bool purge();
 
-    // Vérifie la ligne i_row de la grille, retourne la liste des éléments à retirer
-    vector<array<int, 2> > check_row(vector<vector<Element> > grid, int i_row);
-
-    // Vérifie la colonne i_col de la grille, retourne la liste des éléments à retirer
-    vector<array<int, 2> > check_col(vector<vector<Element> > grid, int i_col);
-
     // Simule la gravité, on fait tomber vers le bas tout les éléments
     void update_gravity();
 
@@ -62,11 +60,19 @@ public:
     /**********
     * GETTERS *
     **********/
+    vector<vector<Element> >* getPointerGrid();
     vector<vector<Element> > getGrid();
     int getScore();
     int getN_Rows();
     int getN_Col();
     int getN_El();
+    int getN_Align();
+
+    /**********
+    * SETTERS *
+    **********/
+    void setScore(int score);
+    void setElementType(int i, int j, int type);
 };
 
 #endif // GRID_H
