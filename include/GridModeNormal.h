@@ -12,10 +12,13 @@ class GridModeNormal: public GridMode
         virtual ~GridModeNormal();
         bool purge(Grid *grid);
 
-        // Vérifie la ligne i_row de la grille, retourne la liste des éléments à retirer
-        vector<array<int, 2> > check_row(Grid *grid, int i_row);
-        // Vérifie la colonne i_col de la grille, retourne la liste des éléments à retirer
-        vector<array<int, 2> > check_col(Grid *grid, int i_col);
+        // Vérifie si l'élément (i, j) est adjacent avec d'autres éléments de même type que lui
+        // i, j : position de l'élément
+        // crossed : liste des éléments avec les adjacents DEJA analysés
+        vector<array<int, 2> > adjacentWith(int i, int j, vector<array<int, 2> > *crossed, Grid *grid);
+
+        bool isCrossed(int i, int j, vector<array<int, 2> > crossed);
+
     protected:
     private:
 };

@@ -8,6 +8,7 @@
 #include "Element.h"
 #include "GridMode.h"
 #include "GridModeNormal.h"
+#include "GridModeHard.h"
 
 using namespace std;
 
@@ -32,7 +33,7 @@ private:
     bool limit_reached_;
 
 public:
-    Grid(int n_rows=14, int n_cols=12, int n_align=3, int n_el=5);
+    Grid(int n_rows=14, int n_cols=12, int n_align=3, int n_el=4);
     ~Grid();
 
     // Echange deux éléments adjacents, où les tuples contiennent les positions de ces éléments {x, y}

@@ -39,6 +39,7 @@ int main(void)
     Engine engine(screen, &event, &loop); // on crée le moteur
     engine.init(); // on initialise
     // On nettoie la grille
+    cout << engine.getGrid()->print(engine.getGrid()->getGrid()) << endl;
     while(engine.getGrid()->purge())
     {
             engine.getGrid()->update_gravity();
