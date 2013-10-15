@@ -94,7 +94,7 @@ vector<array<int, 2> > GridModeNormal::adjacentWith(int i, int j, vector<array<i
     if(!isCrossed(i, j, *crossed))
     {
         // On regarde à gauche et à droite
-        if(j-1 > 0)
+        if(j-1 >= 0)
         {
             array<int, 2> position;
             position[0] = i, position[1] = j-1;
@@ -117,7 +117,7 @@ vector<array<int, 2> > GridModeNormal::adjacentWith(int i, int j, vector<array<i
             }
         }
         // On regarde en haut et en bas
-        if(i-1 > 0)
+        if(i-1 >= 0)
         {
             array<int, 2> position;
             position[0] = i-1, position[1] = j;
