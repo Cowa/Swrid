@@ -11,6 +11,10 @@ GridModeNormal::~GridModeNormal()
     //dtor
 }
 
+/*
+* Désolé pour la gueule de cette méthode, je vais tenter de la rendre plus
+* sexy et de bien la commenter
+*/
 bool GridModeNormal::purge(Grid *grid)
 {
     vector<array<int, 2> > crossed;
@@ -26,20 +30,14 @@ bool GridModeNormal::purge(Grid *grid)
             cur_element[0] = i, cur_element[1] = j;
             if(!isCrossed(i, j, crossed) && grid->getGrid()[i][j].getType() != 0)
             {
-                cout << "Element: " << i << ", " << j << endl;
-                cout << "Crossed size: " << crossed.size() << endl;
-
                 // On ajoute l'élément courant dans la liste des suppressions possibles
                 match = 1;
                 unloved.push_back(cur_element);
 
                 vector<array<int, 2> > adjacents = adjacentWith(i, j, &crossed, grid);
 
-                cout << "Adjacent: " << adjacents.size() << endl;
-
                 while(adjacents.size() != 0)
                 {
-                    cout << "Adjacent while: " << adjacents.size() << endl;
                     vector<array<int, 2> > cur_adjacents;
 
                     for(unsigned int k = 0; k < adjacents.size(); k++)
@@ -53,13 +51,10 @@ bool GridModeNormal::purge(Grid *grid)
                             array<int, 2> adjacent_inin;
                             adjacent_inin[0] = adjacents_in[l][0], adjacent_inin[1] = adjacents_in[l][1];
                             cur_adjacents.push_back(adjacent_inin);
-                            //unloved.push_back(adjacent_inin);
-                            //match++;
                         }
                         unloved.push_back(adjacent_in);
                         match++;
                     }
-                    cout << "Match: " << match << endl;
 
                     adjacents = cur_adjacents;
                 }
@@ -77,7 +72,6 @@ bool GridModeNormal::purge(Grid *grid)
     for(array<int, 2> & position : unloved)
     {
         destroyed = true;
-        cout << "Suppression occured !" << endl;
         grid->setElementType(position[0], position[1], NEUTRAL_ELEMENT);
         grid->setScore(grid->getScore()+10); // Prise en compte du score
     }

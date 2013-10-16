@@ -29,7 +29,7 @@ int main(void)
         cout << "SDL Video set error" << endl;
         exit(EXIT_FAILURE);
     }
-    SDL_WM_SetCaption("Prototype", NULL); // Nom de la fenêtre
+    SDL_WM_SetCaption("Swrid Prototype", NULL); // Nom de la fenêtre
     SDL_initFramerate(&frame_manager);
     SDL_setFramerate(&frame_manager, FPS); // on fixe le fps à 60
 
@@ -38,8 +38,8 @@ int main(void)
     *********************/
     Engine engine(screen, &event, &loop); // on crée le moteur
     engine.init(); // on initialise
+
     // On nettoie la grille
-    cout << engine.getGrid()->print(engine.getGrid()->getGrid()) << endl;
     while(engine.getGrid()->purge())
     {
             engine.getGrid()->update_gravity();
@@ -48,6 +48,7 @@ int main(void)
     /******************
     * Boucle générale *
     ******************/
+    cout << "Clique droit pour passer à l'écran Jeu ou Menu" << endl;
     while(loop)
     {
         engine.event(); // on gère les événements

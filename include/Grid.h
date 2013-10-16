@@ -74,6 +74,7 @@ public:
     **********/
     void setScore(int score);
     void setElementType(int i, int j, int type);
+    void setGridMode(GridMode *gridMode);
 };
 
 #endif // GRID_H

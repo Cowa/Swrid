@@ -55,6 +55,11 @@ void Engine::setScreen(Screen *screen)
     screen_->show(sdlScreen_);
 }
 
+void Engine::setGridMode(GridMode *gridMode)
+{
+    grid_->setGridMode(gridMode);
+}
+
 /**********
 * GETTERS *
 **********/

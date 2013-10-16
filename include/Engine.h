@@ -29,6 +29,7 @@ class Engine
         void event();
         void render();
         void setScreen(Screen *screen);
+        void setGridMode(GridMode *gridMode);
 
         Grid* getGrid();
         Screen* getScreen();

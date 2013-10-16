@@ -212,3 +212,10 @@ void Grid::setElementType(int i, int j, int type)
 {
    grid_[i][j].setType(type);
 }
+
+void Grid::setGridMode(GridMode *gridMode)
+{
+    if(gridMode_ != NULL)
+        delete gridMode_;
+    gridMode_ = gridMode;
+}
