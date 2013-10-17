@@ -94,7 +94,7 @@ void Grid::check_limit_reached()
 
 void Grid::update_gravity()
 {
-    vector<vector<Element> > gridy = transpose(grid_);
+    Matrix2DElement gridy = transpose(grid_);
 
     int position = gridy[0].size() - 1;
 
@@ -121,7 +121,7 @@ bool Grid::purge()
     return gridMode_->purge(this);
 }
 
-string Grid::print(vector<vector<Element> > grid)
+string Grid::print(Matrix2DElement grid)
 {
 	string print;
 
@@ -138,9 +138,9 @@ string Grid::print(vector<vector<Element> > grid)
 	return print;
 }
 
-vector<vector<Element> > Grid::transpose(vector<vector<Element> > grid)
+Matrix2DElement Grid::transpose(Matrix2DElement grid)
 {
-    vector<vector<Element> > transposed;
+    Matrix2DElement transposed;
 
     /* On crée la forme de la transposé
     Le nombre de ligne est le nombre de colonne de grid,
@@ -168,12 +168,12 @@ vector<vector<Element> > Grid::transpose(vector<vector<Element> > grid)
 /**********
 * GETTERS *
 **********/
-vector<vector<Element> > Grid::getGrid()
+Matrix2DElement Grid::getGrid()
 {
 	return grid_;
 }
 
-vector<vector<Element> >* Grid::getPointerGrid()
+Matrix2DElement* Grid::getPointerGrid()
 {
     return &grid_;
 }

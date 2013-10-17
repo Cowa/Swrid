@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <array>
+#include "Define.h"
 
 class Grid;
 class Element;

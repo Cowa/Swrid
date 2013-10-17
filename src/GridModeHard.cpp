@@ -13,7 +13,7 @@ GridModeHard::~GridModeHard()
 
 bool GridModeHard::purge(Grid *grid)
 {
-    vector<vector<array<int, 2> > > unloved;
+    vector<VectorArray2I> unloved;
     bool destroyed = false; // booléen pour déterminer si la méthode a détruit ou non des éléments
 
     for(int i=0; i<grid->getN_Rows(); i++)
@@ -29,7 +29,7 @@ bool GridModeHard::purge(Grid *grid)
     }
 
     // On supprime tous les éléments à partir de unloved
-    for(vector<array<int, 2> > list : unloved)
+    for(VectorArray2I list : unloved)
     {
         // S'il y a des éléments à supprimer
         if(list.size() != 0)
@@ -46,10 +46,10 @@ bool GridModeHard::purge(Grid *grid)
     return destroyed;
 }
 
-vector<array<int, 2> > GridModeHard::check_row(Grid *grid, int i_row)
+VectorArray2I GridModeHard::check_row(Grid *grid, int i_row)
 {
-    vector<array<int, 2> > unloved; // liste des positions des éléments à supprimer
-    vector<vector<Element> > gridcp = grid->getGrid();
+    VectorArray2I unloved; // liste des positions des éléments à supprimer
+    Matrix2DElement gridcp = grid->getGrid();
 
     int previous = 0; // type de l'élément précédemment itéré
     int match = 0; // nombre de correspondances successives pour un type d'élément
@@ -97,10 +97,10 @@ vector<array<int, 2> > GridModeHard::check_row(Grid *grid, int i_row)
     return unloved;
 }
 
-vector<array<int, 2> > GridModeHard::check_col(Grid *grid, int i_col)
+VectorArray2I GridModeHard::check_col(Grid *grid, int i_col)
 {
-    vector<vector<Element> > gridy = grid->transpose(grid->getGrid());
-    vector<array<int, 2> > unloved; // liste des positions des éléments à supprimer
+    Matrix2DElement gridy = grid->transpose(grid->getGrid());
+    VectorArray2I unloved; // liste des positions des éléments à supprimer
     int previous = 0; // type de l'élément précédemment itéré
     int match = 0; // nombre de correspondances successives pour un type d'élément
 

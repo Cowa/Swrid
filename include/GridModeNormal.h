@@ -15,9 +15,9 @@ class GridModeNormal: public GridMode
         // Vérifie si l'élément (i, j) est adjacent avec d'autres éléments de même type que lui
         // i, j : position de l'élément
         // crossed : liste des éléments avec les adjacents DEJA analysés
-        vector<array<int, 2> > adjacentWith(int i, int j, vector<array<int, 2> > *crossed, Grid *grid);
+        VectorArray2I adjacentWith(int i, int j, VectorArray2I *crossed, Grid *grid);
 
-        bool isCrossed(int i, int j, vector<array<int, 2> > crossed);
+        bool isCrossed(int i, int j, VectorArray2I crossed);
 
     protected:
     private:

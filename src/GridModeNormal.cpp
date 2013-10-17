@@ -11,14 +11,11 @@ GridModeNormal::~GridModeNormal()
     //dtor
 }
 
-/*
-* Désolé pour la gueule de cette méthode, je vais tenter de la rendre plus
-* sexy et de bien la commenter
-*/
 bool GridModeNormal::purge(Grid *grid)
 {
-    vector<array<int, 2> > crossed;
-    vector<array<int, 2> > unloved;
+    VectorArray2I crossed;
+    VectorArray2I unloved;
+
     array<int, 2> cur_element;
     int match;
     bool destroyed = false;
@@ -34,18 +31,18 @@ bool GridModeNormal::purge(Grid *grid)
                 match = 1;
                 unloved.push_back(cur_element);
 
-                vector<array<int, 2> > adjacents = adjacentWith(i, j, &crossed, grid);
+                VectorArray2I adjacents = adjacentWith(i, j, &crossed, grid);
 
                 while(adjacents.size() != 0)
                 {
-                    vector<array<int, 2> > cur_adjacents;
+                    VectorArray2I cur_adjacents;
 
                     for(unsigned int k = 0; k < adjacents.size(); k++)
                     {
                         array<int, 2> adjacent_in;
                         adjacent_in[0] = adjacents[k][0], adjacent_in[1] = adjacents[k][1];
 
-                        vector<array<int, 2> > adjacents_in = adjacentWith(adjacent_in[0], adjacent_in[1], &crossed, grid);
+                        VectorArray2I adjacents_in = adjacentWith(adjacent_in[0], adjacent_in[1], &crossed, grid);
                         for(unsigned int l = 0; l < adjacents_in.size(); l++)
                         {
                             array<int, 2> adjacent_inin;
@@ -79,10 +76,10 @@ bool GridModeNormal::purge(Grid *grid)
     return destroyed;
 }
 
-vector<array<int, 2> > GridModeNormal::adjacentWith(int i, int j, vector<array<int, 2> > *crossed, Grid *grid)
+VectorArray2I GridModeNormal::adjacentWith(int i, int j, VectorArray2I *crossed, Grid *grid)
 {
-    vector<vector<Element> > gridcp = grid->getGrid();
-    vector<array<int, 2> > adjacents;
+    Matrix2DElement gridcp = grid->getGrid();
+    VectorArray2I adjacents;
     int typeToMatch = gridcp[i][j].getType();
 
     if(!isCrossed(i, j, *crossed))
@@ -142,7 +139,7 @@ vector<array<int, 2> > GridModeNormal::adjacentWith(int i, int j, vector<array<i
     return adjacents;
 }
 
-bool GridModeNormal::isCrossed(int i, int j, vector<array<int, 2> > crossed)
+bool GridModeNormal::isCrossed(int i, int j, VectorArray2I crossed)
 {
     bool found = false;
 

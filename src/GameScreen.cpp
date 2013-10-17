@@ -74,7 +74,7 @@ void GameScreen::render(SDL_Surface *screen)
         }
 
         // On récupère une copie de la grille
-        vector<vector<Element> > grid_copy = engine_->getGrid()->getGrid();
+        Matrix2DElement grid_copy = engine_->getGrid()->getGrid();
 
         // On parcourt la grille
         for(unsigned int i=0; i<grid_copy.size(); i++)

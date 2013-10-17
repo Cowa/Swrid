@@ -5,6 +5,7 @@
 #include <vector>
 #include <array>
 #include <string>
+#include "Define.h"
 #include "Element.h"
 #include "GridMode.h"
 #include "GridModeNormal.h"
@@ -16,7 +17,7 @@ class Grid
 {
 private:
     // The grid (matrix)
-    vector<vector<Element> > grid_;
+    Matrix2DElement grid_;
     // Grid mode (normal, hard)
     GridMode *gridMode_;
     // Number of rows
@@ -53,16 +54,16 @@ public:
     void check_limit_reached();
 
     // Affiche la grille
-    string print(vector<vector<Element> > grid);
+    string print(Matrix2DElement grid);
 
     // Créer la tranposé d'une matrice d'éléments
-    vector<vector<Element> > transpose(vector<vector<Element> > grid);
+    Matrix2DElement transpose(Matrix2DElement grid);
 
     /**********
     * GETTERS *
     **********/
-    vector<vector<Element> >* getPointerGrid();
-    vector<vector<Element> > getGrid();
+    Matrix2DElement* getPointerGrid();
+    Matrix2DElement getGrid();
     int getScore();
     int getN_Rows();
     int getN_Col();
