@@ -162,6 +162,7 @@ void GameScreen::mouseClick(int x, int y)
     ***********************************************/
     unsigned int i = 0;
     bool found = false, swapped = false;
+
     // Tant qu'on a pas trouvé l'élément correspondant ET qu'on a pas parcourut toute la liste
     while(i<elements_.size() && !found)
     {

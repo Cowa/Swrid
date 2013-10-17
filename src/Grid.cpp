@@ -67,14 +67,15 @@ void Grid::new_row()
     {
         // On crée un nouvel élément aléatoirement
         Element elt(true, n_el_);
+        Element top_elt = grid_[n_rows_-2][i]; // on récupère l'élément situé au dessus
 
-        // On fait en sorte de pas avoir deux éléments de même type côte à côte
-        if(tmp_type != 0)
+        int k = 1;
+        // On cherche à ajouter un élément différent du précédent et de celui au dessus
+        while(tmp_type == elt.getType() || elt.getType() == top_elt.getType())
         {
-            if(tmp_type == elt.getType())
-                elt.setType(((tmp_type+1)%n_el_)+1);
+            elt.setType((((tmp_type)+k)%n_el_)+1);
+            k++;
         }
-
         // On le place dans la grille
         grid_[n_rows_ - 1][i] = elt;
 

@@ -38,7 +38,6 @@ int main(void)
     *********************/
     Engine engine(screen, &event, &loop); // on crée le moteur
     engine.init(); // on initialise
-
     // On nettoie la grille
     while(engine.getGrid()->purge())
     {
@@ -48,7 +47,6 @@ int main(void)
     /******************
     * Boucle générale *
     ******************/
-    cout << "Clique droit pour passer à l'écran Jeu ou Menu" << endl;
     while(loop)
     {
         engine.event(); // on gère les événements
