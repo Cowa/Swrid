@@ -1,4 +1,4 @@
-Swird
+Swrid
 =====
 
 *A kind of mixture between Tetris & Jewel*
