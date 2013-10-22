@@ -1,4 +1,5 @@
 #include "../include/Grid.h"
+#include <iostream>
 
 Grid::Grid(int n_rows, int n_cols, int n_align, int n_el)
 {
@@ -42,7 +43,7 @@ bool Grid::swap(int tuple1[3], int tuple2[3])
         return false;
 
     // Maintenant, on est sûr qu'ils sont adjacents, on échange leur place
-    Element tmp = grid_[tuple1[0]][tuple1[1]];
+    BaseElement tmp = grid_[tuple1[0]][tuple1[1]];
     grid_[tuple1[0]][tuple1[1]] = grid_[tuple2[0]][tuple2[1]];
     grid_[tuple2[0]][tuple2[1]] = tmp;
 
@@ -67,7 +68,7 @@ void Grid::new_row()
     {
         // On crée un nouvel élément aléatoirement
         Element elt(true, n_el_);
-        Element top_elt = grid_[n_rows_-2][i]; // on récupère l'élément situé au dessus
+        BaseElement top_elt = grid_[n_rows_-2][i]; // on récupère l'élément situé au dessus
 
         int k = 1;
         // On cherche à ajouter un élément différent du précédent et de celui au dessus
@@ -76,10 +77,21 @@ void Grid::new_row()
             elt.setType((((tmp_type)+k)%n_el_)+1);
             k++;
         }
-        // On le place dans la grille
-        grid_[n_rows_ - 1][i] = elt;
 
-        tmp_type = elt.getType();
+        // ON DECORE
+        // Une chance sur 5% de chance d'avoir un bonus de point sur l'élément
+        if((rand() % 100)+1 <= 5)
+        {
+            PointBonusElement eltStructured(elt);
+            grid_[n_rows_ - 1][i] = eltStructured;
+            tmp_type = eltStructured.getType();
+        }
+        else
+        {
+            BaseElement eltStructured(elt);
+            grid_[n_rows_ - 1][i] = eltStructured;
+            tmp_type = eltStructured.getType();
+        }
     }
 }
 
@@ -107,7 +119,7 @@ void Grid::update_gravity()
             {
                 gridy[i][position] = gridy[i][j];
                 if(j != position)
-                    gridy[i][j] = 0;
+                    gridy[i][j].setType(NEUTRAL_ELEMENT);
                 position--;
             }
         }
@@ -126,10 +138,10 @@ string Grid::print(Matrix2DElement grid)
 {
 	string print;
 
-	for(vector<Element> & row : grid)
+	for(vector<BaseElement> & row : grid)
 	{
 		print += "|";
-		for(Element & elt : row)
+		for(BaseElement & elt : row)
 		{
 			print += " "+ to_string(elt.getType()) +" ";
 		}
