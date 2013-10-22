@@ -66,11 +66,13 @@ bool GridModeNormal::purge(Grid *grid)
             match = 0;
         }
     }
+    int score = 0;
     for(array<int, 2> & position : unloved)
     {
         destroyed = true;
+        score += grid->getGrid()[position[0]][position[1]].getValue();
         grid->setElementType(position[0], position[1], NEUTRAL_ELEMENT);
-        grid->setScore(grid->getScore()+10); // Prise en compte du score
+        grid->setScore(grid->getScore()+score); // Prise en compte du score
     }
 
     return destroyed;

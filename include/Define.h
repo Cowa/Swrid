@@ -7,10 +7,10 @@
 #include <iostream>
 #include <vector>
 #include <array>
-#include "Element.h"
+#include "BaseElement.h"
 
 // Alias utiles
-typedef std::vector<std::vector<Element> > Matrix2DElement;
+typedef std::vector<std::vector<BaseElement> > Matrix2DElement;
 typedef std::vector<std::array<int, 2> > VectorArray2I;
 
 const bool DEBUG = true;

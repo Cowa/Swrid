@@ -6,7 +6,8 @@
 #include <array>
 #include <string>
 #include "Define.h"
-#include "Element.h"
+#include "BaseElement.h"
+#include "PointBonusElement.h"
 #include "GridMode.h"
 #include "GridModeNormal.h"
 #include "GridModeHard.h"
