@@ -6,6 +6,8 @@
 #include "Define.h"
 #include "MenuScreen.h"
 #include "GameScreen.h"
+#include "Player.h"
+#include "Database.h"
 
 class Engine
 {
@@ -17,10 +19,21 @@ class Engine
         Screen *screen_; // l'écran courant
         Screen *menuScreen_; // l'écran menu
         Screen *gameScreen_; // l'écran de jeu
+        /*************
+        * Le joueur *
+        ************/
+        Player *player_;
+        /**********************
+        * La base de données *
+        *********************/
+        Database *db_;
+        /*****************
+        * Variables SDL *
+        ****************/
         SDL_Event *event_; // gestion des événements
-        bool *loop_;
+        bool *loop_; // booléen de la boucle principale
+        SDL_Surface *sdlScreen_; // surface de l'écran principal
 
-        SDL_Surface *sdlScreen_;
     public:
         Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop);
         virtual ~Engine();
