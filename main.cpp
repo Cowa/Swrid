@@ -31,7 +31,7 @@ int main(void)
     }
     SDL_WM_SetCaption("Swrid Prototype", NULL); // Nom de la fenêtre
     SDL_initFramerate(&frame_manager);
-    SDL_setFramerate(&frame_manager, FPS); // on fixe le fps à 60
+    SDL_setFramerate(&frame_manager, FPS); // on fixe le fps à 30
 
     /*********************
     * Création du moteur *
