@@ -2,6 +2,12 @@
 
 Engine::Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop)
 {
+    grid_ = new Grid();
+    grid_->new_row();
+    grid_->new_row();
+    grid_->new_row();
+    grid_->new_row();
+
     screen_ = new MenuScreen(this);
     menuScreen_ = screen_;
     gameScreen_ = new GameScreen(this);
@@ -33,12 +39,6 @@ Engine::~Engine()
 void Engine::init()
 {
     screen_->show(sdlScreen_);
-
-    grid_ = new Grid();
-    grid_->new_row();
-    grid_->new_row();
-    grid_->new_row();
-    grid_->new_row();
 }
 
 void Engine::render()
