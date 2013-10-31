@@ -20,11 +20,6 @@ class GameScreen : public Screen
 
         void updateElements(); // MAJ des ElementUI
 
-        /**************
-        * Animations *
-        **************/
-        void swap_animation(ElementUI *s1, ElementUI *s2);
-
         Engine* getEngine();
 
     private:
