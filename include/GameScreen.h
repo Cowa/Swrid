@@ -18,6 +18,11 @@ class GameScreen : public Screen
         void event(SDL_Event *event, bool *loop);
         void mouseClick(int x, int y);
 
+        /**************
+        * Animations *
+        **************/
+        void swap_animation(ElementUI *s1, ElementUI *s2);
+
         Engine* getEngine();
 
     private:

@@ -21,6 +21,12 @@ class ElementUI
         int getX();
         int getY();
         int getType();
+
+        void setX(int x);
+        void setY(int y);
+
+        void setFormX(int x);
+        void setFormY(int y);
     protected:
     private:
         SDL_Rect form_; // position (sur l'écran) et forme de l'élément

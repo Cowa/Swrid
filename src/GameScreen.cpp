@@ -162,6 +162,7 @@ void GameScreen::mouseClick(int x, int y)
     ***********************************************/
     unsigned int i = 0;
     bool found = false, swapped = false;
+    ElementUI current;
 
     // Tant qu'on a pas trouvé l'élément correspondant ET qu'on a pas parcourut toute la liste
     while(i<elements_.size() && !found)
@@ -170,6 +171,7 @@ void GameScreen::mouseClick(int x, int y)
             if(elements_[i].isOn(x, y))
             {
                 found = true;
+                current = elements_[i];
                 // Si aucun élément n'a été sélectionné auparavant, on met celui ci dans le pointeur
                 if(select_ == NULL)
                     select_ = &elements_[i];
@@ -188,8 +190,9 @@ void GameScreen::mouseClick(int x, int y)
                     // Si il n'y a pas eu d'échange et que l'élément sélectionné N'EST PAS celui précédemment sélectionné
                     if(!swapped && select_ != &elements_[i])
                         select_ = &elements_[i];
-                    else
-                        select_ = NULL; // on remet à zéro le pointeur
+                    else if(select_ == &elements_[i])
+                        select_ = NULL;
+
                 }
             }
             i++;
@@ -198,6 +201,11 @@ void GameScreen::mouseClick(int x, int y)
     // S'il y a eu des éléments échangés, il faut mettre à jour la grille
     if(swapped)
     {
+        // Animation du swap !
+        swap_animation(&current, select_);
+
+        select_ = NULL; // on remet à zéro le pointeur
+
         // on purge tant qu'il y a à supprimer
         while(engine_->getGrid()->purge())
         {
@@ -215,4 +223,57 @@ void GameScreen::mouseClick(int x, int y)
     }
 
     redraw_ = true;
+}
+
+void GameScreen::swap_animation(ElementUI *s1, ElementUI *s2)
+{
+    // On fixe le FPS de l'animation
+    FPSmanager frame_manager;
+    SDL_initFramerate(&frame_manager);
+    SDL_setFramerate(&frame_manager, FPS);
+
+    ElementUI tmp(s1->getForm(), s1->getX(), s1->getY(), s1->getType());
+    bool onX = true; // booléen pour savoir si on swap sur x (true) ou sur y (false)
+
+    if(s1->getForm().x == s2->getForm().x)
+        onX = false;
+
+    // Tant que l'échange n'est pas complet
+    while(tmp.getForm().x != s2->getForm().x || tmp.getForm().y != s2->getForm().y)
+    {
+        // Si même x, alors on bouge y
+        if(!onX)
+        {
+            if(tmp.getForm().y < s2->getForm().y)
+            {
+                s1->setFormY(s1->getForm().y + 1);
+                s2->setFormY(s2->getForm().y - 1);
+            }
+            else
+            {
+                s1->setFormY(s1->getForm().y - 1);
+                s2->setFormY(s2->getForm().y + 1);
+            }
+        }
+        // Si même y, alors on bouge x
+        else
+        {
+            if(tmp.getForm().x < s2->getForm().x)
+            {
+                s1->setFormX(s1->getForm().x + 1);
+                s2->setFormX(s2->getForm().x - 1);
+            }
+            else
+            {
+                s1->setFormX(s1->getForm().x - 1);
+                s2->setFormX(s2->getForm().x + 1);
+            }
+        }
+
+        s1->draw(engine_->getSDLscreen());
+        s2->draw(engine_->getSDLscreen());
+        SDL_Flip(engine_->getSDLscreen());
+
+        SDL_framerateDelay(&frame_manager);
+    }
 }

@@ -54,3 +54,20 @@ int ElementUI::getType()
 {
     return type_;
 }
+
+void ElementUI::setX(int x)
+{
+    gridx_ = x;
+}
+void ElementUI::setY(int y)
+{
+    gridy_ = y;
+}
+void ElementUI::setFormX(int x)
+{
+    form_.x = x;
+}
+void ElementUI::setFormY(int y)
+{
+    form_.y = y;
+}
