@@ -2,6 +2,7 @@
 #define DEFINE_H
 
 #include <SDL/SDL.h>
+#include <SDL/SDL_ttf.h>
 #include <SDL/SDL_gfxPrimitives.h>
 #include <SDL/SDL_framerate.h>
 #include <iostream>

@@ -29,7 +29,12 @@ int main(void)
         cout << "SDL Video set error" << endl;
         exit(EXIT_FAILURE);
     }
-    SDL_WM_SetCaption("Swrid Prototype", NULL); // Nom de la fenêtre
+	if(TTF_Init() == -1 )
+	{
+		cout << "SDL TTF init error" << endl;
+        exit(EXIT_FAILURE);
+	}
+    SDL_WM_SetCaption("Swrid Game Prototype", NULL); // Nom de la fenêtre
     SDL_initFramerate(&frame_manager);
     SDL_setFramerate(&frame_manager, FPS); // on fixe le fps à 30
 
@@ -56,10 +61,12 @@ int main(void)
 
         SDL_framerateDelay(&frame_manager); // régulateur de frames
     }
+    engine.getScreen()->hide(screen); // on cache l'écran courant
 
     /***************************
     * Libération de la mémoire *
     ***************************/
+    TTF_Quit();
     SDL_Quit();
 
     return EXIT_SUCCESS;
