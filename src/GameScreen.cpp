@@ -129,7 +129,7 @@ void GameScreen::render(SDL_Surface *screen)
         // Si l'animation du swap est en cours...
         else
         {
-            if(swapping_->getDestX() == swapping_->getForm().x || swapping_->getDestY() == swapping_->getForm().y)
+            if((swapping_->getVelX()>0 && swapping_->getForm().x >= swapping_->getDestX()) || (swapping_->getVelX()<0 && swapping_->getForm().x <= swapping_->getDestX()) || (swapping_->getVelY()>0 && swapping_->getForm().y >= swapping_->getDestY()) || (swapping_->getVelY()<0 && swapping_->getForm().y <= swapping_->getDestY()))
             {
                 animation_swap_ = false;
                 swapping_ = NULL;
@@ -247,7 +247,7 @@ void GameScreen::mouseClick(int x, int y)
         i++;
     }
 
-    // S'il y a eu des éléments échangés, il faut mettre à jour la grille
+    // S'il y a eu des éléments échangés, il faut mettre en place l'animation
     if(swapped_)
     {
         animation_swap_ = true;
@@ -256,13 +256,13 @@ void GameScreen::mouseClick(int x, int y)
         {
             if(current->getForm().y < select_->getForm().y)
             {
-                current->setVelY(1);
-                select_->setVelY(-1);
+                current->setVelY(current->getForm().h/4);
+                select_->setVelY(-current->getForm().h/4);
             }
             else
             {
-                current->setVelY(-1);
-                select_->setVelY(1);
+                current->setVelY(-current->getForm().h/4);
+                select_->setVelY(current->getForm().h/4);
             }
             // On met à jour les destinations
             current->setDestY(select_->getForm().y);
@@ -273,13 +273,13 @@ void GameScreen::mouseClick(int x, int y)
         {
             if(current->getForm().x < select_->getForm().x)
             {
-                current->setVelX(1);
-                select_->setVelX(-1);
+                current->setVelX(current->getForm().w/4);
+                select_->setVelX(-current->getForm().w/4);
             }
             else
             {
-                current->setVelX(-1);
-                select_->setVelX(1);
+                current->setVelX(-current->getForm().w/4);
+                select_->setVelX(current->getForm().w/4);
             }
             // On met à jour les destinations
             current->setDestX(select_->getForm().x);
