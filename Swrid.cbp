@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Swrid" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Swrid" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-Os" />
+					<Add option="-O3" />
+					<Add option="-std=c++0x" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lSDL_gfx" />
+					<Add option="-lsqlite3" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Swrid" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=c++0x" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-lSDL_gfx" />
+					<Add option="-lSDL" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="`sdl-config --cflags`" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add option="`sdl-config --libs`" />
+		</Linker>
+		<Unit filename="include/BaseElement.h" />
+		<Unit filename="include/Database.h" />
+		<Unit filename="include/Define.h" />
+		<Unit filename="include/Element.h" />
+		<Unit filename="include/ElementUI.h" />
+		<Unit filename="include/Engine.h" />
+		<Unit filename="include/GameScreen.h" />
+		<Unit filename="include/Grid.h" />
+		<Unit filename="include/GridMode.h" />
+		<Unit filename="include/GridModeHard.h" />
+		<Unit filename="include/GridModeNormal.h" />
+		<Unit filename="include/MenuScreen.h" />
+		<Unit filename="include/Player.h" />
+		<Unit filename="include/PointBonusElement.h" />
+		<Unit filename="include/Screen.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/BaseElement.cpp" />
+		<Unit filename="src/Database.cpp" />
+		<Unit filename="src/Element.cpp" />
+		<Unit filename="src/ElementUI.cpp" />
+		<Unit filename="src/Engine.cpp" />
+		<Unit filename="src/GameScreen.cpp" />
+		<Unit filename="src/Grid.cpp" />
+		<Unit filename="src/GridModeHard.cpp" />
+		<Unit filename="src/GridModeNormal.cpp" />
+		<Unit filename="src/MenuScreen.cpp" />
+		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/PointBonusElement.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
