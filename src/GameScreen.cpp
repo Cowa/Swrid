@@ -11,9 +11,13 @@ GameScreen::GameScreen(Engine *engine)
     swapping_ = NULL;
 
     redraw_ = true;
+
     animation_swap_ = false;
     animation_push_ = false;
+    animation_fall_ = false;
+
     swapped_ = false;
+    purged_ = false;
 
     n_rows_ = engine_->getGrid()->getN_Rows();
     n_cols_ = engine_->getGrid()->getN_Col();
@@ -124,30 +128,39 @@ void GameScreen::render(SDL_Surface *screen)
         * Les éléments *
         ***************/
         // Partie costaude...
-        // Pas d'animation du swap en cours... on MAJ la grille
+        // Pas d'animation du swap et du push en cours... on MAJ la grille
         if(!animation_swap_ && !animation_push_)
         {
             redraw_ = false;
 
-            // Si il y a eu un swap
-            if(swapped_)
+            // Si il y a eu un swap ou si l'animation du fall est en cours
+            if(swapped_ || purged_)
             {
                 redraw_ = true;
+
                 // on purge tant qu'il y a à supprimer
-                while(engine_->getGrid()->purge())
+                purged_ = false;
+                if(engine_->getGrid()->purge())
                 {
+                    purged_ = true;
                     engine_->getGrid()->update_gravity();
+                    animation_fall_ = true;
+                    updateElements();
                 }
-                updateElements();
+                if(!animation_fall_)
+                    updateElements();
 
                 // on ajoute la nouvelle ligne, donc on active l'animation du push
-                engine_->getGrid()->new_row();
+                if(swapped_ && !animation_fall_)
+                {
+                    engine_->getGrid()->new_row();
 
-                setElementsToBePush(); // on prépare les éléments à être animés
+                    setElementsToBePush(); // on prépare les éléments à être animés
 
-                animation_push_ = true; // on prévient le programme qu'on va animer
+                    animation_push_ = true; // on prévient le programme qu'on va animer
 
-                swapped_ = false;
+                    swapped_ = false;
+                }
             }
             // Si l'animation push a été activée précédemment, on empêche la MAJ des éléments
             if(!animation_push_)
@@ -171,6 +184,11 @@ void GameScreen::render(SDL_Surface *screen)
                 animation_push_ = false;
                 updateElements();
             }
+        }
+        // Si l'animation du fall est en cours...
+        if(animation_fall_)
+        {
+            animation_fall_ = false;
         }
 
         /***************************

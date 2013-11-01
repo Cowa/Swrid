@@ -42,8 +42,10 @@ class GameScreen : public Screen
         ElementUI *swapping_; // pointeur vers l'élément entrain d'être swappé
 
         bool swapped_; // si un swap a eu lieu
+        bool purged_; // si une suppression a eu lieu
         bool animation_swap_; // booléen pour déterminer si une animation du swap est en cours
         bool animation_push_; // booléen pour déterminer si une animation du push est en cours
+        bool animation_fall_;
         bool redraw_; // booléen pour déterminer s'il y a nécessité de redessiner l'écran (évite l'usage du processeur pour rien)
 };
 
