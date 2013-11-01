@@ -69,6 +69,11 @@ void Engine::setGridMode(GridMode *gridMode)
     grid_->setGridMode(gridMode);
 }
 
+void Engine::setSDLscreen(SDL_Surface *newScreen)
+{
+    sdlScreen_ = newScreen;
+}
+
 /**********
 * GETTERS *
 **********/
@@ -95,9 +100,4 @@ Screen* Engine::getGameScreen()
 SDL_Surface* Engine::getSDLscreen()
 {
     return sdlScreen_;
-}
-
-void Engine::setSDLscreen(SDL_Surface *newScreen)
-{
-    sdlScreen_ = newScreen;
 }

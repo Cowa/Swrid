@@ -12,6 +12,7 @@ GameScreen::GameScreen(Engine *engine)
 
     redraw_ = true;
     animation_swap_ = false;
+    animation_push_ = false;
     swapped_ = false;
 
     n_rows_ = engine_->getGrid()->getN_Rows();
@@ -47,10 +48,33 @@ void GameScreen::updateElements()
     }
 }
 
+void GameScreen::setElementsToBePush()
+{
+    // On met en place la vitesse et la destination
+    for(unsigned int i=0; i<elements_.size(); i++)
+    {
+        elements_[i].setVelY(-elements_[i].getForm().h/6);
+        elements_[i].setDestY(elements_[i].getForm().y - elements_[i].getForm().h - 2);
+    }
+    // On ajoute la nouvelle ligne (pour l'animer elle aussi)
+    for(unsigned int i=0; i<engine_->getGrid()->getGrid()[n_rows_-1].size(); i++)
+    {
+        SDL_Rect form;
+        form.x = col_w_*(i)+2+panel_form_.w;
+        form.y = row_h_*(n_rows_)+2;
+        form.h = row_h_-2;
+        form.w = col_w_-2;
+
+        ElementUI el(form, n_rows_-1, i, engine_->getGrid()->getGrid()[n_rows_-1][i].getType());
+        el.setDestY(row_h_*(n_rows_-1)+2);
+        el.setVelY(-elements_[i].getForm().h/6);
+
+        elements_.push_back(el);
+    }
+}
+
 void GameScreen::show(SDL_Surface *screen)
 {
-    if(DEBUG)
-        std::cout << "On entre dans l'écran Jeu" << std::endl;
     resize(screen);
 }
 
@@ -99,35 +123,38 @@ void GameScreen::render(SDL_Surface *screen)
         /****************
         * Les éléments *
         ***************/
+        // Partie costaude...
         // Pas d'animation du swap en cours... on MAJ la grille
-        if(!animation_swap_)
+        if(!animation_swap_ && !animation_push_)
         {
+            redraw_ = false;
+
             // Si il y a eu un swap
             if(swapped_)
             {
+                redraw_ = true;
                 // on purge tant qu'il y a à supprimer
                 while(engine_->getGrid()->purge())
                 {
                     engine_->getGrid()->update_gravity();
                 }
+                updateElements();
 
-                // on ajoute la nouvelle ligne
+                // on ajoute la nouvelle ligne, donc on active l'animation du push
                 engine_->getGrid()->new_row();
 
-                // on purge à nouveau avec la nouvelle ligne, histoire d'être sûr
-                while(engine_->getGrid()->purge())
-                {
-                    engine_->getGrid()->update_gravity();
-                }
+                setElementsToBePush(); // on prépare les éléments à être animés
+
+                animation_push_ = true; // on prévient le programme qu'on va animer
 
                 swapped_ = false;
             }
-
-            updateElements();
-            redraw_ = false;
+            // Si l'animation push a été activée précédemment, on empêche la MAJ des éléments
+            if(!animation_push_)
+                updateElements();
         }
         // Si l'animation du swap est en cours...
-        else
+        else if(animation_swap_)
         {
             if((swapping_->getVelX()>0 && swapping_->getForm().x >= swapping_->getDestX()) || (swapping_->getVelX()<0 && swapping_->getForm().x <= swapping_->getDestX()) || (swapping_->getVelY()>0 && swapping_->getForm().y >= swapping_->getDestY()) || (swapping_->getVelY()<0 && swapping_->getForm().y <= swapping_->getDestY()))
             {
@@ -136,7 +163,19 @@ void GameScreen::render(SDL_Surface *screen)
                 updateElements();
             }
         }
+        // Si l'animation du push est en cours...
+        else if(animation_push_)
+        {
+            if(elements_[n_rows_*n_cols_-1].getForm().y <= elements_[n_rows_*n_cols_-1].getDestY())
+            {
+                animation_push_ = false;
+                updateElements();
+            }
+        }
 
+        /***************************
+        * On dessine les élements *
+        **************************/
         for(unsigned int i=0; i<elements_.size(); i++)
         {
             elements_[i].draw(screen);
@@ -175,8 +214,7 @@ void GameScreen::resize(SDL_Surface *screen)
 
 void GameScreen::hide(SDL_Surface *screen)
 {
-    if(DEBUG)
-        std::cout << "On sort de l'écran Jeu" << std::endl;
+
 }
 
 void GameScreen::event(SDL_Event *event, bool *loop)
@@ -256,13 +294,13 @@ void GameScreen::mouseClick(int x, int y)
         {
             if(current->getForm().y < select_->getForm().y)
             {
-                current->setVelY(current->getForm().h/4);
-                select_->setVelY(-current->getForm().h/4);
+                current->setVelY(current->getForm().h/8);
+                select_->setVelY(-current->getForm().h/8);
             }
             else
             {
-                current->setVelY(-current->getForm().h/4);
-                select_->setVelY(current->getForm().h/4);
+                current->setVelY(-current->getForm().h/8);
+                select_->setVelY(current->getForm().h/8);
             }
             // On met à jour les destinations
             current->setDestY(select_->getForm().y);
@@ -273,13 +311,13 @@ void GameScreen::mouseClick(int x, int y)
         {
             if(current->getForm().x < select_->getForm().x)
             {
-                current->setVelX(current->getForm().w/4);
-                select_->setVelX(-current->getForm().w/4);
+                current->setVelX(current->getForm().w/8);
+                select_->setVelX(-current->getForm().w/8);
             }
             else
             {
-                current->setVelX(-current->getForm().w/4);
-                select_->setVelX(current->getForm().w/4);
+                current->setVelX(-current->getForm().w/8);
+                select_->setVelX(current->getForm().w/8);
             }
             // On met à jour les destinations
             current->setDestX(select_->getForm().x);

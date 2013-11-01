@@ -32,7 +32,6 @@ void BaseElement::setType(int type)
 
 int BaseElement::getValue()
 {
-    std::cout << "+" << bonusValue_ << std::endl;
     return bonusValue_ + el_.getValue();
 }
 

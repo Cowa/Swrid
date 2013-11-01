@@ -15,9 +15,6 @@ MenuScreen::~MenuScreen()
 
 void MenuScreen::show(SDL_Surface *screen)
 {
-    if(DEBUG)
-        std::cout << "On entre dans l'écran Menu" << std::endl;
-
     title_font_ = TTF_OpenFont("font/mt.ttf", 20);
 
     if(title_font_ == NULL)
@@ -54,8 +51,6 @@ void MenuScreen::resize(SDL_Surface *screen)
 
 void MenuScreen::hide(SDL_Surface *screen)
 {
-    if(DEBUG)
-        std::cout << "On sort de l'écran Menu" << std::endl;
     TTF_CloseFont(title_font_);
 }
 

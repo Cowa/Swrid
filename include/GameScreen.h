@@ -19,6 +19,7 @@ class GameScreen : public Screen
         void mouseClick(int x, int y);
 
         void updateElements(); // MAJ des ElementUI
+        void setElementsToBePush(); // Prépare les ElementUI à être push
 
         Engine* getEngine();
 
@@ -31,17 +32,18 @@ class GameScreen : public Screen
         int n_rows_;
         int n_cols_;
 
-        SDL_Surface *panel_; // surface du panel (placée sur la gauche)
-        SDL_Rect panel_form_; // caractéristiques du panel (sa forme, taille)
+        SDL_Surface *panel_; // surface du panel
+        SDL_Rect panel_form_; // caractéristiques du panel (forme, taille)
 
-        SDL_Surface *grid_;
-        SDL_Rect grid_form_;
+        SDL_Surface *grid_; // surface de la grille
+        SDL_Rect grid_form_; // caractéristiques de la grille (forme, taille)
 
         ElementUI *select_; // pointeur vers l'élément précédemment sélectionné
         ElementUI *swapping_; // pointeur vers l'élément entrain d'être swappé
 
-        bool swapped_; //
+        bool swapped_; // si un swap a eu lieu
         bool animation_swap_; // booléen pour déterminer si une animation du swap est en cours
+        bool animation_push_; // booléen pour déterminer si une animation du push est en cours
         bool redraw_; // booléen pour déterminer s'il y a nécessité de redessiner l'écran (évite l'usage du processeur pour rien)
 };
 
