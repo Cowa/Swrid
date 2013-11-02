@@ -81,13 +81,26 @@ void GameScreen::setElementsToBePush()
 
 void GameScreen::setElementsToBePull()
 {
+    Matrix2DElement cp_grid = engine_->getGrid()->getGrid();
+
     // On met en place la vitesse et la destination
-    for(unsigned int i=0; i<elements_.size(); i++)
+    for(int i=elements_.size()-1; i>=0; i--)
     {
-        if(elements_[i].getX() < n_rows_-1)
+        // On ignore la dernière ligne, elle est déjà au sol, et les éléments neutres
+        if(elements_[i].getX() < n_rows_-1 && elements_[i].getType() != NEUTRAL_ELEMENT)
         {
-            elements_[i].setVelY(+elements_[i].getForm().h/6);
-            elements_[i].setDestY(elements_[i].getForm().y + elements_[i].getForm().h + 2);
+            for(int j=elements_[i].getX(); j<n_rows_; j++)
+            {
+
+            }
+            if(cp_grid[elements_[i].getX()+1][elements_[i].getY()].getType() == NEUTRAL_ELEMENT)
+            {
+                cp_grid[elements_[i].getX()][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
+
+                elements_[i].setVelY(+elements_[i].getForm().h/6);
+                elements_[i].setDestY(elements_[i].getForm().y + elements_[i].getForm().h + 2);
+            }
+
         }
     }
 }

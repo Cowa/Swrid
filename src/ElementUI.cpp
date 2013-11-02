@@ -43,7 +43,13 @@ bool ElementUI::isOn(int x, int y)
 
 bool ElementUI::atDestination()
 {
-    return ((getVelX() == 0 && getVelY() == 0) || ((getVelX()>0 && getForm().x >= getDestX()) || (getVelX()<0 && getForm().x <= getDestX()) || (getVelY()>0 && getForm().y >= getDestY()) || (getVelY()<0 && getForm().y <= getDestY())));
+    if((getVelX() == 0 && getVelY() == 0) || ((getVelX()>0 && getForm().x >= getDestX()) || (getVelX()<0 && getForm().x <= getDestX()) || (getVelY()>0 && getForm().y >= getDestY()) || (getVelY()<0 && getForm().y <= getDestY())))
+    {
+        setVelX(0);
+        setVelY(0);
+        return true;
+    }
+    return false;
 }
 
 /**********

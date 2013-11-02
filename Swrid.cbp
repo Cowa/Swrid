@@ -36,7 +36,8 @@
 				<Linker>
 					<Add option="-s" />
 					<Add option="-lSDL_gfx" />
-					<Add option="-lSDL" />
+					<Add option="-lSDL_ttf" />
+					<Add option="-lsqlite3" />
 				</Linker>
 			</Target>
 		</Build>
