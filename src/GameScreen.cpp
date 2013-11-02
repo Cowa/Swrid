@@ -82,25 +82,32 @@ void GameScreen::setElementsToBePush()
 void GameScreen::setElementsToBePull()
 {
     Matrix2DElement cp_grid = engine_->getGrid()->getGrid();
-
+    int tmp = 0;
+    if(tmp == 1){}
     // On met en place la vitesse et la destination
     for(int i=elements_.size()-1; i>=0; i--)
     {
+        tmp = 0;
         // On ignore la dernière ligne, elle est déjà au sol, et les éléments neutres
         if(elements_[i].getX() < n_rows_-1 && elements_[i].getType() != NEUTRAL_ELEMENT)
         {
-            for(int j=elements_[i].getX(); j<n_rows_; j++)
+            for(int j=1; j<n_rows_-elements_[i].getX(); j++)
             {
+                if(cp_grid[elements_[i].getX()+j][elements_[i].getY()].getType() == NEUTRAL_ELEMENT)
+                {
+                    tmp = j;
 
+                    cp_grid[elements_[i].getX()][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
+                    cp_grid[elements_[i].getX()+j][elements_[i].getY()].setType(elements_[i].getType());
+
+                    elements_[i].setVelY(+elements_[i].getForm().h/6);
+                    elements_[i].setDestY(elements_[i].getForm().y + (elements_[i].getForm().h)*j + 2);
+                }
             }
-            if(cp_grid[elements_[i].getX()+1][elements_[i].getY()].getType() == NEUTRAL_ELEMENT)
+            for(int j=1; j<tmp; j++)
             {
-                cp_grid[elements_[i].getX()][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
-
-                elements_[i].setVelY(+elements_[i].getForm().h/6);
-                elements_[i].setDestY(elements_[i].getForm().y + elements_[i].getForm().h + 2);
+                cp_grid[elements_[i].getX()+j][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
             }
-
         }
     }
 }
@@ -175,7 +182,6 @@ void GameScreen::render(SDL_Surface *screen)
                     updateElements();
                     setElementsToBePull();
                     engine_->getGrid()->update_gravity();
-
                 }
                 if(!animation_fall_)
                     updateElements();

@@ -151,20 +151,20 @@ Using SDL, SDL_TTF & SDL_gfx libraries
 Progress
 --------
 
-**Prototype version, main goals (75%)**
+**Prototype version, main goals (87,5%)**
 - [x] gravitational matrix
 - [x] grid class & main methods
-- [ ] check grid behavior (strange suppression and push up sometimes)
+- [x] check grid behavior
 - [x] game engine
 - [x] screen classes (state pattern)
 - [x] gridmode classes (strategy pattern)
 - [x] element classes (decorator pattern)
 - [ ] fourth design pattern (singleton on grid ?)
 
-**Final version, let there be light (0%)**
+**Final version, let there be light (33,33%)**
 - [ ] full graphics
 - [ ] gui
-- [ ] elements animation
+- [x] elements animation
 
 **Optional, make players addicted (0%)**
 - [ ] player structure (save, load, highscore)
