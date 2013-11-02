@@ -46,6 +46,8 @@ void GameScreen::updateElements()
             form.w = col_w_-2;
 
             ElementUI el(form, i, j, grid_copy[i][j].getType());
+            el.setVelX(0);
+            el.setVelY(0);
 
             elements_.push_back(el);
         }
@@ -74,6 +76,19 @@ void GameScreen::setElementsToBePush()
         el.setVelY(-elements_[i].getForm().h/6);
 
         elements_.push_back(el);
+    }
+}
+
+void GameScreen::setElementsToBePull()
+{
+    // On met en place la vitesse et la destination
+    for(unsigned int i=0; i<elements_.size(); i++)
+    {
+        if(elements_[i].getX() < n_rows_-1)
+        {
+            elements_[i].setVelY(+elements_[i].getForm().h/6);
+            elements_[i].setDestY(elements_[i].getForm().y + elements_[i].getForm().h + 2);
+        }
     }
 }
 
@@ -129,11 +144,11 @@ void GameScreen::render(SDL_Surface *screen)
         ***************/
         // Partie costaude...
         // Pas d'animation du swap et du push en cours... on MAJ la grille
-        if(!animation_swap_ && !animation_push_)
+        if(!animation_swap_ && !animation_push_ && !animation_fall_)
         {
             redraw_ = false;
 
-            // Si il y a eu un swap ou si l'animation du fall est en cours
+            // Si il y a eu un swap ou une suppression
             if(swapped_ || purged_)
             {
                 redraw_ = true;
@@ -143,15 +158,17 @@ void GameScreen::render(SDL_Surface *screen)
                 if(engine_->getGrid()->purge())
                 {
                     purged_ = true;
-                    engine_->getGrid()->update_gravity();
                     animation_fall_ = true;
                     updateElements();
+                    setElementsToBePull();
+                    engine_->getGrid()->update_gravity();
+
                 }
                 if(!animation_fall_)
                     updateElements();
 
                 // on ajoute la nouvelle ligne, donc on active l'animation du push
-                if(swapped_ && !animation_fall_)
+                if(swapped_ && !purged_ && !animation_fall_)
                 {
                     engine_->getGrid()->new_row();
 
@@ -162,8 +179,8 @@ void GameScreen::render(SDL_Surface *screen)
                     swapped_ = false;
                 }
             }
-            // Si l'animation push a été activée précédemment, on empêche la MAJ des éléments
-            if(!animation_push_)
+            // Si l'animation push et fall a été activée précédemment, on empêche la MAJ des éléments
+            if(!animation_push_ && !animation_fall_)
                 updateElements();
         }
         // Si l'animation du swap est en cours...
@@ -186,11 +203,22 @@ void GameScreen::render(SDL_Surface *screen)
             }
         }
         // Si l'animation du fall est en cours...
-        if(animation_fall_)
+        else if(animation_fall_)
         {
-            animation_fall_ = false;
+            unsigned int i = 0;
+            bool ok = true;
+            while(i < elements_.size())
+            {
+                if(!elements_[i].atDestination())
+                    ok = false;
+                i++;
+            }
+            if(ok)
+            {
+                animation_fall_ = false;
+                updateElements();
+            }
         }
-
         /***************************
         * On dessine les élements *
         **************************/
@@ -270,81 +298,84 @@ void GameScreen::mouseClick(int x, int y)
     ElementUI *current = NULL;
 
     // Tant qu'on a pas trouvé l'élément correspondant ET qu'on a pas parcourut toute la liste
-    while(i<elements_.size() && !found)
+    if(!animation_fall_ && !animation_push_ && !animation_swap_)
     {
-        // On vérifie si les coordonnées de la souris correspondent à l'un des éléments
-        if(elements_[i].isOn(x, y))
+        while(i<elements_.size() && !found)
         {
-            found = true;
-            current = &elements_[i];
-            // Si aucun élément n'a été sélectionné auparavant, on met celui ci dans le pointeur
-            if(select_ == NULL)
-                select_ = &elements_[i];
-            // Sinon on tente le swap
-            else
+            // On vérifie si les coordonnées de la souris correspondent à l'un des éléments
+            if(elements_[i].isOn(x, y))
             {
-                // {x, y, type}
-                int el1[3] = {elements_[i].getX(), elements_[i].getY(), elements_[i].getType()};
-                int el2[3] = {select_->getX(), select_->getY(), select_->getType()};
-
-                // Swap() renvoit TRUE lorsque l'échange est possible et effectué
-                if(engine_->getGrid()->swap(el1, el2))
-                {
-                    swapped_ = true;
-                }
-                // Si il n'y a pas eu d'échange et que l'élément sélectionné N'EST PAS celui précédemment sélectionné
-                if(!swapped_ && select_ != &elements_[i])
+                found = true;
+                current = &elements_[i];
+                // Si aucun élément n'a été sélectionné auparavant, on met celui ci dans le pointeur
+                if(select_ == NULL)
                     select_ = &elements_[i];
-                else if(select_ == &elements_[i])
-                    select_ = NULL;
+                // Sinon on tente le swap
+                else
+                {
+                    // {x, y, type}
+                    int el1[3] = {elements_[i].getX(), elements_[i].getY(), elements_[i].getType()};
+                    int el2[3] = {select_->getX(), select_->getY(), select_->getType()};
 
+                    // Swap() renvoit TRUE lorsque l'échange est possible et effectué
+                    if(engine_->getGrid()->swap(el1, el2))
+                    {
+                        swapped_ = true;
+                    }
+                    // Si il n'y a pas eu d'échange et que l'élément sélectionné N'EST PAS celui précédemment sélectionné
+                    if(!swapped_ && select_ != &elements_[i])
+                        select_ = &elements_[i];
+                    else if(select_ == &elements_[i])
+                        select_ = NULL;
+
+                }
             }
+            i++;
         }
-        i++;
-    }
 
-    // S'il y a eu des éléments échangés, il faut mettre en place l'animation
-    if(swapped_)
-    {
-        animation_swap_ = true;
-        // Même x, donc on bouge y
-        if(current->getForm().x == select_->getForm().x)
+        // S'il y a eu des éléments échangés, il faut mettre en place l'animation
+        if(swapped_)
         {
-            if(current->getForm().y < select_->getForm().y)
+            animation_swap_ = true;
+            // Même x, donc on bouge y
+            if(current->getForm().x == select_->getForm().x)
             {
-                current->setVelY(current->getForm().h/8);
-                select_->setVelY(-current->getForm().h/8);
+                if(current->getForm().y < select_->getForm().y)
+                {
+                    current->setVelY(current->getForm().h/8);
+                    select_->setVelY(-current->getForm().h/8);
+                }
+                else
+                {
+                    current->setVelY(-current->getForm().h/8);
+                    select_->setVelY(current->getForm().h/8);
+                }
+                // On met à jour les destinations
+                current->setDestY(select_->getForm().y);
+                select_->setDestY(current->getForm().y);
             }
+            // Sinon, on bouge x
             else
             {
-                current->setVelY(-current->getForm().h/8);
-                select_->setVelY(current->getForm().h/8);
+                if(current->getForm().x < select_->getForm().x)
+                {
+                    current->setVelX(current->getForm().w/8);
+                    select_->setVelX(-current->getForm().w/8);
+                }
+                else
+                {
+                    current->setVelX(-current->getForm().w/8);
+                    select_->setVelX(current->getForm().w/8);
+                }
+                // On met à jour les destinations
+                current->setDestX(select_->getForm().x);
+                select_->setDestX(current->getForm().x);
             }
-            // On met à jour les destinations
-            current->setDestY(select_->getForm().y);
-            select_->setDestY(current->getForm().y);
-        }
-        // Sinon, on bouge x
-        else
-        {
-            if(current->getForm().x < select_->getForm().x)
-            {
-                current->setVelX(current->getForm().w/8);
-                select_->setVelX(-current->getForm().w/8);
-            }
-            else
-            {
-                current->setVelX(-current->getForm().w/8);
-                select_->setVelX(current->getForm().w/8);
-            }
-            // On met à jour les destinations
-            current->setDestX(select_->getForm().x);
-            select_->setDestX(current->getForm().x);
+
+            select_ = NULL;
+            swapping_ = current;
         }
 
-        select_ = NULL;
-        swapping_ = current;
+        redraw_ = true;
     }
-
-    redraw_ = true;
 }

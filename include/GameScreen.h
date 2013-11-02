@@ -20,6 +20,7 @@ class GameScreen : public Screen
 
         void updateElements(); // MAJ des ElementUI
         void setElementsToBePush(); // Prépare les ElementUI à être push
+        void setElementsToBePull(); // Prépare les ElementUI à subir la gravité
 
         Engine* getEngine();
 

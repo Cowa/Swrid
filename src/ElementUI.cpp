@@ -26,15 +26,12 @@ ElementUI::~ElementUI()
 
 void ElementUI::draw(SDL_Surface *grid)
 {
+    form_.x += velx_;
+    form_.y += vely_;
+
     if(type_ != NEUTRAL_ELEMENT)
     {
-
-
         int r = (type_*25)%255, g = (type_*50)%255, b = (type_*100)%255; // on tire des couleurs en fonction du type
-
-        form_.x += velx_;
-        form_.y += vely_;
-
         filledEllipseRGBA(grid, form_.x + (form_.w/2), form_.y + (form_.h/2), (form_.w/2)*0.75, (form_.h/2)*0.75, r, g, b, 255);
     }
 }
@@ -46,7 +43,7 @@ bool ElementUI::isOn(int x, int y)
 
 bool ElementUI::atDestination()
 {
-    return (getVelX()>0 && getForm().x >= getDestX()) || (getVelX()<0 && getForm().x <= getDestX()) || (getVelY()>0 && getForm().y >= getDestY()) || (getVelY()<0 && getForm().y <= getDestY());
+    return ((getVelX() == 0 && getVelY() == 0) || ((getVelX()>0 && getForm().x >= getDestX()) || (getVelX()<0 && getForm().x <= getDestX()) || (getVelY()>0 && getForm().y >= getDestY()) || (getVelY()<0 && getForm().y <= getDestY())));
 }
 
 /**********
