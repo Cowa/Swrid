@@ -44,6 +44,11 @@ bool ElementUI::isOn(int x, int y)
     return ( (type_ != NEUTRAL_ELEMENT) && (x>form_.x)&&(x<form_.x+form_.w)&&(y>form_.y)&&(y<form_.y+form_.h));
 }
 
+bool ElementUI::atDestination()
+{
+    return (getVelX()>0 && getForm().x >= getDestX()) || (getVelX()<0 && getForm().x <= getDestX()) || (getVelY()>0 && getForm().y >= getDestY()) || (getVelY()<0 && getForm().y <= getDestY());
+}
+
 /**********
 * GETTERS *
 **********/

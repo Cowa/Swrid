@@ -17,6 +17,7 @@ class ElementUI
         ElementUI(SDL_Rect form, int x, int y, int type);
         void draw(SDL_Surface *grid); // affiche l'élément
         bool isOn(int x, int y); // vérifie si les coordonnées sont sur lui
+        bool atDestination();
 
         virtual ~ElementUI();
 

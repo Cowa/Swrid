@@ -169,7 +169,7 @@ void GameScreen::render(SDL_Surface *screen)
         // Si l'animation du swap est en cours...
         else if(animation_swap_)
         {
-            if((swapping_->getVelX()>0 && swapping_->getForm().x >= swapping_->getDestX()) || (swapping_->getVelX()<0 && swapping_->getForm().x <= swapping_->getDestX()) || (swapping_->getVelY()>0 && swapping_->getForm().y >= swapping_->getDestY()) || (swapping_->getVelY()<0 && swapping_->getForm().y <= swapping_->getDestY()))
+            if(swapping_->atDestination())
             {
                 animation_swap_ = false;
                 swapping_ = NULL;
@@ -179,7 +179,7 @@ void GameScreen::render(SDL_Surface *screen)
         // Si l'animation du push est en cours...
         else if(animation_push_)
         {
-            if(elements_[n_rows_*n_cols_-1].getForm().y <= elements_[n_rows_*n_cols_-1].getDestY())
+            if(elements_[n_rows_*n_cols_-1].atDestination())
             {
                 animation_push_ = false;
                 updateElements();
