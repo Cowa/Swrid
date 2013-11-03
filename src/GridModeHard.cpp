@@ -70,11 +70,13 @@ VectorArray2I GridModeHard::check_row(Grid *grid, int i_row)
             }
             else if(gridcp[i_row][i].getType() != previous)
             {
+                previous = gridcp[i_row][i].getType();
+
                 if(match < grid->getN_Align())
                 {
                     for(int j=0; j<match; j++)
                         unloved.pop_back();
-                    previous = gridcp[i_row][i].getType();
+
                     position[1] = i;
                     unloved.push_back(position);
                     match = 1;
@@ -87,6 +89,8 @@ VectorArray2I GridModeHard::check_row(Grid *grid, int i_row)
                 match++;
             }
         }
+        else
+            previous = NEUTRAL_ELEMENT;
     }
     if(match != 0 && match < grid->getN_Align())
     {
@@ -120,11 +124,13 @@ VectorArray2I GridModeHard::check_col(Grid *grid, int i_col)
             }
             else if(gridy[i_col][i].getType() != previous)
             {
+                previous = gridy[i_col][i].getType();
+
                 if(match < grid->getN_Align())
                 {
                     for(int j=0; j<match; j++)
                         unloved.pop_back();
-                    previous = gridy[i_col][i].getType();
+
                     position[1] = i_col;
                     unloved.push_back(position);
                     match = 1;
@@ -137,6 +143,8 @@ VectorArray2I GridModeHard::check_col(Grid *grid, int i_col)
                 match++;
             }
         }
+        else
+            previous = NEUTRAL_ELEMENT;
     }
     if(match != 0 && match < grid->getN_Align())
     {

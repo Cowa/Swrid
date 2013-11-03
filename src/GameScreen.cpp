@@ -21,6 +21,8 @@ GameScreen::GameScreen(Engine *engine)
 
     n_rows_ = engine_->getGrid()->getN_Rows();
     n_cols_ = engine_->getGrid()->getN_Col();
+
+    score_color_ = {255, 255, 255};
 }
 
 GameScreen::~GameScreen()
@@ -114,6 +116,13 @@ void GameScreen::setElementsToBePull()
 
 void GameScreen::show(SDL_Surface *screen)
 {
+    score_font_ = TTF_OpenFont("font/FreeMono.ttf", 15);
+
+    if(score_font_ == NULL)
+    {
+        cout << "SDL Font load error" << endl;
+        exit(EXIT_FAILURE);
+    }
     resize(screen);
 }
 
@@ -135,6 +144,9 @@ void GameScreen::render(SDL_Surface *screen)
         panel_ = SDL_CreateRGBSurface(SDL_HWSURFACE, panel_form_.w, panel_form_.h, 32, 0, 0, 0, 0); // On crée la surface du panel
         SDL_FillRect(panel_, NULL, SDL_MapRGB(screen->format, 0, 0, 0));  // On colore le panel
 
+        score_ = TTF_RenderText_Solid(score_font_, to_string(engine_->getGrid()->getScore()).c_str(), score_color_);
+
+        SDL_BlitSurface(score_, NULL, panel_, &score_pos_);
         SDL_BlitSurface(panel_, NULL, screen, &panel_form_); // on "colle" la surface sur l'écran
 
         /*************
@@ -251,6 +263,7 @@ void GameScreen::render(SDL_Surface *screen)
         /*******************************************
         * Libération des surfaces (de la mémoire) *
         ******************************************/
+        SDL_FreeSurface(score_);
         SDL_FreeSurface(panel_);
         SDL_FreeSurface(grid_);
     }
@@ -265,6 +278,11 @@ void GameScreen::resize(SDL_Surface *screen)
     * Le panel *
     ***********/
     panel_form_.x = 0, panel_form_.y = 0, panel_form_.h = screen->h, panel_form_.w = screen->w*0.250;
+
+    /********
+    * Score *
+    ********/
+    score_pos_.x = panel_form_.x + (panel_form_.w)/3, score_pos_.y = 10;
 
     /************
     * La grille *
