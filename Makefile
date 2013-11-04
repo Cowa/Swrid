@@ -27,7 +27,7 @@ LIB_RELEASE = $(LIB)
 LDFLAGS_RELEASE = $(LDFLAGS) -s -lSDL_gfx -lSDL_ttf -lsqlite3
 OBJDIR_RELEASE = obj
 DEP_RELEASE = 
-OUT_RELEASE = /Swrid
+OUT_RELEASE = Swrid
 
 OBJ_RELEASE = $(OBJDIR_RELEASE)/src/PointBonusElement.o $(OBJDIR_RELEASE)/src/Player.o $(OBJDIR_RELEASE)/src/MenuScreen.o $(OBJDIR_RELEASE)/src/GridModeNormal.o $(OBJDIR_RELEASE)/src/GridModeHard.o $(OBJDIR_RELEASE)/src/Grid.o $(OBJDIR_RELEASE)/src/GameScreen.o $(OBJDIR_RELEASE)/src/Engine.o $(OBJDIR_RELEASE)/src/ElementUI.o $(OBJDIR_RELEASE)/src/Element.o $(OBJDIR_RELEASE)/src/Database.o $(OBJDIR_RELEASE)/src/BaseElement.o $(OBJDIR_RELEASE)/main.o
 
