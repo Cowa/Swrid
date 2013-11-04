@@ -6,32 +6,16 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/Swrid" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+			<Target title="Release">
+				<Option output="Swrid" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-Os" />
-					<Add option="-O3" />
 					<Add option="-std=c++0x" />
 					<Add option="-g" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-					<Add option="-lSDL_gfx" />
-					<Add option="-lSDL_ttf" />
-					<Add option="-lsqlite3" />
-				</Linker>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/Swrid" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="0" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-					<Add option="-std=c++0x" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
