@@ -12,6 +12,11 @@
 class Engine
 {
     private:
+        Engine();
+        Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop);
+
+        static Engine *engine_;
+
         Grid *grid_;
         /*************************
         * Les différents écrans *
@@ -35,7 +40,13 @@ class Engine
         SDL_Surface *sdlScreen_; // surface de l'écran principal
 
     public:
-        Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop);
+        static Engine* getInstance()
+        {
+            if(!engine_)
+                engine_ = new Engine();
+            return engine_;
+        }
+
         virtual ~Engine();
 
         void init();
@@ -47,9 +58,12 @@ class Engine
         Grid* getGrid();
         Screen* getScreen();
         SDL_Surface* getSDLscreen();
-        void setSDLscreen(SDL_Surface *newScreen);
         Screen* getMenuScreen();
         Screen* getGameScreen();
+
+        void setEvent(SDL_Event *event);
+        void setLoop(bool *loop);
+        void setSDLscreen(SDL_Surface *newScreen);
 };
 
 #endif // ENGINE_H

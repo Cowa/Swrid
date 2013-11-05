@@ -151,7 +151,7 @@ Using SDL, SDL_TTF & SDL_gfx libraries
 Progress
 --------
 
-**Prototype version, main goals (87,5%)**
+**Prototype version, main goals (100%)**
 - [x] gravitational matrix
 - [x] grid class & main methods
 - [x] check grid behavior
@@ -159,7 +159,7 @@ Progress
 - [x] screen classes (state pattern)
 - [x] gridmode classes (strategy pattern)
 - [x] element classes (decorator pattern)
-- [ ] fourth design pattern (singleton on grid ?)
+- [x] engine singleton
 
 **Final version, let there be light (33,33%)**
 - [ ] full graphics

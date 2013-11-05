@@ -41,22 +41,25 @@ int main(void)
     /*********************
     * Création du moteur *
     *********************/
-    Engine engine(screen, &event, &loop); // on crée le moteur
-    engine.init(); // on initialise
+    Engine *engine = Engine::getInstance();
+    engine->setLoop(&loop);
+    engine->setEvent(&event);
+    engine->setSDLscreen(screen);
+    engine->init(); // on initialise
 
     /******************
     * Boucle générale *
     ******************/
     while(loop)
     {
-        engine.event(); // on gère les événements
-        engine.render(); // on prépare l'affichage de l'UI
+        engine->event(); // on gère les événements
+        engine->render(); // on prépare l'affichage de l'UI
 
         SDL_Flip(screen); // on affiche l'écran
 
         SDL_framerateDelay(&frame_manager); // régulateur de frames
     }
-    engine.getScreen()->hide(screen); // on cache l'écran courant
+    engine->getScreen()->hide(screen); // on cache l'écran courant
 
     /***************************
     * Libération de la mémoire *

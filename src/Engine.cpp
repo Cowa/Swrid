@@ -1,6 +1,8 @@
 #include "../include/Engine.h"
 
-Engine::Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop)
+Engine* Engine::engine_;
+
+Engine::Engine()
 {
     grid_ = new Grid();
     grid_->new_row();
@@ -11,6 +13,24 @@ Engine::Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop)
     screen_ = new MenuScreen(this);
     menuScreen_ = screen_;
     gameScreen_ = new GameScreen(this);
+
+    db_ = new Database();
+    // TODO: on charge le premier joueur dans la base de données
+    //       on crée le joueur à partir des données :  player_ = new Player(truc truc truc);
+    player_ = new Player();
+}
+
+Engine::Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop)
+{
+    grid_ = new Grid();
+    grid_->new_row();
+    grid_->new_row();
+    grid_->new_row();
+    grid_->new_row();
+
+    screen_ = new MenuScreen(Engine::getInstance());
+    menuScreen_ = screen_;
+    gameScreen_ = new GameScreen(Engine::getInstance());
 
     db_ = new Database();
     // TODO: on charge le premier joueur dans la base de données
@@ -72,6 +92,15 @@ void Engine::setGridMode(GridMode *gridMode)
 void Engine::setSDLscreen(SDL_Surface *newScreen)
 {
     sdlScreen_ = newScreen;
+}
+
+void Engine::setEvent(SDL_Event *event)
+{
+    event_ = event;
+}
+void Engine::setLoop(bool *loop)
+{
+    loop_ = loop;
 }
 
 /**********
