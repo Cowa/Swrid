@@ -19,6 +19,8 @@ GameScreen::GameScreen(Engine *engine)
     swapped_ = false;
     purged_ = false;
 
+    bg_pos_.x = 0, bg_pos_.y = 0;
+
     n_rows_ = engine_->getGrid()->getN_Rows();
     n_cols_ = engine_->getGrid()->getN_Col();
 
@@ -29,93 +31,11 @@ GameScreen::~GameScreen()
 {
 }
 
-void GameScreen::updateElements()
-{
-    elements_.clear();
-
-    // On récupère une copie de la grille
-    Matrix2DElement grid_copy = engine_->getGrid()->getGrid();
-
-    // On parcourt la grille
-    for(unsigned int i=0; i<grid_copy.size(); i++)
-    {
-        for(unsigned int j=0; j<grid_copy[0].size(); j++)
-        {
-            SDL_Rect form;
-            form.x = col_w_*(j)+2+panel_form_.w;
-            form.y = row_h_*(i)+2;
-            form.h = row_h_-2;
-            form.w = col_w_-2;
-
-            ElementUI el(form, i, j, grid_copy[i][j].getType());
-            el.setVelX(0);
-            el.setVelY(0);
-
-            elements_.push_back(el);
-        }
-    }
-}
-
-void GameScreen::setElementsToBePush()
-{
-    // On met en place la vitesse et la destination
-    for(unsigned int i=0; i<elements_.size(); i++)
-    {
-        elements_[i].setVelY(-elements_[i].getForm().h/6);
-        elements_[i].setDestY(elements_[i].getForm().y - elements_[i].getForm().h - 2);
-    }
-    // On ajoute la nouvelle ligne (pour l'animer elle aussi)
-    for(unsigned int i=0; i<engine_->getGrid()->getGrid()[n_rows_-1].size(); i++)
-    {
-        SDL_Rect form;
-        form.x = col_w_*(i)+2+panel_form_.w;
-        form.y = row_h_*(n_rows_)+2;
-        form.h = row_h_-2;
-        form.w = col_w_-2;
-
-        ElementUI el(form, n_rows_-1, i, engine_->getGrid()->getGrid()[n_rows_-1][i].getType());
-        el.setDestY(row_h_*(n_rows_-1)+2);
-        el.setVelY(-elements_[i].getForm().h/6);
-
-        elements_.push_back(el);
-    }
-}
-
-void GameScreen::setElementsToBePull()
-{
-    Matrix2DElement cp_grid = engine_->getGrid()->getGrid();
-    int tmp = 0;
-    if(tmp == 1){}
-    // On met en place la vitesse et la destination
-    for(int i=elements_.size()-1; i>=0; i--)
-    {
-        tmp = 0;
-        // On ignore la dernière ligne, elle est déjà au sol, et les éléments neutres
-        if(elements_[i].getX() < n_rows_-1 && elements_[i].getType() != NEUTRAL_ELEMENT)
-        {
-            for(int j=1; j<n_rows_-elements_[i].getX(); j++)
-            {
-                if(cp_grid[elements_[i].getX()+j][elements_[i].getY()].getType() == NEUTRAL_ELEMENT)
-                {
-                    tmp = j;
-
-                    cp_grid[elements_[i].getX()][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
-                    cp_grid[elements_[i].getX()+j][elements_[i].getY()].setType(elements_[i].getType());
-
-                    elements_[i].setVelY(+elements_[i].getForm().h/6);
-                    elements_[i].setDestY(elements_[i].getForm().y + (elements_[i].getForm().h)*j + 2);
-                }
-            }
-            for(int j=1; j<tmp; j++)
-            {
-                cp_grid[elements_[i].getX()+j][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
-            }
-        }
-    }
-}
-
 void GameScreen::show(SDL_Surface *screen)
 {
+    bg_ = IMG_Load("img/bg_game.jpg");
+    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+
     score_font_ = TTF_OpenFont("font/FreeMono.ttf", 15);
 
     if(score_font_ == NULL)
@@ -124,6 +44,8 @@ void GameScreen::show(SDL_Surface *screen)
         exit(EXIT_FAILURE);
     }
     resize(screen);
+
+    SDL_FreeSurface(bg_);
 }
 
 /*********************************
@@ -133,43 +55,20 @@ void GameScreen::render(SDL_Surface *screen)
 {
     if(redraw_)
     {
-        /***********
-        * Le fond *
-        **********/
-        SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 150, 70, 30)); // On colore le fond
-
-        /******************
-        * Le panel gauche *
-        ******************/
-        panel_ = SDL_CreateRGBSurface(SDL_HWSURFACE, panel_form_.w, panel_form_.h, 32, 0, 0, 0, 0); // On crée la surface du panel
-        SDL_FillRect(panel_, NULL, SDL_MapRGB(screen->format, 0, 0, 0));  // On colore le panel
-
+        /********
+        * Score *
+        ********/
         score_ = TTF_RenderText_Solid(score_font_, to_string(engine_->getGrid()->getScore()).c_str(), score_color_);
 
-        SDL_BlitSurface(score_, NULL, panel_, &score_pos_);
-        SDL_BlitSurface(panel_, NULL, screen, &panel_form_); // on "colle" la surface sur l'écran
+        SDL_BlitSurface(score_, NULL, screen, &score_pos_);
 
         /*************
         * La grille *
         ************/
         // On crée la surface de la grille et on la colorie
         grid_ = SDL_CreateRGBSurface(SDL_HWSURFACE, grid_form_.w, grid_form_.h, 32, 0, 0, 0, 0);
-        SDL_FillRect(grid_, NULL, SDL_MapRGB(screen->format, 90, 150, 170));
-
-        // On dessine les lignes
-        for(int i=0; i<n_rows_; i++)
-        {
-            lineRGBA(grid_, 0, row_h_*(i), grid_->w, row_h_*(i),0, 0, 0, 255);
-            lineRGBA(grid_, 0, row_h_*(i)+1, grid_->w, row_h_*(i)+1,0, 0, 0, 255);
-        }
-        // On dessine les colonnes
-        for(int i=0; i<n_cols_; i++)
-        {
-            lineRGBA(grid_, col_w_*(i), 0, col_w_*(i), grid_->h,0, 0, 0, 255);
-            lineRGBA(grid_, col_w_*(i)+1, 0, col_w_*(i)+1, grid_->h,0, 0, 0, 255);
-        }
-
-        SDL_BlitSurface(grid_, NULL, screen, &grid_form_); // on "colle" la grille sur l'écran
+        SDL_FillRect(grid_, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
+        SDL_BlitSurface(grid_, NULL, screen, &grid_form_); 
 
         /****************
         * Les éléments *
@@ -264,7 +163,6 @@ void GameScreen::render(SDL_Surface *screen)
         * Libération des surfaces (de la mémoire) *
         ******************************************/
         SDL_FreeSurface(score_);
-        SDL_FreeSurface(panel_);
         SDL_FreeSurface(grid_);
     }
 }
@@ -274,20 +172,15 @@ void GameScreen::resize(SDL_Surface *screen)
     redraw_ = true;
 
     // On se base en fonction de la résolution de l'écran pour rendre l'interface flexible
-    /***********
-    * Le panel *
-    ***********/
-    panel_form_.x = 0, panel_form_.y = 0, panel_form_.h = screen->h, panel_form_.w = screen->w*0.250;
-
     /********
     * Score *
     ********/
-    score_pos_.x = panel_form_.x + (panel_form_.w)/3, score_pos_.y = 10;
+    score_pos_.x = 0 + 0, score_pos_.y = 10;
 
     /************
     * La grille *
     ************/
-    grid_form_.x = screen->w*0.250, grid_form_.y = 0, grid_form_.h = screen->h, grid_form_.w = screen->w-(screen->w*0.250);
+    grid_form_.x = screen->w*0.43, grid_form_.y = screen->h*0.08, grid_form_.h = screen->h*0.79, grid_form_.w = screen->w*0.452;
 
     col_w_ = (grid_form_.w/n_cols_);
     row_h_ = (grid_form_.h/n_rows_);
@@ -297,7 +190,7 @@ void GameScreen::resize(SDL_Surface *screen)
 
 void GameScreen::hide(SDL_Surface *screen)
 {
-
+    TTF_CloseFont(score_font_);
 }
 
 void GameScreen::event(SDL_Event *event, bool *loop)
@@ -414,5 +307,90 @@ void GameScreen::mouseClick(int x, int y)
         }
 
         redraw_ = true;
+    }
+}
+
+void GameScreen::updateElements()
+{
+    elements_.clear();
+
+    // On récupère une copie de la grille
+    Matrix2DElement grid_copy = engine_->getGrid()->getGrid();
+
+    // On parcourt la grille
+    for(unsigned int i=0; i<grid_copy.size(); i++)
+    {
+        for(unsigned int j=0; j<grid_copy[0].size(); j++)
+        {
+            SDL_Rect form;
+            form.x = grid_form_.x + col_w_*(j);
+            form.y = grid_form_.y + row_h_*(i);
+            form.h = row_h_;
+            form.w = col_w_;
+
+            ElementUI el(form, i, j, grid_copy[i][j].getType());
+            el.setVelX(0);
+            el.setVelY(0);
+
+            elements_.push_back(el);
+        }
+    }
+}
+
+void GameScreen::setElementsToBePush()
+{
+    // On met en place la vitesse et la destination
+    for(unsigned int i=0; i<elements_.size(); i++)
+    {
+        elements_[i].setVelY(-elements_[i].getForm().h/6);
+        elements_[i].setDestY(elements_[i].getForm().y - elements_[i].getForm().h - 2);
+    }
+    // On ajoute la nouvelle ligne (pour l'animer elle aussi)
+    for(unsigned int i=0; i<engine_->getGrid()->getGrid()[n_rows_-1].size(); i++)
+    {
+        SDL_Rect form;
+        form.x = grid_form_.x + col_w_*(i);
+        form.y = grid_form_.y + row_h_*(n_rows_);
+        form.h = row_h_;
+        form.w = col_w_;
+
+        ElementUI el(form, n_rows_-1, i, engine_->getGrid()->getGrid()[n_rows_-1][i].getType());
+        el.setDestY(row_h_*(n_rows_-1));
+        el.setVelY(-elements_[i].getForm().h/6);
+
+        elements_.push_back(el);
+    }
+}
+
+void GameScreen::setElementsToBePull()
+{
+    Matrix2DElement cp_grid = engine_->getGrid()->getGrid();
+    int tmp = 0;
+    if(tmp == 1){}
+    // On met en place la vitesse et la destination
+    for(int i=elements_.size()-1; i>=0; i--)
+    {
+        tmp = 0;
+        // On ignore la dernière ligne, elle est déjà au sol, et les éléments neutres
+        if(elements_[i].getX() < n_rows_-1 && elements_[i].getType() != NEUTRAL_ELEMENT)
+        {
+            for(int j=1; j<n_rows_-elements_[i].getX(); j++)
+            {
+                if(cp_grid[elements_[i].getX()+j][elements_[i].getY()].getType() == NEUTRAL_ELEMENT)
+                {
+                    tmp = j;
+
+                    cp_grid[elements_[i].getX()][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
+                    cp_grid[elements_[i].getX()+j][elements_[i].getY()].setType(elements_[i].getType());
+
+                    elements_[i].setVelY(+elements_[i].getForm().h/6);
+                    elements_[i].setDestY(elements_[i].getForm().y + (elements_[i].getForm().h)*j + 2);
+                }
+            }
+            for(int j=1; j<tmp; j++)
+            {
+                cp_grid[elements_[i].getX()+j][elements_[i].getY()].setType(NEUTRAL_ELEMENT);
+            }
+        }
     }
 }

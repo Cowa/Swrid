@@ -20,6 +20,11 @@ class MenuScreen : public Screen
     private:
         Engine *engine_; // moteur du jeu
         bool redraw_;
+
+        // Fond
+        SDL_Surface *bg_;
+        SDL_Rect bg_pos_;
+
         // Titre général
         SDL_Surface *title_;
         TTF_Font *title_font_;

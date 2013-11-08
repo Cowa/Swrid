@@ -6,6 +6,8 @@ MenuScreen::MenuScreen(Engine *engine)
     engine_ = engine;
     redraw_ = true;
 
+    bg_pos_.x = 0, bg_pos_.y = 0;
+
     title_color_ = {255, 255, 255};
 }
 
@@ -15,6 +17,9 @@ MenuScreen::~MenuScreen()
 
 void MenuScreen::show(SDL_Surface *screen)
 {
+    bg_ = IMG_Load("img/bg_main.jpg");
+    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+
     title_font_ = TTF_OpenFont("font/mt.ttf", 20);
 
     if(title_font_ == NULL)
@@ -23,21 +28,25 @@ void MenuScreen::show(SDL_Surface *screen)
         exit(EXIT_FAILURE);
     }
     resize(screen);
+
+    SDL_FreeSurface(bg_);
 }
 
 void MenuScreen::render(SDL_Surface *screen)
 {
     if(redraw_)
     {
-        string title = "Swrid game prototype";
-        SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 90, 150, 170)); // On colore le fond
-
-        title_ = TTF_RenderText_Solid(title_font_, title.c_str(), title_color_);
-
         redraw_ = false;
+
+        bg_ = IMG_Load("img/bg_main.jpg");
+        SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+
+        string title = "Swrid game prototype";
+        title_ = TTF_RenderText_Solid(title_font_, title.c_str(), title_color_);
 
         SDL_BlitSurface(title_, NULL, screen, &title_pos_);
         SDL_FreeSurface(title_);
+        SDL_FreeSurface(bg_);
     }
 }
 

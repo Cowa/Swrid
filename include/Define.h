@@ -5,6 +5,7 @@
 #include <SDL/SDL_ttf.h>
 #include <SDL/SDL_gfxPrimitives.h>
 #include <SDL/SDL_framerate.h>
+#include <SDL/SDL_image.h>
 #include <iostream>
 #include <vector>
 #include <array>
