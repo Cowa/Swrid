@@ -63,7 +63,7 @@ void GameScreen::render(SDL_Surface *screen)
         /*************
         * La grille *
         ************/
-        SDL_BlitSurface(bg_, &grid_clipper_, screen, &grid_clipper_); 
+        SDL_BlitSurface(bg_, &grid_form_, screen, &grid_form_); 
 
         /****************
         * Les éléments *
@@ -153,6 +153,8 @@ void GameScreen::render(SDL_Surface *screen)
             if(select_ != NULL && select_ == &elements_[i])
                 boxRGBA(screen, elements_[i].getForm().x, elements_[i].getForm().y, elements_[i].getForm().x+elements_[i].getForm().w, elements_[i].getForm().y+elements_[i].getForm().h, 255, 30, 30, 50);
         }
+        SDL_BlitSurface(bg_, &top_grid_, screen, &top_grid_);
+        SDL_BlitSurface(bg_, &bottom_grid_, screen, &bottom_grid_);
 
         /*******************************************
         * Libération des surfaces (de la mémoire) *
@@ -168,12 +170,12 @@ void GameScreen::resize(SDL_Surface *screen)
     /********
     * Score *
     ********/
-    score_pos_.x = 0 + 0, score_pos_.y = 10;
+    score_pos_.x = 0, score_pos_.y = 0;
 
     /************
     * La grille *
     ************/
-    grid_form_.x = screen->w*0.43, grid_form_.y = screen->h*0.08, grid_form_.h = screen->h*0.79, grid_form_.w = screen->w*0.452;
+    grid_form_.x = screen->w*0.43, grid_form_.y = screen->h*0.08, grid_form_.h = screen->h*0.80, grid_form_.w = screen->w*0.465;
 
     col_w_ = (grid_form_.w/n_cols_);
     row_h_ = (grid_form_.h/n_rows_);
@@ -184,6 +186,19 @@ void GameScreen::resize(SDL_Surface *screen)
     grid_clipper_ = grid_form_;
     grid_clipper_.y -= row_h_;
     grid_clipper_.h += row_h_*2;
+
+    /*****************************
+    * Clipping top & bottom grid *
+    *****************************/
+    top_grid_.x = grid_form_.x;
+    top_grid_.y = grid_form_.y - row_h_;
+    top_grid_.h = row_h_;
+    top_grid_.w = grid_form_.w;
+
+    bottom_grid_.x = grid_form_.x;
+    bottom_grid_.y = grid_form_.y + grid_form_.h;
+    bottom_grid_.h = row_h_;
+    bottom_grid_.w = grid_form_.w;
 
     updateElements();
 }
@@ -228,9 +243,9 @@ void GameScreen::mouseClick(int x, int y)
     bool found = false;
     ElementUI *current = NULL;
 
-    // Tant qu'on a pas trouvé l'élément correspondant ET qu'on a pas parcourut toute la liste
     if(!animation_fall_ && !animation_push_ && !animation_swap_)
     {
+        // Tant qu'on a pas trouvé l'élément correspondant ET qu'on a pas parcourut toute la liste
         while(i<elements_.size() && !found)
         {
             // On vérifie si les coordonnées de la souris correspondent à l'un des éléments

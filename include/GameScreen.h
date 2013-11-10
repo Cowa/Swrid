@@ -33,18 +33,17 @@ class GameScreen : public Screen
         int n_rows_;
         int n_cols_;
 
-        /*
-        SDL_Surface *panel_; // surface du panel
-        SDL_Rect panel_form_; // caractéristiques du panel (forme, taille)
-        */
         // Score
         SDL_Surface *score_;
         TTF_Font *score_font_;
         SDL_Color score_color_;
         SDL_Rect score_pos_;
 
-        SDL_Surface *bg_;
-        SDL_Rect bg_pos_;
+        SDL_Surface *bg_; // surface du fond
+        SDL_Rect bg_pos_; // position du fond
+
+        SDL_Rect top_grid_;
+        SDL_Rect bottom_grid_;
 
         SDL_Surface *grid_; // surface de la grille
         SDL_Rect grid_form_; // caractéristiques de la grille où sont placés les éléments(forme, taille)
