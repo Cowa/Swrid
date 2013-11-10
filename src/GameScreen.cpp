@@ -44,8 +44,6 @@ void GameScreen::show(SDL_Surface *screen)
         exit(EXIT_FAILURE);
     }
     resize(screen);
-
-    SDL_FreeSurface(bg_);
 }
 
 /*********************************
@@ -65,10 +63,7 @@ void GameScreen::render(SDL_Surface *screen)
         /*************
         * La grille *
         ************/
-        // On crée la surface de la grille et on la colorie
-        grid_ = SDL_CreateRGBSurface(SDL_HWSURFACE, grid_form_.w, grid_form_.h, 32, 0, 0, 0, 0);
-        SDL_FillRect(grid_, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
-        SDL_BlitSurface(grid_, NULL, screen, &grid_form_); 
+        SDL_BlitSurface(bg_, &grid_form_, screen, &grid_form_); 
 
         /****************
         * Les éléments *
@@ -163,7 +158,6 @@ void GameScreen::render(SDL_Surface *screen)
         * Libération des surfaces (de la mémoire) *
         ******************************************/
         SDL_FreeSurface(score_);
-        SDL_FreeSurface(grid_);
     }
 }
 
@@ -171,7 +165,6 @@ void GameScreen::resize(SDL_Surface *screen)
 {
     redraw_ = true;
 
-    // On se base en fonction de la résolution de l'écran pour rendre l'interface flexible
     /********
     * Score *
     ********/
@@ -190,6 +183,7 @@ void GameScreen::resize(SDL_Surface *screen)
 
 void GameScreen::hide(SDL_Surface *screen)
 {
+    SDL_FreeSurface(bg_);
     TTF_CloseFont(score_font_);
 }
 

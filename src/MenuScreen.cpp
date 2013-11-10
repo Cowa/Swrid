@@ -28,8 +28,6 @@ void MenuScreen::show(SDL_Surface *screen)
         exit(EXIT_FAILURE);
     }
     resize(screen);
-
-    SDL_FreeSurface(bg_);
 }
 
 void MenuScreen::render(SDL_Surface *screen)
@@ -38,7 +36,6 @@ void MenuScreen::render(SDL_Surface *screen)
     {
         redraw_ = false;
 
-        bg_ = IMG_Load("img/bg_main.jpg");
         SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
 
         string title = "Swrid game prototype";
@@ -46,7 +43,6 @@ void MenuScreen::render(SDL_Surface *screen)
 
         SDL_BlitSurface(title_, NULL, screen, &title_pos_);
         SDL_FreeSurface(title_);
-        SDL_FreeSurface(bg_);
     }
 }
 
@@ -60,6 +56,7 @@ void MenuScreen::resize(SDL_Surface *screen)
 
 void MenuScreen::hide(SDL_Surface *screen)
 {
+    SDL_FreeSurface(bg_);
     TTF_CloseFont(title_font_);
 }
 
