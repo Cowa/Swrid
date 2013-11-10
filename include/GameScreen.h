@@ -33,6 +33,8 @@ class GameScreen : public Screen
         int n_rows_;
         int n_cols_;
 
+        SDL_Rect screen_old_;
+
         // Score
         SDL_Surface *score_;
         TTF_Font *score_font_;

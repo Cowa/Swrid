@@ -34,7 +34,8 @@ GameScreen::~GameScreen()
 void GameScreen::show(SDL_Surface *screen)
 {
     bg_ = IMG_Load("img/bg_game.jpg");
-    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+
+    screen_old_.w = screen->w, screen_old_.h = screen->h;
 
     score_font_ = TTF_OpenFont("font/FreeMono.ttf", 15);
 
@@ -167,6 +168,12 @@ void GameScreen::resize(SDL_Surface *screen)
 {
     redraw_ = true;
 
+    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+
+    double scaleX = (double)screen->w/(double)screen_old_.w;
+    double scaleY = (double)screen->h/(double)screen_old_.h;
+    bg_ = zoomSurface(bg_, scaleX, scaleY, 0);
+
     /********
     * Score *
     ********/
@@ -225,6 +232,7 @@ void GameScreen::event(SDL_Event *event, bool *loop)
                 engine_->setScreen(engine_->getMenuScreen());
             break;
         case SDL_VIDEORESIZE:
+            screen_old_.w = engine_->getSDLscreen()->w, screen_old_.h = engine_->getSDLscreen()->h;
             engine_->setSDLscreen(SDL_SetVideoMode(event->resize.w, event->resize.h, 32, SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_RESIZABLE));
             resize(engine_->getSDLscreen());
             break;

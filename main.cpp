@@ -24,7 +24,7 @@ int main(void)
         cout << "SDL Init error" << endl;
         exit(EXIT_FAILURE);
     }
-    if((screen = SDL_SetVideoMode(800, 600, 32, SDL_DOUBLEBUF | SDL_HWSURFACE)) == NULL)
+    if((screen = SDL_SetVideoMode(800, 600, 32, SDL_DOUBLEBUF|SDL_HWSURFACE|SDL_RESIZABLE)) == NULL)
     {
         cout << "SDL Video set error" << endl;
         exit(EXIT_FAILURE);
