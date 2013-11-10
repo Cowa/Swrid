@@ -5,6 +5,8 @@ Swrid
 
 Project by **David Perrai** & **Brice Thomas**
 
+Graphics by Maxime Dolo
+
 Concept
 -------
 
