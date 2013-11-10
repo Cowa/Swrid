@@ -47,7 +47,8 @@ class GameScreen : public Screen
         SDL_Rect bg_pos_;
 
         SDL_Surface *grid_; // surface de la grille
-        SDL_Rect grid_form_; // caractéristiques de la grille (forme, taille)
+        SDL_Rect grid_form_; // caractéristiques de la grille où sont placés les éléments(forme, taille)
+        SDL_Rect grid_clipper_; // défini la zone de clipping pour la grille + les extra
 
         ElementUI *select_; // pointeur vers l'élément précédemment sélectionné
         ElementUI *swapping_; // pointeur vers l'élément entrain d'être swappé
