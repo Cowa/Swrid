@@ -7,7 +7,6 @@
 #include "MenuScreen.h"
 #include "GameScreen.h"
 #include "Player.h"
-#include "Database.h"
 
 class Engine
 {
@@ -28,10 +27,7 @@ class Engine
         * Le joueur *
         ************/
         Player *player_;
-        /**********************
-        * La base de données *
-        *********************/
-        Database *db_;
+
         /*****************
         * Variables SDL *
         ****************/

@@ -14,9 +14,6 @@ Engine::Engine()
     menuScreen_ = screen_;
     gameScreen_ = new GameScreen(this);
 
-    db_ = new Database();
-    // TODO: on charge le premier joueur dans la base de données
-    //       on crée le joueur à partir des données :  player_ = new Player(truc truc truc);
     player_ = new Player();
 }
 
@@ -32,9 +29,6 @@ Engine::Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop)
     menuScreen_ = screen_;
     gameScreen_ = new GameScreen(Engine::getInstance());
 
-    db_ = new Database();
-    // TODO: on charge le premier joueur dans la base de données
-    //       on crée le joueur à partir des données :  player_ = new Player(truc truc truc);
     player_ = new Player();
 
     sdlScreen_ = sdlScreen;
@@ -52,8 +46,6 @@ Engine::~Engine()
         delete gameScreen_;
     if(player_ != NULL)
         delete player_;
-    if(db_ != NULL)
-        delete db_;
 }
 
 void Engine::init()
