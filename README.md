@@ -148,7 +148,7 @@ Languages & Libraries
 --------------------
 Project written in C++ (100%)
 
-Using SDL, SDL_TTF & SDL_gfx libraries
+Using SDL, SDL_image, SDL_TTF & SDL_gfx libraries
 
 Progress
 --------
