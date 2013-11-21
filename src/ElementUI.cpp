@@ -28,23 +28,25 @@ ElementUI::~ElementUI()
     //dtor
 }
 
-void ElementUI::draw(SDL_Surface *grid)
+void ElementUI::draw(SDL_Surface *screen, SDL_Surface *img)
 {
     form_.x += velx_;
     form_.y += vely_;
 
     if(type_ != NEUTRAL_ELEMENT)
     {
-        /*** int to string to have the picture of the element's picture ***/
+        SDL_Rect clipper_element; // pour découper la bonne partie de l'image elements.png
+        clipper_element.w = 30, clipper_element.h = 30;
 
-        stringstream sstr;
-        sstr << type_;
-        string name_file = "img/picto_"+sstr.str()+".png";
+        clipper_element.x = 0, clipper_element.y = 0;
 
-        /*** loading of the image matching with the name_file ***/
+        if(type_ == 2 || type_ == 4)
+            clipper_element.x = 30;
+        if(type_ == 3 || type_ == 4)
+            clipper_element.y = 30;
 
-        picto_= IMG_Load(name_file.c_str());
-        SDL_BlitSurface(picto_, NULL, grid,&form_);
+
+        SDL_BlitSurface(img, &clipper_element, screen, &form_);
     }
 }
 

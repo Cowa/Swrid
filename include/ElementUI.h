@@ -15,7 +15,7 @@ class ElementUI
     public:
         ElementUI();
         ElementUI(SDL_Rect form, int x, int y, int type);
-        void draw(SDL_Surface *grid); // affiche l'élément
+        void draw(SDL_Surface *screen, SDL_Surface *img); // affiche l'élément
         bool isOn(int x, int y); // vérifie si les coordonnées sont sur lui
         bool atDestination();
 
@@ -51,7 +51,6 @@ class ElementUI
         int gridx_; // position ligne (sur la grille)
         int gridy_; // position colonne (sur la grille)
         int type_;
-        SDL_Surface * picto_; // image de l'élément
 };
 
 #endif // ELEMENTUI_H

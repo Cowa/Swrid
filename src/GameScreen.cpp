@@ -34,8 +34,9 @@ GameScreen::~GameScreen()
 void GameScreen::show(SDL_Surface *screen)
 {
     bg_ = IMG_Load("img/bg_game.jpg");
+    el_img_ = IMG_Load("img/elements.png");
 
-    screen_old_.w = screen->w, screen_old_.h = screen->h;
+    //screen_old_.w = screen->w, screen_old_.h = screen->h;
 
     score_font_ = TTF_OpenFont("font/FreeMono.ttf", 15);
 
@@ -150,7 +151,7 @@ void GameScreen::render(SDL_Surface *screen)
         **************************/
         for(unsigned int i=0; i<elements_.size(); i++)
         {
-            elements_[i].draw(screen);
+            elements_[i].draw(screen, el_img_);
             if(select_ != NULL && select_ == &elements_[i])
                 boxRGBA(screen, elements_[i].getForm().x, elements_[i].getForm().y, elements_[i].getForm().x+elements_[i].getForm().w, elements_[i].getForm().y+elements_[i].getForm().h, 255, 30, 30, 50);
         }
@@ -170,9 +171,11 @@ void GameScreen::resize(SDL_Surface *screen)
 
     SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
 
+    /*
     double scaleX = (double)screen->w/(double)screen_old_.w;
     double scaleY = (double)screen->h/(double)screen_old_.h;
     bg_ = zoomSurface(bg_, scaleX, scaleY, 0);
+    */
 
     /********
     * Score *
@@ -198,8 +201,8 @@ void GameScreen::resize(SDL_Surface *screen)
     * Clipping top & bottom grid *
     *****************************/
     top_grid_.x = grid_form_.x;
-    top_grid_.y = grid_form_.y - row_h_;
-    top_grid_.h = row_h_;
+    top_grid_.y = grid_form_.y - (row_h_+3);
+    top_grid_.h = row_h_+3;
     top_grid_.w = grid_form_.w;
 
     bottom_grid_.x = grid_form_.x;
@@ -213,6 +216,7 @@ void GameScreen::resize(SDL_Surface *screen)
 void GameScreen::hide(SDL_Surface *screen)
 {
     SDL_FreeSurface(bg_);
+    SDL_FreeSurface(el_img_);
     TTF_CloseFont(score_font_);
 }
 
@@ -232,7 +236,7 @@ void GameScreen::event(SDL_Event *event, bool *loop)
                 engine_->setScreen(engine_->getMenuScreen());
             break;
         case SDL_VIDEORESIZE:
-            screen_old_.w = engine_->getSDLscreen()->w, screen_old_.h = engine_->getSDLscreen()->h;
+            //screen_old_.w = engine_->getSDLscreen()->w, screen_old_.h = engine_->getSDLscreen()->h;
             engine_->setSDLscreen(SDL_SetVideoMode(event->resize.w, event->resize.h, 32, SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_RESIZABLE));
             resize(engine_->getSDLscreen());
             break;

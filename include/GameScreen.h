@@ -33,7 +33,7 @@ class GameScreen : public Screen
         int n_rows_;
         int n_cols_;
 
-        SDL_Rect screen_old_;
+        //SDL_Rect screen_old_;
 
         // Score
         SDL_Surface *score_;
@@ -43,6 +43,8 @@ class GameScreen : public Screen
 
         SDL_Surface *bg_; // surface du fond
         SDL_Rect bg_pos_; // position du fond
+
+        SDL_Surface *el_img_; // surface de l'image des éléments
 
         SDL_Rect top_grid_;
         SDL_Rect bottom_grid_;
