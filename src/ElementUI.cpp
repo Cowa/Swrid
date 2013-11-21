@@ -1,4 +1,8 @@
 #include "../include/ElementUI.h"
+#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 ElementUI::ElementUI()
 {
@@ -31,8 +35,16 @@ void ElementUI::draw(SDL_Surface *grid)
 
     if(type_ != NEUTRAL_ELEMENT)
     {
-        int r = (type_*25)%255, g = (type_*50)%255, b = (type_*100)%255; // on tire des couleurs en fonction du type
-        filledEllipseRGBA(grid, form_.x + (form_.w/2), form_.y + (form_.h/2), (form_.w/2)*0.75, (form_.h/2)*0.75, r, g, b, 255);
+        /*** int to string to have the picture of the element's picture ***/
+
+        stringstream sstr;
+        sstr << type_;
+        string name_file = "img/picto_"+sstr.str()+".png";
+
+        /*** loading of the image matching with the name_file ***/
+
+        picto_= IMG_Load(name_file.c_str());
+        SDL_BlitSurface(picto_, NULL, grid,&form_);
     }
 }
 

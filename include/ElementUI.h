@@ -51,6 +51,7 @@ class ElementUI
         int gridx_; // position ligne (sur la grille)
         int gridy_; // position colonne (sur la grille)
         int type_;
+        SDL_Surface * picto_; // image de l'élément
 };
 
 #endif // ELEMENTUI_H

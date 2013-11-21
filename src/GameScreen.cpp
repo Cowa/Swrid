@@ -168,11 +168,11 @@ void GameScreen::resize(SDL_Surface *screen)
 {
     redraw_ = true;
 
+    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+
     double scaleX = (double)screen->w/(double)screen_old_.w;
     double scaleY = (double)screen->h/(double)screen_old_.h;
     bg_ = zoomSurface(bg_, scaleX, scaleY, 0);
-
-    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
 
     /********
     * Score *

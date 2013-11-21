@@ -25,6 +25,7 @@ protected:
     int type_;
     int value_; //valeur de l'élément (nb de points qu'il va donner lors de sa suppression)
     int money_; //argent récupéré lors de sa suppression
+
 };
 
 #endif // ELEMENT_H

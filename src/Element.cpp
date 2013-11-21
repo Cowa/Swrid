@@ -1,5 +1,6 @@
 #include "../include/Element.h"
 
+
 Element::Element()
 {
     type_ = NEUTRAL_ELEMENT;
