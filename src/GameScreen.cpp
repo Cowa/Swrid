@@ -34,7 +34,12 @@ GameScreen::~GameScreen()
 void GameScreen::show(SDL_Surface *screen)
 {
     bg_ = IMG_Load("img/bg_game.jpg");
+    bg_opt_ = SDL_DisplayFormat(bg_);
+    SDL_FreeSurface(bg_);
+
     el_img_ = IMG_Load("img/elements.png");
+    el_img_opt_ = SDL_DisplayFormat(el_img_);
+    SDL_FreeSurface(el_img_);
 
     //screen_old_.w = screen->w, screen_old_.h = screen->h;
 
@@ -65,7 +70,7 @@ void GameScreen::render(SDL_Surface *screen)
         /*************
         * La grille *
         ************/
-        SDL_BlitSurface(bg_, &grid_form_, screen, &grid_form_); 
+        SDL_BlitSurface(bg_opt_, &grid_form_, screen, &grid_form_); 
 
         /****************
         * Les éléments *
@@ -154,12 +159,12 @@ void GameScreen::render(SDL_Surface *screen)
         **************************/
         for(unsigned int i=0; i<elements_.size(); i++)
         {
-            elements_[i].draw(screen, el_img_);
+            elements_[i].draw(screen, el_img_opt_);
             if(select_ != NULL && select_ == &elements_[i])
                 boxRGBA(screen, elements_[i].getForm().x, elements_[i].getForm().y, elements_[i].getForm().x+elements_[i].getForm().w, elements_[i].getForm().y+elements_[i].getForm().h, 255, 30, 30, 50);
         }
-        SDL_BlitSurface(bg_, &top_grid_, screen, &top_grid_);
-        SDL_BlitSurface(bg_, &bottom_grid_, screen, &bottom_grid_);
+        SDL_BlitSurface(bg_opt_, &top_grid_, screen, &top_grid_);
+        SDL_BlitSurface(bg_opt_, &bottom_grid_, screen, &bottom_grid_);
 
         /*******************************************
         * Libération des surfaces (de la mémoire) *
@@ -172,7 +177,7 @@ void GameScreen::resize(SDL_Surface *screen)
 {
     redraw_ = true;
 
-    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+    SDL_BlitSurface(bg_opt_, NULL, screen, &bg_pos_);
 
     /*
     double scaleX = (double)screen->w/(double)screen_old_.w;
@@ -218,8 +223,8 @@ void GameScreen::resize(SDL_Surface *screen)
 
 void GameScreen::hide(SDL_Surface *screen)
 {
-    SDL_FreeSurface(bg_);
-    SDL_FreeSurface(el_img_);
+    SDL_FreeSurface(bg_opt_);
+    SDL_FreeSurface(el_img_opt_);
     TTF_CloseFont(score_font_);
 }
 

@@ -23,6 +23,7 @@ class MenuScreen : public Screen
 
         // Fond
         SDL_Surface *bg_;
+        SDL_Surface *bg_opt_; // surface optimisée
         SDL_Rect bg_pos_;
 
         // Titre général

@@ -42,14 +42,15 @@ class GameScreen : public Screen
         SDL_Rect score_pos_;
 
         SDL_Surface *bg_; // surface du fond
+        SDL_Surface *bg_opt_; // surface optimisée 
         SDL_Rect bg_pos_; // position du fond
 
         SDL_Surface *el_img_; // surface de l'image des éléments
+        SDL_Surface *el_img_opt_; // surface optimisée
 
         SDL_Rect top_grid_;
         SDL_Rect bottom_grid_;
 
-        SDL_Surface *grid_; // surface de la grille
         SDL_Rect grid_form_; // caractéristiques de la grille où sont placés les éléments(forme, taille)
         SDL_Rect grid_clipper_; // défini la zone de clipping pour la grille + les extra
 
