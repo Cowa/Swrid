@@ -65,6 +65,7 @@ public:
     **********/
     Matrix2DElement* getPointerGrid();
     Matrix2DElement getGrid();
+    bool getLimitReached();
     int getScore();
     int getN_Rows();
     int getN_Col();

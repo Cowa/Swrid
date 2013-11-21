@@ -98,10 +98,12 @@ void Grid::new_row()
 void Grid::check_limit_reached()
 {
     // On parcourt l'ensemble des éléments de la dernière ligne
-    for(Element & elt : grid_[0])
+    for(BaseElement & elt : grid_[0])
     {
         if(elt.getType() != NEUTRAL_ELEMENT)
             limit_reached_ = true;
+        else
+            limit_reached_ = false;
     }
 }
 
@@ -181,6 +183,10 @@ Matrix2DElement Grid::transpose(Matrix2DElement grid)
 /**********
 * GETTERS *
 **********/
+bool Grid::getLimitReached()
+{
+    return limit_reached_;
+}
 Matrix2DElement Grid::getGrid()
 {
 	return grid_;
