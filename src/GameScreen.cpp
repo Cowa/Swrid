@@ -38,7 +38,7 @@ void GameScreen::show(SDL_Surface *screen)
     SDL_FreeSurface(bg_);
 
     el_img_ = IMG_Load("img/elements.png");
-    el_img_opt_ = SDL_DisplayFormat(el_img_);
+    el_img_opt_ = SDL_DisplayFormatAlpha(el_img_);
     SDL_FreeSurface(el_img_);
 
     //screen_old_.w = screen->w, screen_old_.h = screen->h;
