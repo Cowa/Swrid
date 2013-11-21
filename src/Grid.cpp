@@ -57,6 +57,12 @@ void Grid::new_row()
     {
         for(unsigned int j=0; j<grid_[i].size(); j++)
         {
+            if(i == 1)
+            {
+                // On détecte la fin de partie
+                if(grid_[i-1][j].getType() != NEUTRAL_ELEMENT)
+                    limit_reached_ = true;
+            }
             if(i != 0)
                 grid_[i-1][j] = grid_[i][j];
         }
@@ -92,18 +98,6 @@ void Grid::new_row()
             grid_[n_rows_ - 1][i] = eltStructured;
             tmp_type = eltStructured.getType();
         }
-    }
-}
-
-void Grid::check_limit_reached()
-{
-    // On parcourt l'ensemble des éléments de la dernière ligne
-    for(BaseElement & elt : grid_[0])
-    {
-        if(elt.getType() != NEUTRAL_ELEMENT)
-            limit_reached_ = true;
-        else
-            limit_reached_ = false;
     }
 }
 

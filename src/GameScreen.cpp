@@ -128,9 +128,7 @@ void GameScreen::render(SDL_Surface *screen)
                 animation_push_ = false;
                 updateElements();
 
-                if(engine_->getGrid()->getLimitReached() != true)
-                    engine_->getGrid()->check_limit_reached();
-                else
+                if(engine_->getGrid()->getLimitReached())
                     cout << "Fin !" << endl;
             }
         }
