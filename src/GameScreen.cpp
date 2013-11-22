@@ -26,7 +26,7 @@ GameScreen::GameScreen(Engine *engine)
 
     score_color_ = {255, 255, 255};
 
-    buttonMenu_ = new Button(50,400,"img/btmp.png");
+    buttonMenu_ = new Button(75,400);
 }
 
 
@@ -45,9 +45,7 @@ void GameScreen::show(SDL_Surface *screen)
     el_img_opt_ = SDL_DisplayFormatAlpha(el_img_);
     SDL_FreeSurface(el_img_);
 
-    buttonMenu_->applyButton(screen);
-
-    //screen_old_.w = screen->w, screen_old_.h = screen->h;
+    buttonMenu_->init("img/btmp.png", "img/btmp_hover.png");
 
     score_font_ = TTF_OpenFont("font/FreeMono.ttf", 15);
 
@@ -56,11 +54,8 @@ void GameScreen::show(SDL_Surface *screen)
         cout << "SDL Font load error" << endl;
         exit(EXIT_FAILURE);
     }
+
     resize(screen);
-
-
-
-
 }
 
 /*********************************
@@ -73,7 +68,6 @@ void GameScreen::render(SDL_Surface *screen)
         /********
         * Score *
         ********/
-
         score_ = TTF_RenderText_Solid(score_font_, to_string(engine_->getGrid()->getScore()).c_str(), score_color_);
         SDL_BlitSurface(score_, NULL, screen, &score_pos_);
 
@@ -82,6 +76,8 @@ void GameScreen::render(SDL_Surface *screen)
         ************/
 
         SDL_BlitSurface(bg_opt_, &grid_clipper_, screen, &grid_clipper_);
+
+        // Le bouton menu
         buttonMenu_->applyButton(screen);
 
         /****************
@@ -217,7 +213,7 @@ void GameScreen::resize(SDL_Surface *screen)
     //grid_clipper_.y -= row_h_;
     grid_clipper_.x -= 2;
     grid_clipper_.h += row_h_*2;
-    grid_clipper_.w += 2;
+    grid_clipper_.w += 3;
 
     /*****************************
     * Clipping top & bottom grid *
@@ -251,36 +247,28 @@ void GameScreen::event(SDL_Event *event, bool *loop)
         case SDL_QUIT:
             *loop = false;
             break;
+
         case SDL_MOUSEMOTION:
-
-              if (event->button.button != SDL_BUTTON_LEFT && buttonMenu_->checkClick(event->motion.x,event->motion.y)){
-
-                  buttonMenu_->setPathImg("img/btmp_hover.png");
-                  buttonMenu_->applyButton(engine_->getSDLscreen());
-
-             }
-            else if (event->button.button != SDL_BUTTON_LEFT && !buttonMenu_->checkClick(event->motion.x,event->motion.y)){
-
-                    buttonMenu_->setPathImg("img/btmp.png");
-                    buttonMenu_->applyButton(engine_->getSDLscreen());
+            if (buttonMenu_->checkClick(event->button.x,event->button.y))
+            {
+                buttonMenu_->setState(HOVER);
+                buttonMenu_->applyButton(engine_->getSDLscreen());
+            }
+            else if (!buttonMenu_->checkClick(event->button.x,event->button.y))
+            {
+                buttonMenu_->setState(NORMAL);
+                buttonMenu_->applyButton(engine_->getSDLscreen());
             }
             break;
 
         case SDL_MOUSEBUTTONUP:
 
-            if(event->button.button == SDL_BUTTON_LEFT && buttonMenu_->checkClick(event->motion.x,event->motion.y)){
-                    engine_->setScreen(engine_->getMenuScreen());
-                }
-
-            if(event->button.button == SDL_BUTTON_LEFT)
-                mouseClick(event->button.x, event->button.y);
-            else if(event->button.button == SDL_BUTTON_RIGHT)
+            if(event->button.button == SDL_BUTTON_LEFT && buttonMenu_->checkClick(event->button.x,event->button.y)){
                 engine_->setScreen(engine_->getMenuScreen());
-            break;
-        case SDL_VIDEORESIZE:
-            //screen_old_.w = engine_->getSDLscreen()->w, screen_old_.h = engine_->getSDLscreen()->h;
-            engine_->setSDLscreen(SDL_SetVideoMode(event->resize.w, event->resize.h, 32, SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_RESIZABLE));
-            resize(engine_->getSDLscreen());
+                buttonMenu_->setState(NORMAL);
+            }
+            else if(event->button.button == SDL_BUTTON_LEFT)
+                mouseClick(event->button.x, event->button.y);
             break;
         default:
             break;

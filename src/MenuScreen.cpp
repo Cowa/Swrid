@@ -8,13 +8,9 @@ MenuScreen::MenuScreen(Engine *engine)
 
     bg_pos_.x = 0, bg_pos_.y = 0;
 
-    bNormalMode_= new Button(205,280,"img/btnormal.png");
-    bHardMode_ = new Button(415,280,"img/btdifficile.png");
-    bQuit_ = new Button(650,450,"img/btescape.png");
-
-    /*bNormalMode_->freeButtonSurface();
-    bHardMode_->freeButtonSurface();
-    bQuit_->freeButtonSurface(); */
+    bNormalMode_= new Button(205,280);
+    bHardMode_ = new Button(415,280);
+    bQuit_ = new Button(650,450);
 }
 
 MenuScreen::~MenuScreen()
@@ -27,7 +23,9 @@ void MenuScreen::show(SDL_Surface *screen)
     bg_opt_ = SDL_DisplayFormat(bg_);
     SDL_FreeSurface(bg_);
 
-
+    bNormalMode_->init("img/btnormal.png","img/btnormal_hover.png");
+    bHardMode_->init("img/btdifficile.png","img/btdifficile_hover.png");
+    bQuit_->init("img/btescape.png","img/btescape_hover.png");
 
     resize(screen);
 }
@@ -48,16 +46,14 @@ void MenuScreen::render(SDL_Surface *screen)
 void MenuScreen::resize(SDL_Surface *screen)
 {
     redraw_ = true;
-
-
 }
 
 void MenuScreen::hide(SDL_Surface *screen)
 {
     SDL_FreeSurface(bg_opt_);
-    bNormalMode_->freeButtonSurface();
-    bHardMode_->freeButtonSurface();
-    bQuit_->freeButtonSurface();
+    bNormalMode_->free();
+    bHardMode_->free();
+    bQuit_->free();
 }
 
 void MenuScreen::event(SDL_Event *event, bool *loop)
@@ -66,68 +62,66 @@ void MenuScreen::event(SDL_Event *event, bool *loop)
     {
         switch(event->type)
         {
-            case SDL_QUIT:
+        case SDL_QUIT:
+            *loop = false;
+            break;
 
+        case SDL_MOUSEBUTTONUP:
+            if(event->button.button == SDL_BUTTON_LEFT && bQuit_->checkClick(event->button.x,event->button.y))
+            {
                 *loop = false;
-                break;
-            case SDL_MOUSEBUTTONUP:
-
-                if(event->button.button == SDL_BUTTON_LEFT && bQuit_->checkClick(event->motion.x,event->motion.y)){
-                    *loop = false;
-                }
-
-                if(event->button.button == SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->motion.x,event->motion.y)){
-                    engine_->setScreen(engine_->getGameScreen());
-                }
-                break;
-
-            case SDL_MOUSEMOTION :
-
-            if (event->button.button != SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->motion.x,event->motion.y)){
-
-                  bNormalMode_->setPathImg("img/btnormal_hover.png");
-                  bNormalMode_->applyButton(engine_->getSDLscreen());
-
-             }
-            else if (event->button.button != SDL_BUTTON_LEFT && !bNormalMode_->checkClick(event->motion.x,event->motion.y)){
-
-                    bNormalMode_->setPathImg("img/btnormal.png");
-                    bNormalMode_->applyButton(engine_->getSDLscreen());
-
             }
-
-             if (event->button.button != SDL_BUTTON_LEFT && bHardMode_->checkClick(event->motion.x,event->motion.y)){
-
-                bHardMode_->setPathImg("img/btdifficile_hover.png");
-                bHardMode_->applyButton(engine_->getSDLscreen());
-
-             }
-            else if (event->button.button != SDL_BUTTON_LEFT && !bHardMode_->checkClick(event->motion.x,event->motion.y)){
-
-                    bHardMode_->setPathImg("img/btdifficile.png");
-                    bHardMode_->applyButton(engine_->getSDLscreen());
-
+            // Clic sur Normal
+            else if(event->button.button == SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->button.x,event->button.y))
+            {
+                engine_->setScreen(engine_->getGameScreen());
+                engine_->getGrid()->setGridMode(new GridModeNormal());
+                bNormalMode_->setState(NORMAL);
             }
-
-             if (event->button.button != SDL_BUTTON_LEFT && bQuit_->checkClick(event->motion.x,event->motion.y)){ // the button is hover
-
-                bQuit_->setPathImg("img/btescape_hover.png");
-                bQuit_->applyButton(engine_->getSDLscreen());
-
-            }
-            else if (event->button.button != SDL_BUTTON_LEFT && !bQuit_->checkClick(event->motion.x,event->motion.y)){ // the button isn't hover
-
-                    bQuit_->setPathImg("img/btescape.png");
-                    bQuit_->applyButton(engine_->getSDLscreen());
-
+            // Clic sur Difficile
+            else if(event->button.button == SDL_BUTTON_LEFT && bHardMode_->checkClick(event->button.x,event->button.y))
+            {
+                engine_->setScreen(engine_->getGameScreen());
+                engine_->getGrid()->setGridMode(new GridModeHard());
+                bNormalMode_->setState(NORMAL);
             }
 
             break;
-            case SDL_VIDEORESIZE:
-                engine_->setSDLscreen(SDL_SetVideoMode(event->resize.w, event->resize.h, 32, SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_RESIZABLE));
-                resize(engine_->getSDLscreen());
-            default:
-                break;
+
+        case SDL_MOUSEMOTION :
+            if(bNormalMode_->checkClick(event->button.x,event->button.y))
+            {
+                bNormalMode_->setState(HOVER);
+                redraw_ = true;
+            }
+            else if(!bNormalMode_->checkClick(event->button.x,event->button.y))
+            {
+                bNormalMode_->setState(NORMAL);
+                redraw_ = true;
+            }
+            if(bHardMode_->checkClick(event->button.x,event->button.y))
+            {
+                bHardMode_->setState(HOVER);
+                redraw_ = true;
+            }
+            else if(!bHardMode_->checkClick(event->button.x,event->button.y))
+            {
+                bHardMode_->setState(NORMAL);
+                redraw_ = true;
+            }
+            if(bQuit_->checkClick(event->button.x,event->button.y))
+            {
+                bQuit_->setState(HOVER);
+                redraw_ = true;
+            }
+            else if(!bQuit_->checkClick(event->button.x,event->button.y))
+            {
+                bQuit_->setState(NORMAL);
+                redraw_ = true;
+            }
+            break;
+        default:
+            break;
         }
     }
 }

@@ -4,25 +4,30 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 
+const int NORMAL = 0;
+const int HOVER = 1;
+
 class Button
 {
     public:
-        Button(int x,int y,const char * path);
+        Button(int x,int y);
         virtual ~Button();
-        SDL_Surface* GetbuttonSurface() { return buttonSurface_; }
-        void SetbuttonSurface(SDL_Surface* val) { buttonSurface_ = val; }
+        //SDL_Surface* GetbuttonSurface() { return buttonSurfaceOpt_; }
+        //void SetbuttonSurface(SDL_Surface* val) { buttonSurface_ = val; }
         SDL_Rect GetbuttonPosition() { return buttonPosition_; }
         void SetbuttonPosition(SDL_Rect val) { buttonPosition_ = val; }
         void applyButton(SDL_Surface* surface);
-        void setPathImg(const char* path);
         bool checkClick(int mouseX, int mouseY);
-        void freeButtonSurface();
+        void setState(int state);
+        void free();
+        void init(const char *path1, const char *path2);
 
     protected:
 
     private:
-        SDL_Surface* buttonSurface_;
-        SDL_Surface* buttonSurfaceOpt_;
+        int state_;
+        SDL_Surface *bNormal_;
+        SDL_Surface *bHover_;
         SDL_Rect buttonPosition_;
 };
 
