@@ -47,7 +47,7 @@ void GameScreen::show(SDL_Surface *screen)
 
     buttonMenu_->init("img/btmp.png", "img/btmp_hover.png");
 
-    score_font_ = TTF_OpenFont("font/FreeMono.ttf", 15);
+    score_font_ = TTF_OpenFont("font/FreeMono.ttf", 30);
 
     if(score_font_ == NULL)
     {
@@ -68,6 +68,8 @@ void GameScreen::render(SDL_Surface *screen)
         /********
         * Score *
         ********/
+        SDL_BlitSurface(bg_opt_, &score_clipper_, screen, &score_clipper_);
+
         score_ = TTF_RenderText_Solid(score_font_, to_string(engine_->getGrid()->getScore()).c_str(), score_color_);
         SDL_BlitSurface(score_, NULL, screen, &score_pos_);
 
@@ -187,16 +189,18 @@ void GameScreen::resize(SDL_Surface *screen)
 
     SDL_BlitSurface(bg_opt_, NULL, screen, &bg_pos_);
 
-    /*
-    double scaleX = (double)screen->w/(double)screen_old_.w;
-    double scaleY = (double)screen->h/(double)screen_old_.h;
-    bg_ = zoomSurface(bg_, scaleX, scaleY, 0);
-    */
-
     /********
     * Score *
     ********/
-    score_pos_.x = 100, score_pos_.y = 210;
+    score_pos_.x = 80, score_pos_.y = 200;
+
+    /****************
+    * Score clipper *
+    ****************/
+    score_clipper_.x = 10;
+    score_clipper_.y = 185;
+    score_clipper_.w = 210;
+    score_clipper_.h = 65;
 
     /************
     * La grille *
