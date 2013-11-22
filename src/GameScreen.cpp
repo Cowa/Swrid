@@ -70,7 +70,7 @@ void GameScreen::render(SDL_Surface *screen)
         /*************
         * La grille *
         ************/
-        SDL_BlitSurface(bg_opt_, &grid_form_, screen, &grid_form_); 
+        SDL_BlitSurface(bg_opt_, &grid_clipper_, screen, &grid_clipper_); 
 
         /****************
         * Les éléments *
@@ -202,15 +202,17 @@ void GameScreen::resize(SDL_Surface *screen)
     * Zone de clipping de la grille *
     ********************************/
     grid_clipper_ = grid_form_;
-    grid_clipper_.y -= row_h_;
+    //grid_clipper_.y -= row_h_;
+    grid_clipper_.x -= 2;
     grid_clipper_.h += row_h_*2;
+    grid_clipper_.w += 2;
 
     /*****************************
     * Clipping top & bottom grid *
     *****************************/
     top_grid_.x = grid_form_.x;
-    top_grid_.y = grid_form_.y - (row_h_+3);
-    top_grid_.h = row_h_+3;
+    top_grid_.y = grid_form_.y - (row_h_+4);
+    top_grid_.h = row_h_+4;
     top_grid_.w = grid_form_.w;
 
     bottom_grid_.x = grid_form_.x;
