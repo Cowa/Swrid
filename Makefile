@@ -19,12 +19,12 @@ RESINC_RELEASE = $(RESINC)
 RCFLAGS_RELEASE = $(RCFLAGS)
 LIBDIR_RELEASE = $(LIBDIR)
 LIB_RELEASE = $(LIB)
-LDFLAGS_RELEASE = $(LDFLAGS) -s -lSDL_gfx -lSDL_ttf -lSDL_image
+LDFLAGS_RELEASE = $(LDFLAGS) -s -lSDL_gfx -lSDL_image -lSDL_ttf -lsqlite3
 OBJDIR_RELEASE = obj
 DEP_RELEASE = 
 OUT_RELEASE = Swrid
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/src/PointBonusElement.o $(OBJDIR_RELEASE)/src/Player.o $(OBJDIR_RELEASE)/src/MenuScreen.o $(OBJDIR_RELEASE)/src/GridModeNormal.o $(OBJDIR_RELEASE)/src/GridModeHard.o $(OBJDIR_RELEASE)/src/Grid.o $(OBJDIR_RELEASE)/src/GameScreen.o $(OBJDIR_RELEASE)/src/Engine.o $(OBJDIR_RELEASE)/src/ElementUI.o $(OBJDIR_RELEASE)/src/Element.o $(OBJDIR_RELEASE)/src/BaseElement.o $(OBJDIR_RELEASE)/main.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/src/PointBonusElement.o $(OBJDIR_RELEASE)/src/Player.o $(OBJDIR_RELEASE)/src/MenuScreen.o $(OBJDIR_RELEASE)/src/GridModeNormal.o $(OBJDIR_RELEASE)/src/GridModeHard.o $(OBJDIR_RELEASE)/src/Grid.o $(OBJDIR_RELEASE)/src/GameScreen.o $(OBJDIR_RELEASE)/src/Engine.o $(OBJDIR_RELEASE)/src/ElementUI.o $(OBJDIR_RELEASE)/src/Element.o $(OBJDIR_RELEASE)/src/Button.o $(OBJDIR_RELEASE)/src/BaseElement.o $(OBJDIR_RELEASE)/main.o
 
 all: release
 
@@ -70,6 +70,9 @@ $(OBJDIR_RELEASE)/src/ElementUI.o: src/ElementUI.cpp
 
 $(OBJDIR_RELEASE)/src/Element.o: src/Element.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Element.cpp -o $(OBJDIR_RELEASE)/src/Element.o
+
+$(OBJDIR_RELEASE)/src/Button.o: src/Button.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Button.cpp -o $(OBJDIR_RELEASE)/src/Button.o
 
 $(OBJDIR_RELEASE)/src/BaseElement.o: src/BaseElement.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/BaseElement.cpp -o $(OBJDIR_RELEASE)/src/BaseElement.o
