@@ -48,11 +48,8 @@ public:
     // Simule la gravité, on fait tomber vers le bas tout les éléments
     void update_gravity();
 
-    // On pousse toutes les lignes d'un cran vers le haut, et on ajoute une nouvelle ligne d'éléments aléatoire en bas
+    // On pousse toutes les lignes d'un cran vers le haut (et détecte la fin de partie), et on ajoute une nouvelle ligne d'éléments aléatoire en bas
     void new_row();
-
-    // Vérifie si la limite a été atteinte, et met à jour l'attribut limit_reached_ en conséquences
-    void check_limit_reached();
 
     // Affiche la grille
     string print(Matrix2DElement grid);
@@ -65,6 +62,7 @@ public:
     **********/
     Matrix2DElement* getPointerGrid();
     Matrix2DElement getGrid();
+    bool getLimitReached();
     int getScore();
     int getN_Rows();
     int getN_Col();

@@ -33,6 +33,7 @@
 			<Add option="`sdl-config --libs`" />
 		</Linker>
 		<Unit filename="include/BaseElement.h" />
+		<Unit filename="include/Button.h" />
 		<Unit filename="include/Define.h" />
 		<Unit filename="include/Element.h" />
 		<Unit filename="include/ElementUI.h" />
@@ -48,6 +49,7 @@
 		<Unit filename="include/Screen.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/BaseElement.cpp" />
+		<Unit filename="src/Button.cpp" />
 		<Unit filename="src/Element.cpp" />
 		<Unit filename="src/ElementUI.cpp" />
 		<Unit filename="src/Engine.cpp" />

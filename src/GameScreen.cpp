@@ -26,6 +26,7 @@ GameScreen::GameScreen(Engine *engine)
 
     score_color_ = {255, 255, 255};
 
+    buttonMenu_ = new Button(50,400,"img/btmp.png");
 }
 
 
@@ -37,8 +38,16 @@ GameScreen::~GameScreen()
 void GameScreen::show(SDL_Surface *screen)
 {
     bg_ = IMG_Load("img/bg_game.jpg");
+    bg_opt_ = SDL_DisplayFormat(bg_);
+    SDL_FreeSurface(bg_);
 
-    screen_old_.w = screen->w, screen_old_.h = screen->h;
+    el_img_ = IMG_Load("img/elements.png");
+    el_img_opt_ = SDL_DisplayFormatAlpha(el_img_);
+    SDL_FreeSurface(el_img_);
+
+    buttonMenu_->applyButton(screen);
+
+    //screen_old_.w = screen->w, screen_old_.h = screen->h;
 
     score_font_ = TTF_OpenFont("font/FreeMono.ttf", 15);
 
@@ -64,14 +73,16 @@ void GameScreen::render(SDL_Surface *screen)
         /********
         * Score *
         ********/
-        //SDL_FreeSurface(score_);
+
         score_ = TTF_RenderText_Solid(score_font_, to_string(engine_->getGrid()->getScore()).c_str(), score_color_);
         SDL_BlitSurface(score_, NULL, screen, &score_pos_);
 
         /*************
         * La grille *
         ************/
-        SDL_BlitSurface(bg_, &grid_form_, screen, &grid_form_);
+
+        SDL_BlitSurface(bg_opt_, &grid_clipper_, screen, &grid_clipper_);
+        buttonMenu_->applyButton(screen);
 
         /****************
         * Les éléments *
@@ -133,6 +144,9 @@ void GameScreen::render(SDL_Surface *screen)
             {
                 animation_push_ = false;
                 updateElements();
+
+                if(engine_->getGrid()->getLimitReached())
+                    cout << "Fin !" << endl;
             }
         }
         // Si l'animation du fall est en cours...
@@ -157,12 +171,12 @@ void GameScreen::render(SDL_Surface *screen)
         **************************/
         for(unsigned int i=0; i<elements_.size(); i++)
         {
-            elements_[i].draw(screen);
+            elements_[i].draw(screen, el_img_opt_);
             if(select_ != NULL && select_ == &elements_[i])
                 boxRGBA(screen, elements_[i].getForm().x, elements_[i].getForm().y, elements_[i].getForm().x+elements_[i].getForm().w, elements_[i].getForm().y+elements_[i].getForm().h, 255, 30, 30, 50);
         }
-        SDL_BlitSurface(bg_, &top_grid_, screen, &top_grid_);
-        SDL_BlitSurface(bg_, &bottom_grid_, screen, &bottom_grid_);
+        SDL_BlitSurface(bg_opt_, &top_grid_, screen, &top_grid_);
+        SDL_BlitSurface(bg_opt_, &bottom_grid_, screen, &bottom_grid_);
 
         /*******************************************
         * Libération des surfaces (de la mémoire) *
@@ -175,11 +189,13 @@ void GameScreen::resize(SDL_Surface *screen)
 {
     redraw_ = true;
 
-    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+    SDL_BlitSurface(bg_opt_, NULL, screen, &bg_pos_);
 
+    /*
     double scaleX = (double)screen->w/(double)screen_old_.w;
     double scaleY = (double)screen->h/(double)screen_old_.h;
     bg_ = zoomSurface(bg_, scaleX, scaleY, 0);
+    */
 
     /********
     * Score *
@@ -198,15 +214,17 @@ void GameScreen::resize(SDL_Surface *screen)
     * Zone de clipping de la grille *
     ********************************/
     grid_clipper_ = grid_form_;
-    grid_clipper_.y -= row_h_;
+    //grid_clipper_.y -= row_h_;
+    grid_clipper_.x -= 2;
     grid_clipper_.h += row_h_*2;
+    grid_clipper_.w += 2;
 
     /*****************************
     * Clipping top & bottom grid *
     *****************************/
     top_grid_.x = grid_form_.x;
-    top_grid_.y = grid_form_.y - row_h_;
-    top_grid_.h = row_h_;
+    top_grid_.y = grid_form_.y - (row_h_+4);
+    top_grid_.h = row_h_+4;
     top_grid_.w = grid_form_.w;
 
     bottom_grid_.x = grid_form_.x;
@@ -219,7 +237,8 @@ void GameScreen::resize(SDL_Surface *screen)
 
 void GameScreen::hide(SDL_Surface *screen)
 {
-    SDL_FreeSurface(bg_);
+    SDL_FreeSurface(bg_opt_);
+    SDL_FreeSurface(el_img_opt_);
     TTF_CloseFont(score_font_);
 }
 
@@ -232,14 +251,34 @@ void GameScreen::event(SDL_Event *event, bool *loop)
         case SDL_QUIT:
             *loop = false;
             break;
+        case SDL_MOUSEMOTION:
+
+              if (event->button.button != SDL_BUTTON_LEFT && buttonMenu_->checkClick(event->motion.x,event->motion.y)){
+
+                  buttonMenu_->setPathImg("img/btmp_hover.png");
+                  buttonMenu_->applyButton(engine_->getSDLscreen());
+
+             }
+            else if (event->button.button != SDL_BUTTON_LEFT && !buttonMenu_->checkClick(event->motion.x,event->motion.y)){
+
+                    buttonMenu_->setPathImg("img/btmp.png");
+                    buttonMenu_->applyButton(engine_->getSDLscreen());
+            }
+            break;
+
         case SDL_MOUSEBUTTONUP:
+
+            if(event->button.button == SDL_BUTTON_LEFT && buttonMenu_->checkClick(event->motion.x,event->motion.y)){
+                    engine_->setScreen(engine_->getMenuScreen());
+                }
+
             if(event->button.button == SDL_BUTTON_LEFT)
                 mouseClick(event->button.x, event->button.y);
             else if(event->button.button == SDL_BUTTON_RIGHT)
                 engine_->setScreen(engine_->getMenuScreen());
             break;
         case SDL_VIDEORESIZE:
-            screen_old_.w = engine_->getSDLscreen()->w, screen_old_.h = engine_->getSDLscreen()->h;
+            //screen_old_.w = engine_->getSDLscreen()->w, screen_old_.h = engine_->getSDLscreen()->h;
             engine_->setSDLscreen(SDL_SetVideoMode(event->resize.w, event->resize.h, 32, SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_RESIZABLE));
             resize(engine_->getSDLscreen());
             break;

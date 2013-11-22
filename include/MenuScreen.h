@@ -2,6 +2,7 @@
 #define MENUSCREEN_H
 
 #include "Screen.h"
+#include "Button.h"
 
 class Engine;
 class MenuScreen : public Screen
@@ -23,13 +24,13 @@ class MenuScreen : public Screen
 
         // Fond
         SDL_Surface *bg_;
+        SDL_Surface *bg_opt_; // surface optimisée
         SDL_Rect bg_pos_;
 
-        // Titre général
-        SDL_Surface *title_;
-        TTF_Font *title_font_;
-        SDL_Color title_color_;
-        SDL_Rect title_pos_;
+        // button normal mode
+        Button * bNormalMode_;
+        Button * bQuit_;
+        Button * bHardMode_;
 };
 
 #endif // MENUSCREEN_H

@@ -8,7 +8,13 @@ MenuScreen::MenuScreen(Engine *engine)
 
     bg_pos_.x = 0, bg_pos_.y = 0;
 
-    title_color_ = {255, 255, 255};
+    bNormalMode_= new Button(205,280,"img/btnormal.png");
+    bHardMode_ = new Button(415,280,"img/btdifficile.png");
+    bQuit_ = new Button(650,450,"img/btescape.png");
+
+    /*bNormalMode_->freeButtonSurface();
+    bHardMode_->freeButtonSurface();
+    bQuit_->freeButtonSurface(); */
 }
 
 MenuScreen::~MenuScreen()
@@ -18,15 +24,11 @@ MenuScreen::~MenuScreen()
 void MenuScreen::show(SDL_Surface *screen)
 {
     bg_ = IMG_Load("img/bg_main.jpg");
-    SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
+    bg_opt_ = SDL_DisplayFormat(bg_);
+    SDL_FreeSurface(bg_);
 
-    title_font_ = TTF_OpenFont("font/mt.ttf", 20);
 
-    if(title_font_ == NULL)
-    {
-        cout << "SDL Font load error" << endl;
-        exit(EXIT_FAILURE);
-    }
+
     resize(screen);
 }
 
@@ -36,13 +38,10 @@ void MenuScreen::render(SDL_Surface *screen)
     {
         redraw_ = false;
 
-        SDL_BlitSurface(bg_, NULL, screen, &bg_pos_);
-
-        string title = "Swrid game prototype";
-        title_ = TTF_RenderText_Solid(title_font_, title.c_str(), title_color_);
-
-        SDL_BlitSurface(title_, NULL, screen, &title_pos_);
-        SDL_FreeSurface(title_);
+        SDL_BlitSurface(bg_opt_ , NULL, screen, &bg_pos_);
+        bNormalMode_->applyButton(screen);
+        bHardMode_->applyButton(screen);
+        bQuit_->applyButton(screen);
     }
 }
 
@@ -50,14 +49,15 @@ void MenuScreen::resize(SDL_Surface *screen)
 {
     redraw_ = true;
 
-    title_pos_.x = screen->w/3;
-    title_pos_.y = 10;
+
 }
 
 void MenuScreen::hide(SDL_Surface *screen)
 {
-    SDL_FreeSurface(bg_);
-    TTF_CloseFont(title_font_);
+    SDL_FreeSurface(bg_opt_);
+    bNormalMode_->freeButtonSurface();
+    bHardMode_->freeButtonSurface();
+    bQuit_->freeButtonSurface();
 }
 
 void MenuScreen::event(SDL_Event *event, bool *loop)
@@ -67,12 +67,62 @@ void MenuScreen::event(SDL_Event *event, bool *loop)
         switch(event->type)
         {
             case SDL_QUIT:
+
                 *loop = false;
                 break;
             case SDL_MOUSEBUTTONUP:
-                if(event->button.button == SDL_BUTTON_RIGHT)
+
+                if(event->button.button == SDL_BUTTON_LEFT && bQuit_->checkClick(event->motion.x,event->motion.y)){
+                    *loop = false;
+                }
+
+                if(event->button.button == SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->motion.x,event->motion.y)){
                     engine_->setScreen(engine_->getGameScreen());
+                }
                 break;
+
+            case SDL_MOUSEMOTION :
+
+            if (event->button.button != SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->motion.x,event->motion.y)){
+
+                  bNormalMode_->setPathImg("img/btnormal_hover.png");
+                  bNormalMode_->applyButton(engine_->getSDLscreen());
+
+             }
+            else if (event->button.button != SDL_BUTTON_LEFT && !bNormalMode_->checkClick(event->motion.x,event->motion.y)){
+
+                    bNormalMode_->setPathImg("img/btnormal.png");
+                    bNormalMode_->applyButton(engine_->getSDLscreen());
+
+            }
+
+             if (event->button.button != SDL_BUTTON_LEFT && bHardMode_->checkClick(event->motion.x,event->motion.y)){
+
+                bHardMode_->setPathImg("img/btdifficile_hover.png");
+                bHardMode_->applyButton(engine_->getSDLscreen());
+
+             }
+            else if (event->button.button != SDL_BUTTON_LEFT && !bHardMode_->checkClick(event->motion.x,event->motion.y)){
+
+                    bHardMode_->setPathImg("img/btdifficile.png");
+                    bHardMode_->applyButton(engine_->getSDLscreen());
+
+            }
+
+             if (event->button.button != SDL_BUTTON_LEFT && bQuit_->checkClick(event->motion.x,event->motion.y)){ // the button is hover
+
+                bQuit_->setPathImg("img/btescape_hover.png");
+                bQuit_->applyButton(engine_->getSDLscreen());
+
+            }
+            else if (event->button.button != SDL_BUTTON_LEFT && !bQuit_->checkClick(event->motion.x,event->motion.y)){ // the button isn't hover
+
+                    bQuit_->setPathImg("img/btescape.png");
+                    bQuit_->applyButton(engine_->getSDLscreen());
+
+            }
+
+            break;
             case SDL_VIDEORESIZE:
                 engine_->setSDLscreen(SDL_SetVideoMode(event->resize.w, event->resize.h, 32, SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_RESIZABLE));
                 resize(engine_->getSDLscreen());
