@@ -10,13 +10,37 @@
 	<File name="main.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="303" topLine="0" />
 	</File>
+	<File name="src/BaseElement.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="0" topLine="0" />
+	</File>
 	<File name="src/Element.cpp" open="1" top="0" tabpos="2">
 		<Cursor position="32" topLine="0" />
 	</File>
-	<File name="src/ElementUI.cpp" open="1" top="1" tabpos="3">
+	<File name="src/ElementUI.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="944" topLine="27" />
 	</File>
+	<File name="src/Engine.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="0" topLine="101" />
+	</File>
+	<File name="src/GameScreen.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="1124" topLine="60" />
+	</File>
+	<File name="src/Grid.cpp" open="1" top="0" tabpos="10">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="src/GridModeHard.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="src/GridModeNormal.cpp" open="1" top="0" tabpos="12">
+		<Cursor position="0" topLine="0" />
+	</File>
 	<File name="src/MenuScreen.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="389" topLine="15" />
+		<Cursor position="389" topLine="24" />
+	</File>
+	<File name="src/Player.cpp" open="1" top="0" tabpos="13">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="src/PointBonusElement.cpp" open="1" top="0" tabpos="14">
+		<Cursor position="0" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

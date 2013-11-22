@@ -25,7 +25,10 @@ GameScreen::GameScreen(Engine *engine)
     n_cols_ = engine_->getGrid()->getN_Col();
 
     score_color_ = {255, 255, 255};
+
 }
+
+
 
 GameScreen::~GameScreen()
 {
@@ -45,6 +48,10 @@ void GameScreen::show(SDL_Surface *screen)
         exit(EXIT_FAILURE);
     }
     resize(screen);
+
+
+
+
 }
 
 /*********************************
@@ -57,14 +64,14 @@ void GameScreen::render(SDL_Surface *screen)
         /********
         * Score *
         ********/
+        //SDL_FreeSurface(score_);
         score_ = TTF_RenderText_Solid(score_font_, to_string(engine_->getGrid()->getScore()).c_str(), score_color_);
-
         SDL_BlitSurface(score_, NULL, screen, &score_pos_);
 
         /*************
         * La grille *
         ************/
-        SDL_BlitSurface(bg_, &grid_form_, screen, &grid_form_); 
+        SDL_BlitSurface(bg_, &grid_form_, screen, &grid_form_);
 
         /****************
         * Les éléments *
@@ -160,8 +167,8 @@ void GameScreen::render(SDL_Surface *screen)
         /*******************************************
         * Libération des surfaces (de la mémoire) *
         ******************************************/
-        SDL_FreeSurface(score_);
-    }
+       SDL_FreeSurface(score_);
+       }
 }
 
 void GameScreen::resize(SDL_Surface *screen)
@@ -177,7 +184,7 @@ void GameScreen::resize(SDL_Surface *screen)
     /********
     * Score *
     ********/
-    score_pos_.x = 0, score_pos_.y = 0;
+    score_pos_.x = 100, score_pos_.y = 210;
 
     /************
     * La grille *
