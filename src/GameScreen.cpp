@@ -191,11 +191,7 @@ void GameScreen::resize(SDL_Surface *screen)
 
     SDL_BlitSurface(bg_opt_, NULL, screen, &bg_pos_);
 
-    /*
-    double scaleX = (double)screen->w/(double)screen_old_.w;
-    double scaleY = (double)screen->h/(double)screen_old_.h;
-    bg_ = zoomSurface(bg_, scaleX, scaleY, 0);
-    */
+
 
     /********
     * Score *
@@ -257,12 +253,13 @@ void GameScreen::event(SDL_Event *event, bool *loop)
 
                   buttonMenu_->setPathImg("img/btmp_hover.png");
                   buttonMenu_->applyButton(engine_->getSDLscreen());
-
+                  redraw_=true;
              }
             else if (event->button.button != SDL_BUTTON_LEFT && !buttonMenu_->checkClick(event->motion.x,event->motion.y)){
 
-                    buttonMenu_->setPathImg("img/btmp.png");
-                    buttonMenu_->applyButton(engine_->getSDLscreen());
+                buttonMenu_->setPathImg("img/btmp.png");
+                buttonMenu_->applyButton(engine_->getSDLscreen());
+                redraw_=true;
             }
             break;
 

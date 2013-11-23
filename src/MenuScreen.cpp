@@ -87,39 +87,40 @@ void MenuScreen::event(SDL_Event *event, bool *loop)
 
                   bNormalMode_->setPathImg("img/btnormal_hover.png");
                   bNormalMode_->applyButton(engine_->getSDLscreen());
+                  redraw_=true;
 
              }
             else if (event->button.button != SDL_BUTTON_LEFT && !bNormalMode_->checkClick(event->motion.x,event->motion.y)){
 
                     bNormalMode_->setPathImg("img/btnormal.png");
                     bNormalMode_->applyButton(engine_->getSDLscreen());
-
+                    redraw_=true;
             }
 
              if (event->button.button != SDL_BUTTON_LEFT && bHardMode_->checkClick(event->motion.x,event->motion.y)){
 
                 bHardMode_->setPathImg("img/btdifficile_hover.png");
                 bHardMode_->applyButton(engine_->getSDLscreen());
-
+                redraw_=true;
              }
             else if (event->button.button != SDL_BUTTON_LEFT && !bHardMode_->checkClick(event->motion.x,event->motion.y)){
 
                     bHardMode_->setPathImg("img/btdifficile.png");
                     bHardMode_->applyButton(engine_->getSDLscreen());
-
+                    redraw_=true;
             }
 
              if (event->button.button != SDL_BUTTON_LEFT && bQuit_->checkClick(event->motion.x,event->motion.y)){ // the button is hover
 
                 bQuit_->setPathImg("img/btescape_hover.png");
                 bQuit_->applyButton(engine_->getSDLscreen());
-
+                redraw_=true;
             }
             else if (event->button.button != SDL_BUTTON_LEFT && !bQuit_->checkClick(event->motion.x,event->motion.y)){ // the button isn't hover
 
                     bQuit_->setPathImg("img/btescape.png");
                     bQuit_->applyButton(engine_->getSDLscreen());
-
+                    redraw_=true;
             }
 
             break;
