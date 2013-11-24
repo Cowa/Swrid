@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
 	<File name="include/Button.h" open="1" top="0" tabpos="4">
-		<Cursor position="768" topLine="0" />
+		<Cursor position="768" topLine="13" />
 	</File>
 	<File name="include/Element.h" open="0" top="0" tabpos="4">
 		<Cursor position="560" topLine="8" />
@@ -11,10 +11,10 @@
 		<Cursor position="1477" topLine="10" />
 	</File>
 	<File name="include/GameScreen.h" open="1" top="0" tabpos="6">
-		<Cursor position="123" topLine="6" />
+		<Cursor position="123" topLine="53" />
 	</File>
 	<File name="include/MenuScreen.h" open="1" top="0" tabpos="1">
-		<Cursor position="772" topLine="5" />
+		<Cursor position="772" topLine="0" />
 	</File>
 	<File name="main.cpp" open="1" top="0" tabpos="7">
 		<Cursor position="626" topLine="18" />
@@ -23,7 +23,7 @@
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="src/Button.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="1031" topLine="9" />
+		<Cursor position="1031" topLine="0" />
 	</File>
 	<File name="src/Element.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="32" topLine="0" />
@@ -34,8 +34,8 @@
 	<File name="src/Engine.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="0" topLine="101" />
 	</File>
-	<File name="src/GameScreen.cpp" open="1" top="1" tabpos="5">
-		<Cursor position="7343" topLine="239" />
+	<File name="src/GameScreen.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="5484" topLine="439" />
 	</File>
 	<File name="src/Grid.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="0" topLine="0" />
@@ -46,8 +46,8 @@
 	<File name="src/GridModeNormal.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="src/MenuScreen.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="1353" topLine="60" />
+	<File name="src/MenuScreen.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="1412" topLine="64" />
 	</File>
 	<File name="src/Player.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="0" topLine="0" />

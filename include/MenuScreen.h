@@ -28,9 +28,9 @@ class MenuScreen : public Screen
         SDL_Rect bg_pos_;
 
         // button normal mode
-        Button * bNormalMode_;
-        Button * bQuit_;
-        Button * bHardMode_;
+        Button *bNormalMode_;
+        Button *bQuit_;
+        Button *bHardMode_;
 };
 
 #endif // MENUSCREEN_H

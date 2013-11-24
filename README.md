@@ -5,7 +5,7 @@ Swrid
 
 Project by **David Perrai** & **Brice Thomas**
 
-Graphics by Maxime Dolo
+Graphics by **Maxime Dolo**
 
 Concept
 -------
@@ -163,8 +163,8 @@ Progress
 - [x] element classes (decorator pattern)
 - [x] engine singleton
 
-**Final version, let there be light (33,33%)**
-- [ ] full graphics
+**Final version, let there be light (66,6%)**
+- [x] full graphics
 - [ ] gui
 - [x] elements animation
 

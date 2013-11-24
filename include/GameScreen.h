@@ -42,6 +42,8 @@ class GameScreen : public Screen
         SDL_Color score_color_;
         SDL_Rect score_pos_;
 
+        SDL_Rect score_clipper_;
+
         SDL_Surface *bg_; // surface du fond
         SDL_Surface *bg_opt_; // surface optimisée
         SDL_Rect bg_pos_; // position du fond

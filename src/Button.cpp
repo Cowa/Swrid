@@ -1,44 +1,51 @@
 #include "../include/Button.h"
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
+#include <iostream>
 
-Button::Button(int x,int y,const char * path)
+Button::Button(int x,int y)
 {
-    buttonSurface_= IMG_Load(path);
-    buttonSurfaceOpt_=SDL_DisplayFormatAlpha(buttonSurface_);
-    buttonPosition_.x=x;
-    buttonPosition_.y=y;
+    state_ = NORMAL;
+
+    buttonPosition_.x = x;
+    buttonPosition_.y = y;
 }
 
-
-void Button::applyButton(SDL_Surface* surface)
+void Button::init(const char *path1, const char *path2)
 {
+    SDL_Surface *img = IMG_Load(path1);
+    bNormal_ = SDL_DisplayFormatAlpha(img);
+    SDL_FreeSurface(img);
 
-  SDL_BlitSurface(this->buttonSurfaceOpt_, NULL, surface, &this->buttonPosition_);
-
+    img = IMG_Load(path2);
+    bHover_ = SDL_DisplayFormatAlpha(img);
+    SDL_FreeSurface(img);
 }
 
-void Button::setPathImg(const char* path){
-    SDL_FreeSurface(this->buttonSurface_);
-    this->buttonSurface_=IMG_Load(path);
-    buttonSurfaceOpt_=SDL_DisplayFormatAlpha(this->buttonSurface_);
+void Button::applyButton(SDL_Surface *surface)
+{
+    if(state_ == NORMAL)
+        SDL_BlitSurface(bNormal_, NULL, surface, &buttonPosition_);
+    else
+        SDL_BlitSurface(bHover_, NULL, surface, &buttonPosition_);
 }
 
 bool Button::checkClick(int mouseX, int mouseY)
 {
-    if(this->buttonPosition_.x < mouseX && mouseX < this->buttonPosition_.x + this->buttonSurface_->w &&
-    this->buttonPosition_.y< mouseY && mouseY < this->buttonPosition_.y + this->buttonSurface_->h)
-    {return true; }
-    else return false;
+    return (buttonPosition_.x < mouseX && mouseX < buttonPosition_.x + bNormal_->w && buttonPosition_.y< mouseY && mouseY < buttonPosition_.y + bNormal_->h);
 }
 
-void Button::freeButtonSurface(){
-
-SDL_FreeSurface(this->buttonSurface_);
+void Button::setState(int state)
+{
+    state_ = state;
 }
 
+void Button::free()
+{
+    SDL_FreeSurface(bNormal_);
+    SDL_FreeSurface(bHover_);
+}
 
 Button::~Button()
 {
-    //dtor
 }
