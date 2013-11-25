@@ -1,5 +1,7 @@
+
 #include "../include/BaseElement.h"
 #include <iostream>
+
 BaseElement::BaseElement()
 {
     Element el(NEUTRAL_ELEMENT);
