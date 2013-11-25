@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['screen',['Screen',['../class_screen.html',1,'']]]
+  ['screen',['Screen',['../classScreen.html',1,'']]]
 ];

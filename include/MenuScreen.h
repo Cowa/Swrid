@@ -28,7 +28,7 @@ class MenuScreen : public Screen
      *  \brief Constructeur
      *
      *  Constructeur de la classe MenuScreen
-     *  \param Engine, le moteur de jeux
+     *  \param Engine, le moteur de jeu
      */
         MenuScreen(Engine *engine);
     /*!
@@ -92,7 +92,7 @@ class MenuScreen : public Screen
         void mouseClick(int x, int y);
 
     /*!
-     *  \brief methode qui retourne le pointeur sur le moteur du jeux
+     *  \brief methode qui retourne le pointeur sur le moteur du jeu
      *
      *
      *
@@ -102,7 +102,7 @@ class MenuScreen : public Screen
         /*!
      *  \brief instance du singleton Engine
      *
-     * attribut Engine le moteur du jeux
+     * attribut Engine le moteur du jeu
      *
      */
         Engine *engine_; // moteur du jeu
@@ -142,21 +142,21 @@ class MenuScreen : public Screen
     /*!
      *  \brief
      *
-     * attribut bouton de redirection vers le jeux en mode normal
+     * attribut bouton de redirection vers le jeu en mode normal
      *
      */
         Button *bNormalMode_;
      /*!
      *  \brief
      *
-     * attribut bouton , permettant de quitter le jeux
+     * attribut bouton , permettant de quitter le jeu
      *
      */
         Button *bQuit_;
      /*!
      *  \brief
      *
-     * attribut bouton de redirection vers le jeux en mode difficile
+     * attribut bouton de redirection vers le jeu en mode difficile
      *
      */
         Button *bHardMode_;

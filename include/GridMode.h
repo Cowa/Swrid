@@ -37,7 +37,6 @@ class GridMode
     /*!
      *  \brief methode purge
      *
-     *  surchage de la methode purge de la classe Grid
      *  \param Grid , pointeur sur la grille
      *  \return booléen
      */

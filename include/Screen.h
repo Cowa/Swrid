@@ -23,12 +23,6 @@
 class Screen
 {
     public:
-
-    /*!
-     *  \brief Destructeur
-     *
-     *  Destructeur de la classe Screen
-     */
         virtual ~Screen() {}
     /*!
      *  \brief methode show

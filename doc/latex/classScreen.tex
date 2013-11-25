@@ -1,0 +1,182 @@
+\hypertarget{classScreen}{\section{Screen Class Reference}
+\label{classScreen}\index{Screen@{Screen}}
+}
+
+
+Interface \hyperlink{classScreen}{Screen}.  
+
+
+
+
+{\ttfamily \#include $<$Screen.\-h$>$}
+
+Inheritance diagram for Screen\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classScreen}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classScreen_ae875c48e44e67e4a1e5211337d67577f}{show} (S\-D\-L\-\_\-\-Surface $\ast$screen)=0
+\begin{DoxyCompactList}\small\item\em methode show \end{DoxyCompactList}\item 
+virtual void \hyperlink{classScreen_a54b82c1f1ba74e82451dde46481c27f1}{render} (S\-D\-L\-\_\-\-Surface $\ast$screen)=0
+\begin{DoxyCompactList}\small\item\em methode render \end{DoxyCompactList}\item 
+virtual void \hyperlink{classScreen_aae326b09506351ccf22c34a22b8eae40}{resize} (S\-D\-L\-\_\-\-Surface $\ast$screen)=0
+\begin{DoxyCompactList}\small\item\em methode resize \end{DoxyCompactList}\item 
+virtual void \hyperlink{classScreen_a04c451ca44c902190d9f0c20b5585a69}{hide} (S\-D\-L\-\_\-\-Surface $\ast$screen)=0
+\begin{DoxyCompactList}\small\item\em methode hide \end{DoxyCompactList}\item 
+virtual void \hyperlink{classScreen_a072825d7520cba6d89beaa4e173a6b81}{event} (S\-D\-L\-\_\-\-Event $\ast$event, bool $\ast$loop)=0
+\begin{DoxyCompactList}\small\item\em methode event \end{DoxyCompactList}\item 
+virtual void \hyperlink{classScreen_a03916a6d13cebf61e730086ef7650d1e}{mouse\-Click} (int x, int y)=0
+\begin{DoxyCompactList}\small\item\em methode mouse\-Click \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface \hyperlink{classScreen}{Screen}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classScreen_a072825d7520cba6d89beaa4e173a6b81}{\index{Screen@{Screen}!event@{event}}
+\index{event@{event}!Screen@{Screen}}
+\subsubsection[{event}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Screen\-::event (
+\begin{DoxyParamCaption}
+\item[{S\-D\-L\-\_\-\-Event $\ast$}]{event, }
+\item[{bool $\ast$}]{loop}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classScreen_a072825d7520cba6d89beaa4e173a6b81}
+
+
+methode event 
+
+methode qui gère l'ensemble des événements liés à l'écran
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\-D\-L\-\_\-\-Event,l'évenement} & sdl \\
+\hline
+{\em booléen,la} & boucle \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGameScreen_a542fcc8ed203427ea442bb2f52406a91}{Game\-Screen}, and \hyperlink{classMenuScreen_afbffa22948c7e335e5db27233bc661b9}{Menu\-Screen}.
+
+\hypertarget{classScreen_a04c451ca44c902190d9f0c20b5585a69}{\index{Screen@{Screen}!hide@{hide}}
+\index{hide@{hide}!Screen@{Screen}}
+\subsubsection[{hide}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Screen\-::hide (
+\begin{DoxyParamCaption}
+\item[{S\-D\-L\-\_\-\-Surface $\ast$}]{screen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classScreen_a04c451ca44c902190d9f0c20b5585a69}
+
+
+methode hide 
+
+methode qui \char`\"{}cache\char`\"{} l'écran
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\-Dl\-\_\-\-Surface} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGameScreen_ac818a2dc8c094fc2bb23ceb0a0a53cf3}{Game\-Screen}, and \hyperlink{classMenuScreen_a6e1f118966c89b894c02ad7181e1c994}{Menu\-Screen}.
+
+\hypertarget{classScreen_a03916a6d13cebf61e730086ef7650d1e}{\index{Screen@{Screen}!mouse\-Click@{mouse\-Click}}
+\index{mouse\-Click@{mouse\-Click}!Screen@{Screen}}
+\subsubsection[{mouse\-Click}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Screen\-::mouse\-Click (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classScreen_a03916a6d13cebf61e730086ef7650d1e}
+
+
+methode mouse\-Click 
+
+methode qui permet la gestion du clique sur l'écran
+
+
+\begin{DoxyParams}{Parameters}
+{\em entier,l'abscisse} & \\
+\hline
+{\em entier,l'ordonnée} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGameScreen_a46f96d4b6a0bbd02e83ce25318912c47}{Game\-Screen}, and \hyperlink{classMenuScreen_a7ac89f1f67d52d3659901e0bce76054c}{Menu\-Screen}.
+
+\hypertarget{classScreen_a54b82c1f1ba74e82451dde46481c27f1}{\index{Screen@{Screen}!render@{render}}
+\index{render@{render}!Screen@{Screen}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Screen\-::render (
+\begin{DoxyParamCaption}
+\item[{S\-D\-L\-\_\-\-Surface $\ast$}]{screen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classScreen_a54b82c1f1ba74e82451dde46481c27f1}
+
+
+methode render 
+
+methode qui gère l'affichage de l'écran
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\-Dl\-\_\-\-Surface,l'écran} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGameScreen_a8f4d95f64f07e01b4ebe35b31b39acb7}{Game\-Screen}, and \hyperlink{classMenuScreen_ac26706ac22c9db9d980c9fc63315d843}{Menu\-Screen}.
+
+\hypertarget{classScreen_aae326b09506351ccf22c34a22b8eae40}{\index{Screen@{Screen}!resize@{resize}}
+\index{resize@{resize}!Screen@{Screen}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Screen\-::resize (
+\begin{DoxyParamCaption}
+\item[{S\-D\-L\-\_\-\-Surface $\ast$}]{screen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classScreen_aae326b09506351ccf22c34a22b8eae40}
+
+
+methode resize 
+
+methode qui permet de redimensionner la taille de la fenêtre
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\-Dl\-\_\-\-Surface,l'écran} & a redimensionner \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGameScreen_a0b4bad004b986f9aeed9b8f69606c11b}{Game\-Screen}, and \hyperlink{classMenuScreen_a92fe1ecb63138057739cd6325179ef9a}{Menu\-Screen}.
+
+\hypertarget{classScreen_ae875c48e44e67e4a1e5211337d67577f}{\index{Screen@{Screen}!show@{show}}
+\index{show@{show}!Screen@{Screen}}
+\subsubsection[{show}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Screen\-::show (
+\begin{DoxyParamCaption}
+\item[{S\-D\-L\-\_\-\-Surface $\ast$}]{screen}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classScreen_ae875c48e44e67e4a1e5211337d67577f}
+
+
+methode show 
+
+methode permettant d'afficher l'écran ( appeler une fois )
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\-Dl\-\_\-\-Surface,l'écran} & \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classGameScreen_a43a2a1a9c28f8e2892ae3d91e1dcfa1f}{Game\-Screen}, and \hyperlink{classMenuScreen_a6ff381327f56f7e40ae481f28b241bd2}{Menu\-Screen}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Screen.\-h\end{DoxyCompactItemize}

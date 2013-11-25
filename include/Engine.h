@@ -19,7 +19,7 @@
 /*! \class Engine
    * \brief
    *
-   *  La classe Engine, moteur du jeux
+   *  La classe Engine, moteur du jeu
    */
 class Engine
 {
@@ -28,7 +28,7 @@ class Engine
     /*!
      *  \brief Constructeur
      *
-     *  Constructeur privé de la classe engine
+     *  Constructeur privé de la classe Engine
      *
      *
      */
@@ -36,19 +36,20 @@ class Engine
      /*!
      *  \brief surchage du constructeur
      *
-     *  surchage privé du constructeur de la classe Engine
+     *  Surchage privé du constructeur de la classe Engine
      *  \param SDL_Surface, pointeur sur la SDL_surface
      *  \param SDl_event , pointeur sur SDL_event
      *  \param booléen, la boucle du jeux
      */
         Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop);
+
       /*!
-     *  \brief instance de engine static
+     *  \brief Instance de engine static
      *
      */
         static Engine *engine_;
      /*!
-     *  \brief  attribut  grille
+     *  \brief  Attribut  grille
      *
      */
         Grid *grid_;
@@ -56,17 +57,17 @@ class Engine
         * Les différents écrans *
         ************************/
         /*!
-     *  \brief attribut screen principal
+     *  \brief Attribut screen principal
      *
      */
         Screen *screen_; // l'écran courant
     /*!
-     *  \brief attribut écran du menu
+     *  \brief Attribut écran du menu
      *
      */
         Screen *menuScreen_; // l'écran menu
     /*!
-     *  \brief attribut écran du jeux
+     *  \brief Attribut écran du jeux
      *
      */
         Screen *gameScreen_; // l'écran de jeu
@@ -74,7 +75,7 @@ class Engine
         * Le joueur *
         ************/
     /*!
-     *  \brief attribut playeur
+     *  \brief Attribut playeur
      *
      */
         Player *player_;
@@ -83,17 +84,17 @@ class Engine
         * Variables SDL *
         ****************/
     /*!
-     *  \brief  attribut SDL_event pour la gestion des événements
+     *  \brief  Attribut SDL_event pour la gestion des événements
      *
      */
         SDL_Event *event_; // gestion des événements
     /*!
-     *  \brief attribut booléen la boucle du jeux
+     *  \brief Attribut booléen la boucle du jeux
      *
      */
         bool *loop_; // booléen de la boucle principale
     /*!
-     *  \brief attribut SDL_Surface de l'écran principal
+     *  \brief Attribut SDL_Surface de l'écran principal
      *
      */
         SDL_Surface *sdlScreen_; // surface de l'écran principal
@@ -101,7 +102,7 @@ class Engine
     public:
 
     /*!
-     *  \brief methode du Singleton pour obtenir une seul instance de Engine
+     *  \brief Méthode du Singleton pour obtenir une seul instance de Engine
      *  \return Engine l'instance de la classe
      */
         static Engine* getInstance()
@@ -114,15 +115,15 @@ class Engine
     /*!
      *  \brief Destructeur
      *
-     *  destructeur de la classe  Engine
+     *  Destructeur de la classe  Engine
      *
      *
      */
         virtual ~Engine();
     /*!
-     *  \brief initialisation de Engine
+     *  \brief Initialisation de Engine
      *
-     *  méthode qui initialise les attributs de Engine
+     *  Méthode qui initialise les attributs de Engine
      *
      *
      */
@@ -131,66 +132,66 @@ class Engine
         void event();
         void render();
     /*!
-     *  \brief setteur de l'attribut screen l'écran principal
+     *  \brief Setteur de l'attribut screen l'écran principal
      *
-     *  méthode qui affecte le nouvelle écran principal au moteur
+     *  Méthode qui affecte le nouvelle écran principal au moteur
      *
      *
      */
         void setScreen(Screen *screen);
      /*!
-     *  \brief setteur de l'attribut gridMode
+     *  \brief Setteur de l'attribut gridMode
      *
-     *  méthode qui affecte le mode de jeux
+     *  Méthode qui affecte le mode de jeux
      *
      *
      */
         void setGridMode(GridMode *gridMode);
      /*!
-     *  \brief accesseur de l'attribut gridMode
+     *  \brief Accesseur de l'attribut gridMode
      *
-     *  méthode qui retourne la grille du jeux
+     *  Méthode qui retourne la grille du jeux
      *
-     *  \return Grid , la grille
+     *  \return Grid, la grille
      */
         Grid* getGrid();
     /*!
-     *  \brief accesseur de l'attribut screen
+     *  \brief Accesseur de l'attribut screen
      *
-     *  méthode qui retourne l'écran courant
+     *  Méthode qui retourne l'écran courant
      *
      *  \return Screen , l'écran courant
      */
         Screen* getScreen();
     /*!
-     *  \brief accesseur de l'attribut SDlscreen
+     *  \brief Accesseur de l'attribut SDlscreen
      *
-     *  méthode qui retourne la SDL_Surface
+     *  Méthode qui retourne la SDL_Surface
      *
      *  \return SDL_Surface , SDLscreen
      */
         SDL_Surface* getSDLscreen();
     /*!
-     *  \brief accesseur de l'attribut menuScreen
+     *  \brief Accesseur de l'attribut menuScreen
      *
-     *  méthode qui retourne l'attribut écran de menu
+     *  Méthode qui retourne l'attribut écran de menu
      *
      *  \return screen , l'écran du menu
      */
         Screen* getMenuScreen();
 
     /*!
-     *  \brief accesseur de l'attribut gameScreen
+     *  \brief Accesseur de l'attribut gameScreen
      *
-     *  méthode qui retourne l'attibut écran de jeux
+     *  Méthode qui retourne l'attibut écran de jeux
      *
      *  \return screen , l'écran de jeux
      */
         Screen* getGameScreen();
     /*!
-     *  \brief setteur de l'attribut event
+     *  \brief Setteur de l'attribut event
      *
-     *  méthode qui affecte la nouvelle valeur de event
+     *  Méthode qui affecte la nouvelle valeur de event
      *
      *
      */

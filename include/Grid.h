@@ -2,7 +2,7 @@
 #define GRID_H
 /**
  * \file Grid.H
- * \brief  classe Grid
+ * \brief Classe Grid
  * \author Brice Thomas, David Perrai
  * \version 1.0
  * \date 27 novembre 2013
@@ -25,7 +25,7 @@ using namespace std;
 /*! \class Grid
    * \brief
    *
-   *  La classe Grid, classe de gestion de la grille de jeux
+   *  La classe Grid, classe de gestion de la grille de jeu
    *
    */
 class Grid
@@ -60,7 +60,7 @@ private:
     int n_cols_;
     //
      /*!
-     *  \brief attribut n_align, nombre d'éléments identiques alignés
+     *  \brief attribut n_align, nombre d'éléments identiques alignés pour la suppression
      *
      */
     int n_align_;
@@ -98,9 +98,9 @@ public:
     Grid(int n_rows=14, int n_cols=12, int n_align=3, int n_el=4);
 
     /*!
-     *  \brief desstructeur
+     *  \brief Destructeur
      *
-     *  desstructeur de la classe Grid
+     *  Destructeur de la classe Grid
      *
      *
      */
@@ -114,18 +114,14 @@ public:
      *  \param int Tab, tableau de trois éléments
      *  \param int Tab, tableau de deux éléments
      */
-
-
     bool swap(int tuple1[3], int tuple2[3]);
 
     /*!
      *  \brief methode purge
      *
      *  Vérifie l'ensemble de la grille pour retirer les couples alignés
-     *  Utilise les méthodes check_row et check_col
      *  \return booléen, true si l'échange s'est déroulé avec succès, false sinon
      */
-
     bool purge();
      /*!
      *  \brief methode update_gravity
@@ -133,7 +129,7 @@ public:
      *  Simule la gravité, on fait tomber vers le bas tous les éléments
      *  \return booléen, true si elle à été réaliser , false sinon
      */
-    //
+
     void update_gravity();
 
       /*!
@@ -142,7 +138,6 @@ public:
      *  On pousse toutes les lignes d'un cran vers le haut (et détecte la fin de partie), et on ajoute une nouvelle ligne en bas de la grille
      *
      */
-
     void new_row();
 
     /*!
@@ -157,13 +152,12 @@ public:
     string print(Matrix2DElement grid);
 
      /*!
-     *  \brief methode print
+     *  \brief methode transpose
      *
      * methode qui créer la tranposé d'une matrice d'éléments
      *  \param Matrix2DElement, la grille représenté par matrice
      *  \return Matrix2DElement , la grille transposé
      */
-
     Matrix2DElement transpose(Matrix2DElement grid);
 
     /**********

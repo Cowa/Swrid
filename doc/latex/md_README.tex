@@ -1,0 +1,127 @@
+{\itshape A kind of mixture between Tetris \& Jewel}
+
+Project by {\bfseries David Perrai} \& {\bfseries Brice Thomas}
+
+Graphics by {\bfseries Maxime Dolo}
+
+\subsection*{Concept }
+
+Firstly, we have a 14x12 grid \-: \begin{TabularC}{12}
+\hline
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+\end{TabularC}
+
+
+Then, we filled randomly the first four rows from the bottom with four types of element \-: \begin{TabularC}{12}
+\hline
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+&&&&&&&&&&&\\\cline{1-12}
+2&4&3&1&4&1&2&3&4&2&1&3  \\\cline{1-12}
+4&2&1&3&1&4&2&3&1&2&4&2  \\\cline{1-12}
+1&2&4&3&1&2&4&1&2&3&4&1  \\\cline{1-12}
+2&4&3&1&4&1&2&3&4&2&1&3  \\\cline{1-12}
+\end{TabularC}
+
+
+Now, the player can swap two adjacent elements (from left, right, top and bottom).
+
+Every time a swap occurred, each rows are pushed up and the first one is filled with new elements.
+
+When the last row contains at least one element during two turns, the game is over.
+
+Thus, the player must remove elements by forming groups of at least three elements of the same type. Some examples \-: \begin{TabularC}{3}
+\hline
+1&1&1 \\\cline{1-3}
+\\\cline{1-3}
+\end{TabularC}
+\begin{TabularC}{0}
+\hline
+\end{TabularC}
+
+
+1
+
+1
+
+1 
+
+1 
+
+\begin{TabularC}{3}
+\hline
+2&2&\\\cline{1-3}
+\\\cline{1-3}
+\end{TabularC}
+
+
+2
+
+\begin{TabularC}{3}
+\hline
+&2&\\\cline{1-3}
+\\\cline{1-3}
+\end{TabularC}
+
+
+2
+
+2
+
+2 
+
+Each elements removed give points to the player.
+
+\subsection*{Languages \& Libraries }
+
+Project written in C++ (100\%)
+
+Using S\-D\-L, S\-D\-L\-\_\-image, S\-D\-L\-\_\-\-T\-T\-F \& S\-D\-L\-\_\-gfx libraries
+
+\subsection*{Progress }
+
+{\bfseries Prototype version, main goals (100\%)}
+\begin{DoxyItemize}
+\item \mbox{[}x\mbox{]} gravitational matrix
+\item \mbox{[}x\mbox{]} grid class \& main methods
+\item \mbox{[}x\mbox{]} check grid behavior
+\item \mbox{[}x\mbox{]} game engine
+\item \mbox{[}x\mbox{]} screen classes (state pattern)
+\item \mbox{[}x\mbox{]} gridmode classes (strategy pattern)
+\item \mbox{[}x\mbox{]} element classes (decorator pattern)
+\item \mbox{[}x\mbox{]} engine singleton
+\end{DoxyItemize}
+
+{\bfseries Final version, let there be light (66,6\%)}
+\begin{DoxyItemize}
+\item \mbox{[}x\mbox{]} full graphics
+\item \mbox{[} \mbox{]} gui
+\item \mbox{[}x\mbox{]} elements animation
+\end{DoxyItemize}
+
+{\bfseries Optional, make players addicted (0\%)}
+\begin{DoxyItemize}
+\item \mbox{[} \mbox{]} player structure (save, load, highscore)
+\item \mbox{[} \mbox{]} story \& quests
+\item \mbox{[} \mbox{]} shop \& items 
+\end{DoxyItemize}

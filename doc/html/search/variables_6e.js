@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['neutral_5felement',['NEUTRAL_ELEMENT',['../_element_8h.html#ab8211dbd6038f5022a6766c731cd7812',1,'Element.h']]],
-  ['normal',['NORMAL',['../_button_8h.html#abb9dfad4c0ff56985bd9d4e2c76077f6',1,'Button.h']]]
-];

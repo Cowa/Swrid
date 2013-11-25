@@ -1,0 +1,212 @@
+\hypertarget{classGrid}{\section{Grid Class Reference}
+\label{classGrid}\index{Grid@{Grid}}
+}
+
+
+La classe \hyperlink{classGrid}{Grid}, classe de gestion de la grille de jeu.  
+
+
+
+
+{\ttfamily \#include $<$Grid.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGrid_a039bc6a8c8a2e41983ad4cf1eab0364f}{Grid} (int n\-\_\-rows=14, int n\-\_\-cols=12, int n\-\_\-align=3, int n\-\_\-el=4)
+\begin{DoxyCompactList}\small\item\em Constructeur. \end{DoxyCompactList}\item 
+\hyperlink{classGrid_a3661d0a7f998caaaf8627d7a67072116}{$\sim$\-Grid} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+bool \hyperlink{classGrid_aa65d732ea572988673bee1d5d256c1b5}{swap} (int tuple1\mbox{[}3\mbox{]}, int tuple2\mbox{[}3\mbox{]})
+\begin{DoxyCompactList}\small\item\em methode swap \end{DoxyCompactList}\item 
+bool \hyperlink{classGrid_a37d9de7ca037dc55a216a77b24053792}{purge} ()
+\begin{DoxyCompactList}\small\item\em methode purge \end{DoxyCompactList}\item 
+void \hyperlink{classGrid_a2d358e4b15b15ba9c7f615af64b613e8}{update\-\_\-gravity} ()
+\begin{DoxyCompactList}\small\item\em methode update\-\_\-gravity \end{DoxyCompactList}\item 
+void \hyperlink{classGrid_af560c597438de04a741b8734e649d2a1}{new\-\_\-row} ()
+\begin{DoxyCompactList}\small\item\em methode new\-\_\-row \end{DoxyCompactList}\item 
+string \hyperlink{classGrid_ae663c90ddf65ccbe3b9c2e87544b3baf}{print} (Matrix2\-D\-Element grid)
+\begin{DoxyCompactList}\small\item\em methode print \end{DoxyCompactList}\item 
+Matrix2\-D\-Element \hyperlink{classGrid_a152f8fb7d4332be47178e3e53ee8bb5f}{transpose} (Matrix2\-D\-Element grid)
+\begin{DoxyCompactList}\small\item\em methode transpose \end{DoxyCompactList}\item 
+\hypertarget{classGrid_a7471bb18c4ad96aaac787564a663bd76}{Matrix2\-D\-Element $\ast$ {\bfseries get\-Pointer\-Grid} ()}\label{classGrid_a7471bb18c4ad96aaac787564a663bd76}
+
+\item 
+\hypertarget{classGrid_ac4e84b005d9840fd5d20d03714ac8b1d}{Matrix2\-D\-Element {\bfseries get\-Grid} ()}\label{classGrid_ac4e84b005d9840fd5d20d03714ac8b1d}
+
+\item 
+\hypertarget{classGrid_a0c1fe427b5dbec4b6c17ae1cfb397184}{bool {\bfseries get\-Limit\-Reached} ()}\label{classGrid_a0c1fe427b5dbec4b6c17ae1cfb397184}
+
+\item 
+\hypertarget{classGrid_a645dc308d966d7a75134ccaf8c055302}{int {\bfseries get\-Score} ()}\label{classGrid_a645dc308d966d7a75134ccaf8c055302}
+
+\item 
+\hypertarget{classGrid_a2c87c59b681d95e5a8c6bbebac74163e}{int {\bfseries get\-N\-\_\-\-Rows} ()}\label{classGrid_a2c87c59b681d95e5a8c6bbebac74163e}
+
+\item 
+\hypertarget{classGrid_acb7d4688bc45c32b31d72ec0c9f1c99b}{int {\bfseries get\-N\-\_\-\-Col} ()}\label{classGrid_acb7d4688bc45c32b31d72ec0c9f1c99b}
+
+\item 
+\hypertarget{classGrid_a6559b05475aaea06ec00d7641f8d4ee2}{int {\bfseries get\-N\-\_\-\-El} ()}\label{classGrid_a6559b05475aaea06ec00d7641f8d4ee2}
+
+\item 
+\hypertarget{classGrid_a1a9ed507ef04c46dd0663a0fbcd85c6f}{int {\bfseries get\-N\-\_\-\-Align} ()}\label{classGrid_a1a9ed507ef04c46dd0663a0fbcd85c6f}
+
+\item 
+\hypertarget{classGrid_a8e0b3ffc11d79303feeff85b3970a6db}{void {\bfseries set\-Score} (int score)}\label{classGrid_a8e0b3ffc11d79303feeff85b3970a6db}
+
+\item 
+\hypertarget{classGrid_a058f3c294ea9ac36af74256726e2f5ae}{void {\bfseries set\-Element\-Type} (int i, int j, int type)}\label{classGrid_a058f3c294ea9ac36af74256726e2f5ae}
+
+\item 
+\hypertarget{classGrid_acbc930e369f914a79b64f1ae6adc908e}{void {\bfseries set\-Grid\-Mode} (\hyperlink{classGridMode}{Grid\-Mode} $\ast$grid\-Mode)}\label{classGrid_acbc930e369f914a79b64f1ae6adc908e}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+La classe \hyperlink{classGrid}{Grid}, classe de gestion de la grille de jeu. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGrid_a039bc6a8c8a2e41983ad4cf1eab0364f}{\index{Grid@{Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!Grid@{Grid}}
+\subsubsection[{Grid}]{\setlength{\rightskip}{0pt plus 5cm}Grid\-::\-Grid (
+\begin{DoxyParamCaption}
+\item[{int}]{n\-\_\-rows = {\ttfamily 14}, }
+\item[{int}]{n\-\_\-cols = {\ttfamily 12}, }
+\item[{int}]{n\-\_\-align = {\ttfamily 3}, }
+\item[{int}]{n\-\_\-el = {\ttfamily 4}}
+\end{DoxyParamCaption}
+)}}\label{classGrid_a039bc6a8c8a2e41983ad4cf1eab0364f}
+
+
+Constructeur. 
+
+Constructeur de la classe \hyperlink{classGrid}{Grid} 
+\begin{DoxyParams}{Parameters}
+{\em Entier,nombre} & de lignes fixé par défaut à 14 \\
+\hline
+{\em Entier,nombre} & de colonnes fixé par défaut à 12 \\
+\hline
+{\em Entier,nombre} & d'éléments à aligner au minimum fixé par défaut à 3 \\
+\hline
+{\em Entier,nombre} & d'éléments distincts \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGrid_a3661d0a7f998caaaf8627d7a67072116}{\index{Grid@{Grid}!$\sim$\-Grid@{$\sim$\-Grid}}
+\index{$\sim$\-Grid@{$\sim$\-Grid}!Grid@{Grid}}
+\subsubsection[{$\sim$\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}Grid\-::$\sim$\-Grid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGrid_a3661d0a7f998caaaf8627d7a67072116}
+
+
+Destructeur. 
+
+Destructeur de la classe \hyperlink{classGrid}{Grid} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGrid_af560c597438de04a741b8734e649d2a1}{\index{Grid@{Grid}!new\-\_\-row@{new\-\_\-row}}
+\index{new\-\_\-row@{new\-\_\-row}!Grid@{Grid}}
+\subsubsection[{new\-\_\-row}]{\setlength{\rightskip}{0pt plus 5cm}void Grid\-::new\-\_\-row (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGrid_af560c597438de04a741b8734e649d2a1}
+
+
+methode new\-\_\-row 
+
+On pousse toutes les lignes d'un cran vers le haut (et détecte la fin de partie), et on ajoute une nouvelle ligne en bas de la grille \hypertarget{classGrid_ae663c90ddf65ccbe3b9c2e87544b3baf}{\index{Grid@{Grid}!print@{print}}
+\index{print@{print}!Grid@{Grid}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}string Grid\-::print (
+\begin{DoxyParamCaption}
+\item[{Matrix2\-D\-Element}]{grid}
+\end{DoxyParamCaption}
+)}}\label{classGrid_ae663c90ddf65ccbe3b9c2e87544b3baf}
+
+
+methode print 
+
+methode d'affichage de la grille 
+\begin{DoxyParams}{Parameters}
+{\em Matrix2\-D\-Element,la} & grille représenté par matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string, affichage sous forme de string 
+\end{DoxyReturn}
+\hypertarget{classGrid_a37d9de7ca037dc55a216a77b24053792}{\index{Grid@{Grid}!purge@{purge}}
+\index{purge@{purge}!Grid@{Grid}}
+\subsubsection[{purge}]{\setlength{\rightskip}{0pt plus 5cm}bool Grid\-::purge (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGrid_a37d9de7ca037dc55a216a77b24053792}
+
+
+methode purge 
+
+Vérifie l'ensemble de la grille pour retirer les couples alignés \begin{DoxyReturn}{Returns}
+booléen, true si l'échange s'est déroulé avec succès, false sinon 
+\end{DoxyReturn}
+\hypertarget{classGrid_aa65d732ea572988673bee1d5d256c1b5}{\index{Grid@{Grid}!swap@{swap}}
+\index{swap@{swap}!Grid@{Grid}}
+\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}bool Grid\-::swap (
+\begin{DoxyParamCaption}
+\item[{int}]{tuple1\mbox{[}3\mbox{]}, }
+\item[{int}]{tuple2\mbox{[}3\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{classGrid_aa65d732ea572988673bee1d5d256c1b5}
+
+
+methode swap 
+
+Echange deux éléments adjacents, où les tuples contiennent les positions de ces éléments \{x, y\}
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & Tab, tableau de trois éléments \\
+\hline
+{\em int} & Tab, tableau de deux éléments \\
+\hline
+\end{DoxyParams}
+\hypertarget{classGrid_a152f8fb7d4332be47178e3e53ee8bb5f}{\index{Grid@{Grid}!transpose@{transpose}}
+\index{transpose@{transpose}!Grid@{Grid}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}Matrix2\-D\-Element Grid\-::transpose (
+\begin{DoxyParamCaption}
+\item[{Matrix2\-D\-Element}]{grid}
+\end{DoxyParamCaption}
+)}}\label{classGrid_a152f8fb7d4332be47178e3e53ee8bb5f}
+
+
+methode transpose 
+
+methode qui créer la tranposé d'une matrice d'éléments 
+\begin{DoxyParams}{Parameters}
+{\em Matrix2\-D\-Element,la} & grille représenté par matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Matrix2\-D\-Element , la grille transposé 
+\end{DoxyReturn}
+\hypertarget{classGrid_a2d358e4b15b15ba9c7f615af64b613e8}{\index{Grid@{Grid}!update\-\_\-gravity@{update\-\_\-gravity}}
+\index{update\-\_\-gravity@{update\-\_\-gravity}!Grid@{Grid}}
+\subsubsection[{update\-\_\-gravity}]{\setlength{\rightskip}{0pt plus 5cm}void Grid\-::update\-\_\-gravity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classGrid_a2d358e4b15b15ba9c7f615af64b613e8}
+
+
+methode update\-\_\-gravity 
+
+Simule la gravité, on fait tomber vers le bas tous les éléments \begin{DoxyReturn}{Returns}
+booléen, true si elle à été réaliser , false sinon 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Grid.\-h\end{DoxyCompactItemize}

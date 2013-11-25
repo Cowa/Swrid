@@ -2,7 +2,7 @@
 #define BUTTON_H
 /**
  * \file Button.H
- * \brief classe bouton générique pour la gestion de bouton
+ * \brief Classe bouton générique pour la gestion de bouton
  * \author Brice Thomas, David Perrai
  * \version 1.0
  * \date 27 novembre 2013
@@ -37,16 +37,16 @@ class Button
     /*!
      *  \brief Destructeur
      *
-     *  destructeur de la classe  Button
+     *  Destructeur de la classe  Button
      *
      *
      */
         virtual ~Button();
 
     /*!
-     *  \brief accesseur de l'attribut buttonPosition
+     *  \brief Accesseur de l'attribut buttonPosition
      *
-     *  Methode qui retourne la SDL_Rec du boutton
+     *  Méthode qui retourne la SDL_Rec du boutton
      *  \return SDL_Rec ;
      *
      */
@@ -55,7 +55,7 @@ class Button
      /*!
      *  \brief setteur de l'attribut ButtonPosition
      *
-     *  Methode qui affecte une valeur a l'attribut buttonPosition
+     *  Méthode qui affecte une valeur à l'attribut buttonPosition
      *  \param SDL_Rec : une nouvelle SDL_Rec
      *
      */
@@ -63,7 +63,7 @@ class Button
      /*!
      *  \brief mise en place du bouton sur une surface
      *
-     *  methode qui permet de mettre en place le bouton sur une surface
+     *  Méthode qui permet de mettre en place le bouton sur une surface
      *  \param SDL_surface la surface sur laquelle on "place" l'image
      *
      */
@@ -71,7 +71,7 @@ class Button
     /*!
      *  \brief vérification du clique sur le bouton
      *
-     *  methode qui permet de s'assurer qu'on clique sur le bouton
+     *  Méthode qui permet de s'assurer qu'on clique sur le bouton
      *  \param entier mouseX l'abscisse du clique sur l'écran
      *  \param entier mousey l'ordonnée du clique sur l'écran
      *  \return booléen  true si le clique est bien sur le bouton,false sinon
@@ -81,24 +81,24 @@ class Button
     /*!
      *  \brief changement d'état du bouton
      *
-     *  methode qui permet de changer l'état du bouton
+     *  Méthode qui permet de changer l'état du bouton
      *  \param entier correspondant a un état
      *
      *
      */
         void setState(int state);
     /*!
-     *  \brief libération de la mémoire
+     *  \brief Libération de la mémoire
      *
-     *  methode qui permet de la mémoire liée à la surface utilisé pour le bouton
+     *  Méthode qui permet de la mémoire liée aux surfaces utilisées pour le bouton
      *
      */
         void free();
 
     /*!
-     *  \brief initialisation du bouton
+     *  \brief Initialisation du bouton
      *
-     *  methode qui permet d'initialiser  le bouton avec le chemin d'accès
+     *  Méthode qui permet d'initialiser  le bouton avec le chemin d'accès
      *  au images correspondante
      *  \param const char* , le chemin d'accès à la première image
      *  \param const char*, le chemin d'accès à la deuxième image
@@ -111,23 +111,23 @@ class Button
     private:
 
     /*!
-     *  \brief attribut état du bouton
+     *  \brief Attribut d'état du bouton
      *
     */
         int state_;
 
     /*!
-     *  \brief pointeur sur la  surface du bouton dans l'état normal
+     *  \brief Pointeur sur la  surface du bouton dans l'état normal
      *
     */
         SDL_Surface *bNormal_;
      /*!
-     *  \brief pointeur sur la  surface du bouton dans l'état hover ( enfoncé )
+     *  \brief Pointeur sur la  surface du bouton dans l'état hover ( enfoncé )
      *
     */
         SDL_Surface *bHover_;
      /*!
-     *  \brief paramètre du bouton ici la position
+     *  \brief Paramètre du bouton ici la position
      *
     */
         SDL_Rect buttonPosition_;

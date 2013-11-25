@@ -2,7 +2,7 @@
 #define GAMESCREEN_H
 /**
  * \file GameScreen.H
- * \brief  classe GameScreen
+ * \brief  Classe GameScreen
  * \author Brice Thomas, David Perrai
  * \version 1.0
  * \date 27 novembre 2013
@@ -17,7 +17,7 @@
 /*! \class GameScreen
    * \brief
    *
-   *  La classe GameScreen, gestion de l'écran de jeux
+   *  La classe GameScreen, gestion de l'écran de jeu
    *  implémente l'interface Screen
    */
 class Engine;
@@ -28,7 +28,7 @@ class GameScreen : public Screen
      *  \brief Constructeur
      *
      *  Constructeur de la classe GameScreen
-     *  \param Engine , le moteur du jeux
+     *  \param Engine , le moteur du jeu
      *
      */
         GameScreen(Engine *engine);
@@ -42,9 +42,9 @@ class GameScreen : public Screen
         virtual ~GameScreen();
 
      /*!
-     *  \brief methode show
+     *  \brief Méthode show
      *
-     *  methode permettant d'afficher l'écran ( appeler une fois )
+     *  Méthode permettant d'afficher l'écran ( appelée une fois)
      *
      *  \param SDl_Surface, l'écran
      */
@@ -52,7 +52,7 @@ class GameScreen : public Screen
     /*!
      *  \brief methode render
      *
-     * methode qui gère l'affichage de l'écran
+     *  Méthode qui gère l'affichage de l'écran
      *
      *  \param SDl_Surface , l'écran
      */
@@ -60,23 +60,23 @@ class GameScreen : public Screen
      /*!
      *  \brief methode resize
      *
-     * methode qui permet de redimensionner la taille de la fenêtre
+     *  Méthode qui permet de redimensionner la taille de la fenêtre
      *
      *  \param SDl_Surface , l'écran a redimensionner
      */
         void resize(SDL_Surface *screen);
      /*!
-     *  \brief methode hide
+     *  \brief Méthode hide
      *
-     * methode qui "cache" l'écran
+     *  Méthode qui "cache" l'écran
      *
-     * \param SDl_Surface
+     *  \param SDl_Surface
      */
         void hide(SDL_Surface *screen);
     /*!
-     *  \brief methode event
+     *  \brief Méthode event
      *
-     * methode qui gère l'ensemble des événements liés à l'écran
+     *  Méthode qui gère l'ensemble des événements liés à l'écran
      *
      *  \param SDL_Event, l'évenement sdl
      *  \param booléen, la boucle
@@ -84,9 +84,9 @@ class GameScreen : public Screen
         void event(SDL_Event *event, bool *loop);
 
      /*!
-     *  \brief methode mouseClick
+     *  \brief Méthode mouseClick
      *
-     * methode qui permet la gestion du clique sur l'écran
+     *  Méthode qui permet la gestion du clique sur l'écran
      *
      *  \param entier, l'abscisse
      *  \param entier, l'ordonnée

@@ -1,0 +1,240 @@
+\hypertarget{classEngine}{\section{Engine Class Reference}
+\label{classEngine}\index{Engine@{Engine}}
+}
+
+
+La classe \hyperlink{classEngine}{Engine}, moteur du jeu.  
+
+
+
+
+{\ttfamily \#include $<$Engine.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{classEngine_a41f2d854040e17d9c4d7b324a4bfbf39}{$\sim$\-Engine} ()
+\begin{DoxyCompactList}\small\item\em Destructeur. \end{DoxyCompactList}\item 
+void \hyperlink{classEngine_ab44d76e2ff6057e73d6210cf9af0d89e}{init} ()
+\begin{DoxyCompactList}\small\item\em Initialisation de \hyperlink{classEngine}{Engine}. \end{DoxyCompactList}\item 
+\hypertarget{classEngine_af81ae123a517a8d15cff3c6a091d5050}{void {\bfseries event} ()}\label{classEngine_af81ae123a517a8d15cff3c6a091d5050}
+
+\item 
+\hypertarget{classEngine_a7960743aefd62e846e7f3cd92c18bc73}{void {\bfseries render} ()}\label{classEngine_a7960743aefd62e846e7f3cd92c18bc73}
+
+\item 
+void \hyperlink{classEngine_a0271409e3d247a540e1f267627dded4e}{set\-Screen} (\hyperlink{classScreen}{Screen} $\ast$screen)
+\begin{DoxyCompactList}\small\item\em Setteur de l'attribut screen l'écran principal. \end{DoxyCompactList}\item 
+void \hyperlink{classEngine_aa2c787d89892ad75da20ce4d4c5561de}{set\-Grid\-Mode} (\hyperlink{classGridMode}{Grid\-Mode} $\ast$grid\-Mode)
+\begin{DoxyCompactList}\small\item\em Setteur de l'attribut grid\-Mode. \end{DoxyCompactList}\item 
+\hyperlink{classGrid}{Grid} $\ast$ \hyperlink{classEngine_ad03dd023db9027a1268a65fd04295e66}{get\-Grid} ()
+\begin{DoxyCompactList}\small\item\em Accesseur de l'attribut grid\-Mode. \end{DoxyCompactList}\item 
+\hyperlink{classScreen}{Screen} $\ast$ \hyperlink{classEngine_af620e94fcf485aaec49d1dde7d6f389f}{get\-Screen} ()
+\begin{DoxyCompactList}\small\item\em Accesseur de l'attribut screen. \end{DoxyCompactList}\item 
+S\-D\-L\-\_\-\-Surface $\ast$ \hyperlink{classEngine_a0bfca2729728e42d6ac31b77e20a9dae}{get\-S\-D\-Lscreen} ()
+\begin{DoxyCompactList}\small\item\em Accesseur de l'attribut S\-Dlscreen. \end{DoxyCompactList}\item 
+\hyperlink{classScreen}{Screen} $\ast$ \hyperlink{classEngine_a212ec7844a597a360b03d8a125e53f5e}{get\-Menu\-Screen} ()
+\begin{DoxyCompactList}\small\item\em Accesseur de l'attribut menu\-Screen. \end{DoxyCompactList}\item 
+\hyperlink{classScreen}{Screen} $\ast$ \hyperlink{classEngine_af6d0e82cecee32853a37ebdb9ea9fcc1}{get\-Game\-Screen} ()
+\begin{DoxyCompactList}\small\item\em Accesseur de l'attribut game\-Screen. \end{DoxyCompactList}\item 
+void \hyperlink{classEngine_a4a788fd99f4c92744b31085febb02c11}{set\-Event} (S\-D\-L\-\_\-\-Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Setteur de l'attribut event. \end{DoxyCompactList}\item 
+void \hyperlink{classEngine_a1564feb179849566523a67cfc344c613}{set\-Loop} (bool $\ast$loop)
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut Loop \end{DoxyCompactList}\item 
+void \hyperlink{classEngine_a44eb0e03051e9057c1301f24d0551b20}{set\-S\-D\-Lscreen} (S\-D\-L\-\_\-\-Surface $\ast$new\-Screen)
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut S\-D\-Lscreen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classEngine}{Engine} $\ast$ \hyperlink{classEngine_a5fd3090d4ac77870893bd27ce5623c5c}{get\-Instance} ()
+\begin{DoxyCompactList}\small\item\em Méthode du Singleton pour obtenir une seul instance de \hyperlink{classEngine}{Engine}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+La classe \hyperlink{classEngine}{Engine}, moteur du jeu. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classEngine_a41f2d854040e17d9c4d7b324a4bfbf39}{\index{Engine@{Engine}!$\sim$\-Engine@{$\sim$\-Engine}}
+\index{$\sim$\-Engine@{$\sim$\-Engine}!Engine@{Engine}}
+\subsubsection[{$\sim$\-Engine}]{\setlength{\rightskip}{0pt plus 5cm}virtual Engine\-::$\sim$\-Engine (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classEngine_a41f2d854040e17d9c4d7b324a4bfbf39}
+
+
+Destructeur. 
+
+Destructeur de la classe \hyperlink{classEngine}{Engine} 
+
+\subsection{Member Function Documentation}
+\hypertarget{classEngine_af6d0e82cecee32853a37ebdb9ea9fcc1}{\index{Engine@{Engine}!get\-Game\-Screen@{get\-Game\-Screen}}
+\index{get\-Game\-Screen@{get\-Game\-Screen}!Engine@{Engine}}
+\subsubsection[{get\-Game\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Screen}$\ast$ Engine\-::get\-Game\-Screen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classEngine_af6d0e82cecee32853a37ebdb9ea9fcc1}
+
+
+Accesseur de l'attribut game\-Screen. 
+
+Méthode qui retourne l'attibut écran de jeux
+
+\begin{DoxyReturn}{Returns}
+screen , l'écran de jeux 
+\end{DoxyReturn}
+\hypertarget{classEngine_ad03dd023db9027a1268a65fd04295e66}{\index{Engine@{Engine}!get\-Grid@{get\-Grid}}
+\index{get\-Grid@{get\-Grid}!Engine@{Engine}}
+\subsubsection[{get\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Grid}$\ast$ Engine\-::get\-Grid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classEngine_ad03dd023db9027a1268a65fd04295e66}
+
+
+Accesseur de l'attribut grid\-Mode. 
+
+Méthode qui retourne la grille du jeux
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classGrid}{Grid}, la grille 
+\end{DoxyReturn}
+\hypertarget{classEngine_a5fd3090d4ac77870893bd27ce5623c5c}{\index{Engine@{Engine}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!Engine@{Engine}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Engine}$\ast$ Engine\-::get\-Instance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classEngine_a5fd3090d4ac77870893bd27ce5623c5c}
+
+
+Méthode du Singleton pour obtenir une seul instance de \hyperlink{classEngine}{Engine}. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classEngine}{Engine} l'instance de la classe 
+\end{DoxyReturn}
+\hypertarget{classEngine_a212ec7844a597a360b03d8a125e53f5e}{\index{Engine@{Engine}!get\-Menu\-Screen@{get\-Menu\-Screen}}
+\index{get\-Menu\-Screen@{get\-Menu\-Screen}!Engine@{Engine}}
+\subsubsection[{get\-Menu\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Screen}$\ast$ Engine\-::get\-Menu\-Screen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classEngine_a212ec7844a597a360b03d8a125e53f5e}
+
+
+Accesseur de l'attribut menu\-Screen. 
+
+Méthode qui retourne l'attribut écran de menu
+
+\begin{DoxyReturn}{Returns}
+screen , l'écran du menu 
+\end{DoxyReturn}
+\hypertarget{classEngine_af620e94fcf485aaec49d1dde7d6f389f}{\index{Engine@{Engine}!get\-Screen@{get\-Screen}}
+\index{get\-Screen@{get\-Screen}!Engine@{Engine}}
+\subsubsection[{get\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Screen}$\ast$ Engine\-::get\-Screen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classEngine_af620e94fcf485aaec49d1dde7d6f389f}
+
+
+Accesseur de l'attribut screen. 
+
+Méthode qui retourne l'écran courant
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{classScreen}{Screen} , l'écran courant 
+\end{DoxyReturn}
+\hypertarget{classEngine_a0bfca2729728e42d6ac31b77e20a9dae}{\index{Engine@{Engine}!get\-S\-D\-Lscreen@{get\-S\-D\-Lscreen}}
+\index{get\-S\-D\-Lscreen@{get\-S\-D\-Lscreen}!Engine@{Engine}}
+\subsubsection[{get\-S\-D\-Lscreen}]{\setlength{\rightskip}{0pt plus 5cm}S\-D\-L\-\_\-\-Surface$\ast$ Engine\-::get\-S\-D\-Lscreen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classEngine_a0bfca2729728e42d6ac31b77e20a9dae}
+
+
+Accesseur de l'attribut S\-Dlscreen. 
+
+Méthode qui retourne la S\-D\-L\-\_\-\-Surface
+
+\begin{DoxyReturn}{Returns}
+S\-D\-L\-\_\-\-Surface , S\-D\-Lscreen 
+\end{DoxyReturn}
+\hypertarget{classEngine_ab44d76e2ff6057e73d6210cf9af0d89e}{\index{Engine@{Engine}!init@{init}}
+\index{init@{init}!Engine@{Engine}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\-::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classEngine_ab44d76e2ff6057e73d6210cf9af0d89e}
+
+
+Initialisation de \hyperlink{classEngine}{Engine}. 
+
+Méthode qui initialise les attributs de \hyperlink{classEngine}{Engine} \hypertarget{classEngine_a4a788fd99f4c92744b31085febb02c11}{\index{Engine@{Engine}!set\-Event@{set\-Event}}
+\index{set\-Event@{set\-Event}!Engine@{Engine}}
+\subsubsection[{set\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\-::set\-Event (
+\begin{DoxyParamCaption}
+\item[{S\-D\-L\-\_\-\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}}\label{classEngine_a4a788fd99f4c92744b31085febb02c11}
+
+
+Setteur de l'attribut event. 
+
+Méthode qui affecte la nouvelle valeur de event \hypertarget{classEngine_aa2c787d89892ad75da20ce4d4c5561de}{\index{Engine@{Engine}!set\-Grid\-Mode@{set\-Grid\-Mode}}
+\index{set\-Grid\-Mode@{set\-Grid\-Mode}!Engine@{Engine}}
+\subsubsection[{set\-Grid\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\-::set\-Grid\-Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf Grid\-Mode} $\ast$}]{grid\-Mode}
+\end{DoxyParamCaption}
+)}}\label{classEngine_aa2c787d89892ad75da20ce4d4c5561de}
+
+
+Setteur de l'attribut grid\-Mode. 
+
+Méthode qui affecte le mode de jeux \hypertarget{classEngine_a1564feb179849566523a67cfc344c613}{\index{Engine@{Engine}!set\-Loop@{set\-Loop}}
+\index{set\-Loop@{set\-Loop}!Engine@{Engine}}
+\subsubsection[{set\-Loop}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\-::set\-Loop (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$}]{loop}
+\end{DoxyParamCaption}
+)}}\label{classEngine_a1564feb179849566523a67cfc344c613}
+
+
+setteur de l'attribut Loop 
+
+méthode qui affecte la nouvelle valeur de la boucle de jeux \hypertarget{classEngine_a0271409e3d247a540e1f267627dded4e}{\index{Engine@{Engine}!set\-Screen@{set\-Screen}}
+\index{set\-Screen@{set\-Screen}!Engine@{Engine}}
+\subsubsection[{set\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\-::set\-Screen (
+\begin{DoxyParamCaption}
+\item[{{\bf Screen} $\ast$}]{screen}
+\end{DoxyParamCaption}
+)}}\label{classEngine_a0271409e3d247a540e1f267627dded4e}
+
+
+Setteur de l'attribut screen l'écran principal. 
+
+Méthode qui affecte le nouvelle écran principal au moteur \hypertarget{classEngine_a44eb0e03051e9057c1301f24d0551b20}{\index{Engine@{Engine}!set\-S\-D\-Lscreen@{set\-S\-D\-Lscreen}}
+\index{set\-S\-D\-Lscreen@{set\-S\-D\-Lscreen}!Engine@{Engine}}
+\subsubsection[{set\-S\-D\-Lscreen}]{\setlength{\rightskip}{0pt plus 5cm}void Engine\-::set\-S\-D\-Lscreen (
+\begin{DoxyParamCaption}
+\item[{S\-D\-L\-\_\-\-Surface $\ast$}]{new\-Screen}
+\end{DoxyParamCaption}
+)}}\label{classEngine_a44eb0e03051e9057c1301f24d0551b20}
+
+
+setteur de l'attribut S\-D\-Lscreen 
+
+méthode qui affecte la nouvelle valeur de S\-D\-Lscreen
+
+\begin{DoxyReturn}{Returns}
+screen , l'écran de jeux 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Engine.\-h\end{DoxyCompactItemize}
