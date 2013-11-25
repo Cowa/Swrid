@@ -1,0 +1,360 @@
+\section{\-Grid \-Class \-Reference}
+\label{class_grid}\index{\-Grid@{\-Grid}}
+
+
+\-La classe \doxyref{\-Grid}{p.}{class_grid}, classe de gestion de la grille de jeux.  
+
+
+
+
+{\ttfamily \#include $<$\-Grid.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Grid} (int n\-\_\-rows=14, int n\-\_\-cols=12, int n\-\_\-align=3, int n\-\_\-el=4)
+\begin{DoxyCompactList}\small\item\em \-Constructeur. \end{DoxyCompactList}\item 
+{\bf $\sim$\-Grid} ()
+\begin{DoxyCompactList}\small\item\em desstructeur \end{DoxyCompactList}\item 
+bool {\bf swap} (int tuple1[3], int tuple2[3])
+\begin{DoxyCompactList}\small\item\em methode swap \end{DoxyCompactList}\item 
+bool {\bf purge} ()
+\begin{DoxyCompactList}\small\item\em methode purge \end{DoxyCompactList}\item 
+void {\bf update\-\_\-gravity} ()
+\begin{DoxyCompactList}\small\item\em methode update\-\_\-gravity \end{DoxyCompactList}\item 
+void {\bf new\-\_\-row} ()
+\begin{DoxyCompactList}\small\item\em methode new\-\_\-row \end{DoxyCompactList}\item 
+string {\bf print} ({\bf \-Matrix2\-D\-Element} grid)
+\begin{DoxyCompactList}\small\item\em methode print \end{DoxyCompactList}\item 
+{\bf \-Matrix2\-D\-Element} {\bf transpose} ({\bf \-Matrix2\-D\-Element} grid)
+\begin{DoxyCompactList}\small\item\em methode print \end{DoxyCompactList}\item 
+{\bf \-Matrix2\-D\-Element} $\ast$ {\bf get\-Pointer\-Grid} ()
+\item 
+{\bf \-Matrix2\-D\-Element} {\bf get\-Grid} ()
+\item 
+bool {\bf get\-Limit\-Reached} ()
+\item 
+int {\bf get\-Score} ()
+\item 
+int {\bf get\-N\-\_\-\-Rows} ()
+\item 
+int {\bf get\-N\-\_\-\-Col} ()
+\item 
+int {\bf get\-N\-\_\-\-El} ()
+\item 
+int {\bf get\-N\-\_\-\-Align} ()
+\item 
+void {\bf set\-Score} (int score)
+\item 
+void {\bf set\-Element\-Type} (int i, int j, int type)
+\item 
+void {\bf set\-Grid\-Mode} ({\bf \-Grid\-Mode} $\ast$grid\-Mode)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-La classe \doxyref{\-Grid}{p.}{class_grid}, classe de gestion de la grille de jeux. 
+
+\-Definition at line 31 of file \-Grid.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Grid@{\-Grid}!\-Grid@{\-Grid}}
+\index{\-Grid@{\-Grid}!Grid@{\-Grid}}
+\subsubsection[{\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Grid\-::\-Grid} (
+\begin{DoxyParamCaption}
+\item[{int}]{n\-\_\-rows = {\ttfamily 14}, }
+\item[{int}]{n\-\_\-cols = {\ttfamily 12}, }
+\item[{int}]{n\-\_\-align = {\ttfamily 3}, }
+\item[{int}]{n\-\_\-el = {\ttfamily 4}}
+\end{DoxyParamCaption}
+)}\label{class_grid_a039bc6a8c8a2e41983ad4cf1eab0364f}
+
+
+\-Constructeur. 
+
+\-Constructeur de la classe \doxyref{\-Grid}{p.}{class_grid} 
+\begin{DoxyParams}{\-Parameters}
+{\em \-Entier,nombre} & de lignes fixé par défaut à 14 \\
+\hline
+{\em \-Entier,nombre} & de colonnes fixé par défaut à 12 \\
+\hline
+{\em \-Entier,nombre} & d'éléments à aligner au minimum fixé par défaut à 3 \\
+\hline
+{\em \-Entier,nombre} & d'éléments distincts \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 4 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!$\sim$\-Grid@{$\sim$\-Grid}}
+\index{$\sim$\-Grid@{$\sim$\-Grid}!Grid@{\-Grid}}
+\subsubsection[{$\sim$\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Grid\-::$\sim$\-Grid} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a3661d0a7f998caaaf8627d7a67072116}
+
+
+desstructeur 
+
+desstructeur de la classe \doxyref{\-Grid}{p.}{class_grid} 
+
+\-Definition at line 21 of file \-Grid.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Grid@{\-Grid}!get\-Grid@{get\-Grid}}
+\index{get\-Grid@{get\-Grid}!Grid@{\-Grid}}
+\subsubsection[{get\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix2\-D\-Element} {\bf \-Grid\-::get\-Grid} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_ac4e84b005d9840fd5d20d03714ac8b1d}
+
+
+\-Definition at line 184 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!get\-Limit\-Reached@{get\-Limit\-Reached}}
+\index{get\-Limit\-Reached@{get\-Limit\-Reached}!Grid@{\-Grid}}
+\subsubsection[{get\-Limit\-Reached}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Grid\-::get\-Limit\-Reached} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a0c1fe427b5dbec4b6c17ae1cfb397184}
+
+
+\-Definition at line 180 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!get\-N\-\_\-\-Align@{get\-N\-\_\-\-Align}}
+\index{get\-N\-\_\-\-Align@{get\-N\-\_\-\-Align}!Grid@{\-Grid}}
+\subsubsection[{get\-N\-\_\-\-Align}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Grid\-::get\-N\-\_\-\-Align} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a1a9ed507ef04c46dd0663a0fbcd85c6f}
+
+
+\-Definition at line 211 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!get\-N\-\_\-\-Col@{get\-N\-\_\-\-Col}}
+\index{get\-N\-\_\-\-Col@{get\-N\-\_\-\-Col}!Grid@{\-Grid}}
+\subsubsection[{get\-N\-\_\-\-Col}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Grid\-::get\-N\-\_\-\-Col} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_acb7d4688bc45c32b31d72ec0c9f1c99b}
+
+
+\-Definition at line 202 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!get\-N\-\_\-\-El@{get\-N\-\_\-\-El}}
+\index{get\-N\-\_\-\-El@{get\-N\-\_\-\-El}!Grid@{\-Grid}}
+\subsubsection[{get\-N\-\_\-\-El}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Grid\-::get\-N\-\_\-\-El} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a6559b05475aaea06ec00d7641f8d4ee2}
+
+
+\-Definition at line 206 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!get\-N\-\_\-\-Rows@{get\-N\-\_\-\-Rows}}
+\index{get\-N\-\_\-\-Rows@{get\-N\-\_\-\-Rows}!Grid@{\-Grid}}
+\subsubsection[{get\-N\-\_\-\-Rows}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Grid\-::get\-N\-\_\-\-Rows} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a2c87c59b681d95e5a8c6bbebac74163e}
+
+
+\-Definition at line 198 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!get\-Pointer\-Grid@{get\-Pointer\-Grid}}
+\index{get\-Pointer\-Grid@{get\-Pointer\-Grid}!Grid@{\-Grid}}
+\subsubsection[{get\-Pointer\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix2\-D\-Element} $\ast$ {\bf \-Grid\-::get\-Pointer\-Grid} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_ac3484de000961788ed867a09c461ba2a}
+
+
+\-Definition at line 189 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!get\-Score@{get\-Score}}
+\index{get\-Score@{get\-Score}!Grid@{\-Grid}}
+\subsubsection[{get\-Score}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Grid\-::get\-Score} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a645dc308d966d7a75134ccaf8c055302}
+
+
+\-Definition at line 194 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!new\-\_\-row@{new\-\_\-row}}
+\index{new\-\_\-row@{new\-\_\-row}!Grid@{\-Grid}}
+\subsubsection[{new\-\_\-row}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Grid\-::new\-\_\-row} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_af560c597438de04a741b8734e649d2a1}
+
+
+methode new\-\_\-row 
+
+\-On pousse toutes les lignes d'un cran vers le haut (et détecte la fin de partie), et on ajoute une nouvelle ligne en bas de la grille 
+
+\-Definition at line 53 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!print@{print}}
+\index{print@{print}!Grid@{\-Grid}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf \-Grid\-::print} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Matrix2\-D\-Element}}]{grid}
+\end{DoxyParamCaption}
+)}\label{class_grid_ae663c90ddf65ccbe3b9c2e87544b3baf}
+
+
+methode print 
+
+methode d'affichage de la grille 
+\begin{DoxyParams}{\-Parameters}
+{\em \-Matrix2\-D\-Element,la} & grille représenté par matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+string, affichage sous forme de string 
+\end{DoxyReturn}
+
+
+\-Definition at line 133 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!purge@{purge}}
+\index{purge@{purge}!Grid@{\-Grid}}
+\subsubsection[{purge}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Grid\-::purge} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a37d9de7ca037dc55a216a77b24053792}
+
+
+methode purge 
+
+\-Vérifie l'ensemble de la grille pour retirer les couples alignés \-Utilise les méthodes check\-\_\-row et check\-\_\-col \begin{DoxyReturn}{\-Returns}
+booléen, true si l'échange s'est déroulé avec succès, false sinon 
+\end{DoxyReturn}
+
+
+\-Definition at line 128 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!set\-Element\-Type@{set\-Element\-Type}}
+\index{set\-Element\-Type@{set\-Element\-Type}!Grid@{\-Grid}}
+\subsubsection[{set\-Element\-Type}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Grid\-::set\-Element\-Type} (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j, }
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\label{class_grid_a058f3c294ea9ac36af74256726e2f5ae}
+
+
+\-Definition at line 224 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!set\-Grid\-Mode@{set\-Grid\-Mode}}
+\index{set\-Grid\-Mode@{set\-Grid\-Mode}!Grid@{\-Grid}}
+\subsubsection[{set\-Grid\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Grid\-::set\-Grid\-Mode} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Grid\-Mode} $\ast$}]{grid\-Mode}
+\end{DoxyParamCaption}
+)}\label{class_grid_acbc930e369f914a79b64f1ae6adc908e}
+
+
+\-Definition at line 229 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!set\-Score@{set\-Score}}
+\index{set\-Score@{set\-Score}!Grid@{\-Grid}}
+\subsubsection[{set\-Score}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Grid\-::set\-Score} (
+\begin{DoxyParamCaption}
+\item[{int}]{score}
+\end{DoxyParamCaption}
+)}\label{class_grid_a8e0b3ffc11d79303feeff85b3970a6db}
+
+
+\-Definition at line 219 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!swap@{swap}}
+\index{swap@{swap}!Grid@{\-Grid}}
+\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Grid\-::swap} (
+\begin{DoxyParamCaption}
+\item[{int}]{tuple1[3], }
+\item[{int}]{tuple2[3]}
+\end{DoxyParamCaption}
+)}\label{class_grid_aa65d732ea572988673bee1d5d256c1b5}
+
+
+methode swap 
+
+\-Echange deux éléments adjacents, où les tuples contiennent les positions de ces éléments \{x, y\}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em int} & \-Tab, tableau de trois éléments \\
+\hline
+{\em int} & \-Tab, tableau de deux éléments \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 27 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!transpose@{transpose}}
+\index{transpose@{transpose}!Grid@{\-Grid}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix2\-D\-Element} {\bf \-Grid\-::transpose} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Matrix2\-D\-Element}}]{grid}
+\end{DoxyParamCaption}
+)}\label{class_grid_a152f8fb7d4332be47178e3e53ee8bb5f}
+
+
+methode print 
+
+methode qui créer la tranposé d'une matrice d'éléments 
+\begin{DoxyParams}{\-Parameters}
+{\em \-Matrix2\-D\-Element,la} & grille représenté par matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Matrix2\-D\-Element , la grille transposé 
+\end{DoxyReturn}
+
+
+\-Definition at line 150 of file \-Grid.\-cpp.
+
+\index{\-Grid@{\-Grid}!update\-\_\-gravity@{update\-\_\-gravity}}
+\index{update\-\_\-gravity@{update\-\_\-gravity}!Grid@{\-Grid}}
+\subsubsection[{update\-\_\-gravity}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Grid\-::update\-\_\-gravity} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_a2d358e4b15b15ba9c7f615af64b613e8}
+
+
+methode update\-\_\-gravity 
+
+\-Simule la gravité, on fait tomber vers le bas tous les éléments \begin{DoxyReturn}{\-Returns}
+booléen, true si elle à été réaliser , false sinon 
+\end{DoxyReturn}
+
+
+\-Definition at line 104 of file \-Grid.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/{\bf \-Grid.\-h}\item 
+src/{\bf \-Grid.\-cpp}\end{DoxyCompactItemize}

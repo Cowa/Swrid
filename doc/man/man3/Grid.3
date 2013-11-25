@@ -1,0 +1,228 @@
+.TH "Grid" 3 "Mon Nov 25 2013" "Version 1.0" "Swird-Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Grid \- 
+.PP
+La classe \fBGrid\fP, classe de gestion de la grille de jeux\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Grid\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrid\fP (int n_rows=14, int n_cols=12, int n_align=3, int n_el=4)"
+.br
+.RI "\fIConstructeur\&. \fP"
+.ti -1c
+.RI "\fB~Grid\fP ()"
+.br
+.RI "\fIdesstructeur \fP"
+.ti -1c
+.RI "bool \fBswap\fP (int tuple1[3], int tuple2[3])"
+.br
+.RI "\fImethode swap \fP"
+.ti -1c
+.RI "bool \fBpurge\fP ()"
+.br
+.RI "\fImethode purge \fP"
+.ti -1c
+.RI "void \fBupdate_gravity\fP ()"
+.br
+.RI "\fImethode update_gravity \fP"
+.ti -1c
+.RI "void \fBnew_row\fP ()"
+.br
+.RI "\fImethode new_row \fP"
+.ti -1c
+.RI "string \fBprint\fP (\fBMatrix2DElement\fP grid)"
+.br
+.RI "\fImethode print \fP"
+.ti -1c
+.RI "\fBMatrix2DElement\fP \fBtranspose\fP (\fBMatrix2DElement\fP grid)"
+.br
+.RI "\fImethode print \fP"
+.ti -1c
+.RI "\fBMatrix2DElement\fP * \fBgetPointerGrid\fP ()"
+.br
+.ti -1c
+.RI "\fBMatrix2DElement\fP \fBgetGrid\fP ()"
+.br
+.ti -1c
+.RI "bool \fBgetLimitReached\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetScore\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetN_Rows\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetN_Col\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetN_El\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetN_Align\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetScore\fP (int score)"
+.br
+.ti -1c
+.RI "void \fBsetElementType\fP (int i, int j, int type)"
+.br
+.ti -1c
+.RI "void \fBsetGridMode\fP (\fBGridMode\fP *gridMode)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+La classe \fBGrid\fP, classe de gestion de la grille de jeux\&. 
+.PP
+Definition at line 31 of file Grid\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBGrid::Grid\fP (intn_rows = \fC14\fP, intn_cols = \fC12\fP, intn_align = \fC3\fP, intn_el = \fC4\fP)"
+.PP
+Constructeur\&. Constructeur de la classe \fBGrid\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIEntier,nombre\fP de lignes fixé par défaut à 14 
+.br
+\fIEntier,nombre\fP de colonnes fixé par défaut à 12 
+.br
+\fIEntier,nombre\fP d'éléments à aligner au minimum fixé par défaut à 3 
+.br
+\fIEntier,nombre\fP d'éléments distincts 
+.RE
+.PP
+
+.PP
+Definition at line 4 of file Grid\&.cpp\&.
+.SS "\fBGrid::~Grid\fP ()"
+.PP
+desstructeur desstructeur de la classe \fBGrid\fP 
+.PP
+Definition at line 21 of file Grid\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBMatrix2DElement\fP \fBGrid::getGrid\fP ()"
+.PP
+Definition at line 184 of file Grid\&.cpp\&.
+.SS "bool \fBGrid::getLimitReached\fP ()"
+.PP
+Definition at line 180 of file Grid\&.cpp\&.
+.SS "int \fBGrid::getN_Align\fP ()"
+.PP
+Definition at line 211 of file Grid\&.cpp\&.
+.SS "int \fBGrid::getN_Col\fP ()"
+.PP
+Definition at line 202 of file Grid\&.cpp\&.
+.SS "int \fBGrid::getN_El\fP ()"
+.PP
+Definition at line 206 of file Grid\&.cpp\&.
+.SS "int \fBGrid::getN_Rows\fP ()"
+.PP
+Definition at line 198 of file Grid\&.cpp\&.
+.SS "\fBMatrix2DElement\fP * \fBGrid::getPointerGrid\fP ()"
+.PP
+Definition at line 189 of file Grid\&.cpp\&.
+.SS "int \fBGrid::getScore\fP ()"
+.PP
+Definition at line 194 of file Grid\&.cpp\&.
+.SS "void \fBGrid::new_row\fP ()"
+.PP
+methode new_row On pousse toutes les lignes d'un cran vers le haut (et détecte la fin de partie), et on ajoute une nouvelle ligne en bas de la grille 
+.PP
+Definition at line 53 of file Grid\&.cpp\&.
+.SS "string \fBGrid::print\fP (\fBMatrix2DElement\fPgrid)"
+.PP
+methode print methode d'affichage de la grille 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIMatrix2DElement,la\fP grille représenté par matrice 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+string, affichage sous forme de string 
+.RE
+.PP
+
+.PP
+Definition at line 133 of file Grid\&.cpp\&.
+.SS "bool \fBGrid::purge\fP ()"
+.PP
+methode purge Vérifie l'ensemble de la grille pour retirer les couples alignés Utilise les méthodes check_row et check_col 
+.PP
+\fBReturns:\fP
+.RS 4
+booléen, true si l'échange s'est déroulé avec succès, false sinon 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file Grid\&.cpp\&.
+.SS "void \fBGrid::setElementType\fP (inti, intj, inttype)"
+.PP
+Definition at line 224 of file Grid\&.cpp\&.
+.SS "void \fBGrid::setGridMode\fP (\fBGridMode\fP *gridMode)"
+.PP
+Definition at line 229 of file Grid\&.cpp\&.
+.SS "void \fBGrid::setScore\fP (intscore)"
+.PP
+Definition at line 219 of file Grid\&.cpp\&.
+.SS "bool \fBGrid::swap\fP (inttuple1[3], inttuple2[3])"
+.PP
+methode swap Echange deux éléments adjacents, où les tuples contiennent les positions de ces éléments {x, y}
+.PP
+\fBParameters:\fP
+.RS 4
+\fIint\fP Tab, tableau de trois éléments 
+.br
+\fIint\fP Tab, tableau de deux éléments 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file Grid\&.cpp\&.
+.SS "\fBMatrix2DElement\fP \fBGrid::transpose\fP (\fBMatrix2DElement\fPgrid)"
+.PP
+methode print methode qui créer la tranposé d'une matrice d'éléments 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIMatrix2DElement,la\fP grille représenté par matrice 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Matrix2DElement , la grille transposé 
+.RE
+.PP
+
+.PP
+Definition at line 150 of file Grid\&.cpp\&.
+.SS "void \fBGrid::update_gravity\fP ()"
+.PP
+methode update_gravity Simule la gravité, on fait tomber vers le bas tous les éléments 
+.PP
+\fBReturns:\fP
+.RS 4
+booléen, true si elle à été réaliser , false sinon 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file Grid\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Swird-Project from the source code\&.

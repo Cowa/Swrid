@@ -1,0 +1,154 @@
+\section{\-Grid\-Mode\-Normal \-Class \-Reference}
+\label{class_grid_mode_normal}\index{\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}}
+
+
+\-La classe \doxyref{\-Grid\-Mode\-Normal}{p.}{class_grid_mode_normal}, implémente la \doxyref{\-Grid\-Mode}{p.}{class_grid_mode}.  
+
+
+
+
+{\ttfamily \#include $<$\-Grid\-Mode\-Normal.\-h$>$}
+
+
+
+\-Inheritance diagram for \-Grid\-Mode\-Normal\-:
+
+
+\-Collaboration diagram for \-Grid\-Mode\-Normal\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Grid\-Mode\-Normal} ()
+\begin{DoxyCompactList}\small\item\em \-Constructeur. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Grid\-Mode\-Normal} ()
+\begin{DoxyCompactList}\small\item\em destructeur \end{DoxyCompactList}\item 
+bool {\bf purge} ({\bf \-Grid} $\ast$grid)
+\begin{DoxyCompactList}\small\item\em methode purge \end{DoxyCompactList}\item 
+{\bf \-Vector\-Array2\-I} {\bf adjacent\-With} (int i, int j, {\bf \-Vector\-Array2\-I} $\ast$crossed, {\bf \-Grid} $\ast$grid)
+\begin{DoxyCompactList}\small\item\em methode purge \end{DoxyCompactList}\item 
+bool {\bf is\-Crossed} (int i, int j, {\bf \-Vector\-Array2\-I} crossed)
+\begin{DoxyCompactList}\small\item\em methode is\-Crossed \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-La classe \doxyref{\-Grid\-Mode\-Normal}{p.}{class_grid_mode_normal}, implémente la \doxyref{\-Grid\-Mode}{p.}{class_grid_mode}. 
+
+\-Definition at line 24 of file \-Grid\-Mode\-Normal.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}!\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}}
+\index{\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}!GridModeNormal@{\-Grid\-Mode\-Normal}}
+\subsubsection[{\-Grid\-Mode\-Normal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Grid\-Mode\-Normal\-::\-Grid\-Mode\-Normal} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_mode_normal_a1e0d7a4d499cc8bcecb32db771f722c1}
+
+
+\-Constructeur. 
+
+\-Constructeur de la classe \doxyref{\-Grid\-Mode\-Normal}{p.}{class_grid_mode_normal} 
+
+\-Definition at line 5 of file \-Grid\-Mode\-Normal.\-cpp.
+
+\index{\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}!$\sim$\-Grid\-Mode\-Normal@{$\sim$\-Grid\-Mode\-Normal}}
+\index{$\sim$\-Grid\-Mode\-Normal@{$\sim$\-Grid\-Mode\-Normal}!GridModeNormal@{\-Grid\-Mode\-Normal}}
+\subsubsection[{$\sim$\-Grid\-Mode\-Normal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Grid\-Mode\-Normal\-::$\sim$\-Grid\-Mode\-Normal} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{class_grid_mode_normal_afd9de615f4a43f3829b622eb8fb331dd}
+
+
+destructeur 
+
+destructeur de la classe \doxyref{\-Grid\-Mode\-Normal}{p.}{class_grid_mode_normal} 
+
+\-Definition at line 9 of file \-Grid\-Mode\-Normal.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}!adjacent\-With@{adjacent\-With}}
+\index{adjacent\-With@{adjacent\-With}!GridModeNormal@{\-Grid\-Mode\-Normal}}
+\subsubsection[{adjacent\-With}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector\-Array2\-I} {\bf \-Grid\-Mode\-Normal\-::adjacent\-With} (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j, }
+\item[{{\bf \-Vector\-Array2\-I} $\ast$}]{crossed, }
+\item[{{\bf \-Grid} $\ast$}]{grid}
+\end{DoxyParamCaption}
+)}\label{class_grid_mode_normal_a3949d24da71761d187217282f8c1f2e8}
+
+
+methode purge 
+
+méthode qui vérifie si l'élément (i, j) est adjacent avec d'autres éléments de même type que lui 
+\begin{DoxyParams}{\-Parameters}
+{\em \-Entier,position} & i de l'élément \\
+\hline
+{\em \-Entier,position} & j de l'élément \\
+\hline
+{\em \-Vector\-Array2\-I,pointeur} & vers liste des éléments avec les adjacents \-D\-E\-J\-A analysés \\
+\hline
+{\em \doxyref{\-Grid}{p.}{class_grid},la} & grille \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Vector\-Array2\-I , la liste d'éléments 
+\end{DoxyReturn}
+
+
+\-Definition at line 81 of file \-Grid\-Mode\-Normal.\-cpp.
+
+\index{\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}!is\-Crossed@{is\-Crossed}}
+\index{is\-Crossed@{is\-Crossed}!GridModeNormal@{\-Grid\-Mode\-Normal}}
+\subsubsection[{is\-Crossed}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Grid\-Mode\-Normal\-::is\-Crossed} (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j, }
+\item[{{\bf \-Vector\-Array2\-I}}]{crossed}
+\end{DoxyParamCaption}
+)}\label{class_grid_mode_normal_ab58ed641dd0a89f6eb2976e8e638a8d8}
+
+
+methode is\-Crossed 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \-Entier,position} & i de l'élément\\
+\hline
+{\em \-Vector\-Array2\-I,pointeur} & vers liste des éléments avec les adjacents \-D\-E\-J\-A analysés \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 144 of file \-Grid\-Mode\-Normal.\-cpp.
+
+\index{\-Grid\-Mode\-Normal@{\-Grid\-Mode\-Normal}!purge@{purge}}
+\index{purge@{purge}!GridModeNormal@{\-Grid\-Mode\-Normal}}
+\subsubsection[{purge}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Grid\-Mode\-Normal\-::purge} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Grid} $\ast$}]{grid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{class_grid_mode_normal_a4bcb4bcd60e82c65d2d6c8909b38e5fa}
+
+
+methode purge 
+
+
+
+\-Implements {\bf \-Grid\-Mode} \doxyref{}{p.}{class_grid_mode_a7be800f6198509b3143e221bb3cdde0a}.
+
+
+
+\-Definition at line 14 of file \-Grid\-Mode\-Normal.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/{\bf \-Grid\-Mode\-Normal.\-h}\item 
+src/{\bf \-Grid\-Mode\-Normal.\-cpp}\end{DoxyCompactItemize}

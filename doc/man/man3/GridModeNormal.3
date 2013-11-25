@@ -1,0 +1,104 @@
+.TH "GridModeNormal" 3 "Mon Nov 25 2013" "Version 1.0" "Swird-Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GridModeNormal \- 
+.PP
+La classe \fBGridModeNormal\fP, implémente la \fBGridMode\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <GridModeNormal\&.h>\fP
+.PP
+Inherits \fBGridMode\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGridModeNormal\fP ()"
+.br
+.RI "\fIConstructeur\&. \fP"
+.ti -1c
+.RI "virtual \fB~GridModeNormal\fP ()"
+.br
+.RI "\fIdestructeur \fP"
+.ti -1c
+.RI "bool \fBpurge\fP (\fBGrid\fP *grid)"
+.br
+.RI "\fImethode purge \fP"
+.ti -1c
+.RI "\fBVectorArray2I\fP \fBadjacentWith\fP (int i, int j, \fBVectorArray2I\fP *crossed, \fBGrid\fP *grid)"
+.br
+.RI "\fImethode purge \fP"
+.ti -1c
+.RI "bool \fBisCrossed\fP (int i, int j, \fBVectorArray2I\fP crossed)"
+.br
+.RI "\fImethode isCrossed \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+La classe \fBGridModeNormal\fP, implémente la \fBGridMode\fP\&. 
+.PP
+Definition at line 24 of file GridModeNormal\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBGridModeNormal::GridModeNormal\fP ()"
+.PP
+Constructeur\&. Constructeur de la classe \fBGridModeNormal\fP 
+.PP
+Definition at line 5 of file GridModeNormal\&.cpp\&.
+.SS "\fBGridModeNormal::~GridModeNormal\fP ()\fC [virtual]\fP"
+.PP
+destructeur destructeur de la classe \fBGridModeNormal\fP 
+.PP
+Definition at line 9 of file GridModeNormal\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBVectorArray2I\fP \fBGridModeNormal::adjacentWith\fP (inti, intj, \fBVectorArray2I\fP *crossed, \fBGrid\fP *grid)"
+.PP
+methode purge méthode qui vérifie si l'élément (i, j) est adjacent avec d'autres éléments de même type que lui 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIEntier,position\fP i de l'élément 
+.br
+\fIEntier,position\fP j de l'élément 
+.br
+\fIVectorArray2I,pointeur\fP vers liste des éléments avec les adjacents DEJA analysés 
+.br
+\fI\fBGrid\fP,la\fP grille 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+VectorArray2I , la liste d'éléments 
+.RE
+.PP
+
+.PP
+Definition at line 81 of file GridModeNormal\&.cpp\&.
+.SS "bool \fBGridModeNormal::isCrossed\fP (inti, intj, \fBVectorArray2I\fPcrossed)"
+.PP
+methode isCrossed \fBParameters:\fP
+.RS 4
+\fIEntier,position\fP i de l'élément
+.br
+\fIVectorArray2I,pointeur\fP vers liste des éléments avec les adjacents DEJA analysés 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file GridModeNormal\&.cpp\&.
+.SS "bool \fBGridModeNormal::purge\fP (\fBGrid\fP *grid)\fC [virtual]\fP"
+.PP
+methode purge 
+.PP
+Implements \fBGridMode\fP\&.
+.PP
+Definition at line 14 of file GridModeNormal\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Swird-Project from the source code\&.

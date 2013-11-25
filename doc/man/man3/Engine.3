@@ -1,0 +1,210 @@
+.TH "Engine" 3 "Mon Nov 25 2013" "Version 1.0" "Swird-Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Engine \- 
+.PP
+La classe \fBEngine\fP, moteur du jeux\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Engine\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~Engine\fP ()"
+.br
+.RI "\fIDestructeur\&. \fP"
+.ti -1c
+.RI "void \fBinit\fP ()"
+.br
+.RI "\fIinitialisation de \fBEngine\fP \fP"
+.ti -1c
+.RI "void \fBevent\fP ()"
+.br
+.ti -1c
+.RI "void \fBrender\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetScreen\fP (\fBScreen\fP *screen)"
+.br
+.RI "\fIsetteur de l'attribut screen l'écran principal \fP"
+.ti -1c
+.RI "void \fBsetGridMode\fP (\fBGridMode\fP *gridMode)"
+.br
+.RI "\fIsetteur de l'attribut gridMode \fP"
+.ti -1c
+.RI "\fBGrid\fP * \fBgetGrid\fP ()"
+.br
+.RI "\fIaccesseur de l'attribut gridMode \fP"
+.ti -1c
+.RI "\fBScreen\fP * \fBgetScreen\fP ()"
+.br
+.RI "\fIaccesseur de l'attribut screen \fP"
+.ti -1c
+.RI "SDL_Surface * \fBgetSDLscreen\fP ()"
+.br
+.RI "\fIaccesseur de l'attribut SDlscreen \fP"
+.ti -1c
+.RI "\fBScreen\fP * \fBgetMenuScreen\fP ()"
+.br
+.RI "\fIaccesseur de l'attribut menuScreen \fP"
+.ti -1c
+.RI "\fBScreen\fP * \fBgetGameScreen\fP ()"
+.br
+.RI "\fIaccesseur de l'attribut gameScreen \fP"
+.ti -1c
+.RI "void \fBsetEvent\fP (SDL_Event *\fBevent\fP)"
+.br
+.RI "\fIsetteur de l'attribut event \fP"
+.ti -1c
+.RI "void \fBsetLoop\fP (bool *loop)"
+.br
+.RI "\fIsetteur de l'attribut Loop \fP"
+.ti -1c
+.RI "void \fBsetSDLscreen\fP (SDL_Surface *newScreen)"
+.br
+.RI "\fIsetteur de l'attribut SDLscreen \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBEngine\fP * \fBgetInstance\fP ()"
+.br
+.RI "\fImethode du Singleton pour obtenir une seul instance de \fBEngine\fP \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+La classe \fBEngine\fP, moteur du jeux\&. 
+.PP
+Definition at line 24 of file Engine\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBEngine::~Engine\fP ()\fC [virtual]\fP"
+.PP
+Destructeur\&. destructeur de la classe \fBEngine\fP 
+.PP
+Definition at line 39 of file Engine\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBEngine::event\fP ()"
+.PP
+Definition at line 61 of file Engine\&.cpp\&.
+.SS "\fBScreen\fP * \fBEngine::getGameScreen\fP ()"
+.PP
+accesseur de l'attribut gameScreen méthode qui retourne l'attibut écran de jeux
+.PP
+\fBReturns:\fP
+.RS 4
+screen , l'écran de jeux 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file Engine\&.cpp\&.
+.SS "\fBGrid\fP * \fBEngine::getGrid\fP ()"
+.PP
+accesseur de l'attribut gridMode méthode qui retourne la grille du jeux
+.PP
+\fBReturns:\fP
+.RS 4
+\fBGrid\fP , la grille 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file Engine\&.cpp\&.
+.SS "static \fBEngine\fP* \fBEngine::getInstance\fP ()\fC [inline, static]\fP"
+.PP
+methode du Singleton pour obtenir une seul instance de \fBEngine\fP \fBReturns:\fP
+.RS 4
+\fBEngine\fP l'instance de la classe 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file Engine\&.h\&.
+.SS "\fBScreen\fP * \fBEngine::getMenuScreen\fP ()"
+.PP
+accesseur de l'attribut menuScreen méthode qui retourne l'attribut écran de menu
+.PP
+\fBReturns:\fP
+.RS 4
+screen , l'écran du menu 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file Engine\&.cpp\&.
+.SS "\fBScreen\fP * \fBEngine::getScreen\fP ()"
+.PP
+accesseur de l'attribut screen méthode qui retourne l'écran courant
+.PP
+\fBReturns:\fP
+.RS 4
+\fBScreen\fP , l'écran courant 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file Engine\&.cpp\&.
+.SS "SDL_Surface * \fBEngine::getSDLscreen\fP ()"
+.PP
+accesseur de l'attribut SDlscreen méthode qui retourne la SDL_Surface
+.PP
+\fBReturns:\fP
+.RS 4
+SDL_Surface , SDLscreen 
+.RE
+.PP
+
+.PP
+Definition at line 121 of file Engine\&.cpp\&.
+.SS "void \fBEngine::init\fP ()"
+.PP
+initialisation de \fBEngine\fP méthode qui initialise les attributs de \fBEngine\fP 
+.PP
+Definition at line 51 of file Engine\&.cpp\&.
+.SS "void \fBEngine::render\fP ()"
+.PP
+Definition at line 56 of file Engine\&.cpp\&.
+.SS "void \fBEngine::setEvent\fP (SDL_Event *event)"
+.PP
+setteur de l'attribut event méthode qui affecte la nouvelle valeur de event 
+.PP
+Definition at line 89 of file Engine\&.cpp\&.
+.SS "void \fBEngine::setGridMode\fP (\fBGridMode\fP *gridMode)"
+.PP
+setteur de l'attribut gridMode méthode qui affecte le mode de jeux 
+.PP
+Definition at line 79 of file Engine\&.cpp\&.
+.SS "void \fBEngine::setLoop\fP (bool *loop)"
+.PP
+setteur de l'attribut Loop méthode qui affecte la nouvelle valeur de la boucle de jeux 
+.PP
+Definition at line 93 of file Engine\&.cpp\&.
+.SS "void \fBEngine::setScreen\fP (\fBScreen\fP *screen)"
+.PP
+setteur de l'attribut screen l'écran principal méthode qui affecte le nouvelle écran principal au moteur 
+.PP
+Definition at line 69 of file Engine\&.cpp\&.
+.SS "void \fBEngine::setSDLscreen\fP (SDL_Surface *newScreen)"
+.PP
+setteur de l'attribut SDLscreen méthode qui affecte la nouvelle valeur de SDLscreen
+.PP
+\fBReturns:\fP
+.RS 4
+screen , l'écran de jeux 
+.RE
+.PP
+
+.PP
+Definition at line 84 of file Engine\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Swird-Project from the source code\&.

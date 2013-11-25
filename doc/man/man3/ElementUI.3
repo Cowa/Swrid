@@ -1,0 +1,367 @@
+.TH "ElementUI" 3 "Mon Nov 25 2013" "Version 1.0" "Swird-Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ElementUI \- 
+.PP
+La classe concrète hériant de \fBElement\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ElementUI\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBElementUI\fP ()"
+.br
+.RI "\fIConstructeur\&. \fP"
+.ti -1c
+.RI "\fBElementUI\fP (SDL_Rect form, int x, int y, int type)"
+.br
+.RI "\fISurcharge du constructeur\&. \fP"
+.ti -1c
+.RI "void \fBdraw\fP (SDL_Surface *screen, SDL_Surface *img)"
+.br
+.RI "\fImethode de 'dessin' \fP"
+.ti -1c
+.RI "bool \fBisOn\fP (int x, int y)"
+.br
+.RI "\fImethode de vérification de coordonnée \fP"
+.ti -1c
+.RI "bool \fBatDestination\fP ()"
+.br
+.RI "\fImethode de vérification de destination de l'élément \fP"
+.ti -1c
+.RI "virtual \fB~ElementUI\fP ()"
+.br
+.RI "\fIDestructeur\&. \fP"
+.ti -1c
+.RI "SDL_Rect \fBgetForm\fP ()"
+.br
+.RI "\fIaccesseur de la SDL_Rec de la classe \fP"
+.ti -1c
+.RI "int \fBgetX\fP ()"
+.br
+.RI "\fIaccesseur de l'abscisse de l'élément sur l'écran \fP"
+.ti -1c
+.RI "int \fBgetY\fP ()"
+.br
+.RI "\fIaccesseur de l'ordonnée de l'élément sur l'écran \fP"
+.ti -1c
+.RI "int \fBgetType\fP ()"
+.br
+.RI "\fIaccesseur du type de l'élément \fP"
+.ti -1c
+.RI "int \fBgetVelX\fP ()"
+.br
+.RI "\fIaccesseur de la vélocité x de l'élément sur l'écran \fP"
+.ti -1c
+.RI "int \fBgetVelY\fP ()"
+.br
+.RI "\fIaccesseur de la vélocité y de l'élément sur l'écran \fP"
+.ti -1c
+.RI "int \fBgetDestX\fP ()"
+.br
+.RI "\fIaccesseur de la destination x de l'élément sur l'écran \fP"
+.ti -1c
+.RI "int \fBgetDestY\fP ()"
+.br
+.RI "\fIaccesseur de la destination y de l'élément sur l'écran \fP"
+.ti -1c
+.RI "void \fBsetX\fP (int x)"
+.br
+.RI "\fIsetteur de l'abscisse x de l'élément \fP"
+.ti -1c
+.RI "void \fBsetY\fP (int y)"
+.br
+.RI "\fIsetteur de l'ordonnée y de l'élément \fP"
+.ti -1c
+.RI "void \fBsetType\fP (int type)"
+.br
+.RI "\fIsetteur du type de l'élément \fP"
+.ti -1c
+.RI "void \fBsetForm\fP (SDL_Rect form)"
+.br
+.RI "\fIsetteur de SDL_Rec de l'élément \fP"
+.ti -1c
+.RI "void \fBsetFormX\fP (int x)"
+.br
+.ti -1c
+.RI "void \fBsetFormY\fP (int y)"
+.br
+.ti -1c
+.RI "void \fBsetVelX\fP (int x)"
+.br
+.RI "\fIsetteur de la vélocité x de l'élément \fP"
+.ti -1c
+.RI "void \fBsetVelY\fP (int y)"
+.br
+.RI "\fIsetteur de la vélocité y de l'élément \fP"
+.ti -1c
+.RI "void \fBsetDestX\fP (int x)"
+.br
+.RI "\fIsetteur de la destination x de l'élément sur l'écran \fP"
+.ti -1c
+.RI "void \fBsetDestY\fP (int y)"
+.br
+.RI "\fIsetteur de la destination y de l'élément sur l'écran \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+La classe concrète hériant de \fBElement\fP\&. 
+.PP
+Definition at line 27 of file ElementUI\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBElementUI::ElementUI\fP ()"
+.PP
+Constructeur\&. Constructeur de la classe \fBElementUI\fP 
+.PP
+Definition at line 7 of file ElementUI\&.cpp\&.
+.SS "\fBElementUI::ElementUI\fP (SDL_Rectform, intx, inty, inttype)"
+.PP
+Surcharge du constructeur\&. surcharge du constructeur de la classe \fBElementUI\fP
+.PP
+\fBParameters:\fP
+.RS 4
+\fISDL_Rect,paramètre\fP des éléments 
+.br
+\fIentier,x\fP abscisse de l'élément sur l'écran 
+.br
+\fIentier,y\fP ordonnée de l'élément sur l'écran 
+.br
+\fIentier,type\fP de l'éléments 
+.RE
+.PP
+
+.PP
+Definition at line 16 of file ElementUI\&.cpp\&.
+.SS "\fBElementUI::~ElementUI\fP ()\fC [virtual]\fP"
+.PP
+Destructeur\&. destructeur de la classe \fBElementUI\fP 
+.PP
+Definition at line 26 of file ElementUI\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool \fBElementUI::atDestination\fP ()"
+.PP
+methode de vérification de destination de l'élément méthode qui permet de vérifier si l'élément a atteind sa nouvelle 'destination'
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 58 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::draw\fP (SDL_Surface *screen, SDL_Surface *img)"
+.PP
+methode de 'dessin' méthode qui permet de 'dessiné' à l'écran l'élément
+.PP
+\fBParameters:\fP
+.RS 4
+\fISDL_Surface,la\fP surface sur laquel on 'dessine' l'élément 
+.br
+\fISDL_Surface,la\fP surface image que l'on 'colle' 
+.RE
+.PP
+
+.PP
+Definition at line 31 of file ElementUI\&.cpp\&.
+.SS "int \fBElementUI::getDestX\fP ()"
+.PP
+accesseur de la destination x de l'élément sur l'écran méthode qui retourne la destination x de l'élément sur l'écran
+.PP
+\fBReturns:\fP
+.RS 4
+entier, la destination x 
+.RE
+.PP
+
+.PP
+Definition at line 102 of file ElementUI\&.cpp\&.
+.SS "int \fBElementUI::getDestY\fP ()"
+.PP
+accesseur de la destination y de l'élément sur l'écran méthode qui retourne la destination y de l'élément sur l'écran
+.PP
+\fBReturns:\fP
+.RS 4
+entier, la destination y 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file ElementUI\&.cpp\&.
+.SS "SDL_Rect \fBElementUI::getForm\fP ()"
+.PP
+accesseur de la SDL_Rec de la classe méthode qui retourne la SDL_Rec de la classe \fBElementUI\fP
+.PP
+\fBReturns:\fP
+.RS 4
+SDl_Rec; 
+.RE
+.PP
+
+.PP
+Definition at line 72 of file ElementUI\&.cpp\&.
+.SS "int \fBElementUI::getType\fP ()"
+.PP
+accesseur du type de l'élément méthode qui retourne l'abscisse de l'élément
+.PP
+\fBReturns:\fP
+.RS 4
+entier, le type 
+.RE
+.PP
+
+.PP
+Definition at line 87 of file ElementUI\&.cpp\&.
+.SS "int \fBElementUI::getVelX\fP ()"
+.PP
+accesseur de la vélocité x de l'élément sur l'écran méthode qui retourne la vélocité x de l'élément sur l'écran
+.PP
+\fBReturns:\fP
+.RS 4
+entier, la vélocité x 
+.RE
+.PP
+
+.PP
+Definition at line 92 of file ElementUI\&.cpp\&.
+.SS "int \fBElementUI::getVelY\fP ()"
+.PP
+accesseur de la vélocité y de l'élément sur l'écran méthode qui retourne la vélocité y de l'élément sur l'écran
+.PP
+\fBReturns:\fP
+.RS 4
+entier, la vélocité y 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file ElementUI\&.cpp\&.
+.SS "int \fBElementUI::getX\fP ()"
+.PP
+accesseur de l'abscisse de l'élément sur l'écran méthode qui retourne l'abscisse de l'élément sur l'écran
+.PP
+\fBReturns:\fP
+.RS 4
+entier,x l'abscisse 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file ElementUI\&.cpp\&.
+.SS "int \fBElementUI::getY\fP ()"
+.PP
+accesseur de l'ordonnée de l'élément sur l'écran méthode qui retourne l'ordonnée de l'élément sur l'écran
+.PP
+\fBReturns:\fP
+.RS 4
+entier, y l'ordonnée 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file ElementUI\&.cpp\&.
+.SS "bool \fBElementUI::isOn\fP (intx, inty)"
+.PP
+methode de vérification de coordonnée méthode qui permet vérifier le passage de la sourie sur l'élément
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentier,x\fP l'abscisse de la souris sur l'écran 
+.br
+\fIentier,y\fP l'ordonnée de la souris sur l'écran 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+booléen, true si la souris est sur l'élément false sinon 
+.RE
+.PP
+
+.PP
+Definition at line 53 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setDestX\fP (intx)"
+.PP
+setteur de la destination x de l'élément sur l'écran méthode qui retourne la destination x de l'élément sur l'écran
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentier\fP 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setDestY\fP (inty)"
+.PP
+setteur de la destination y de l'élément sur l'écran méthode qui retourne la destination y de l'élément sur l'écran
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentier\fP 
+.RE
+.PP
+
+.PP
+Definition at line 158 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setForm\fP (SDL_Rectform)"
+.PP
+setteur de SDL_Rec de l'élément méthode qui affecte la nouvelle SDL_Rec de l'élément 
+.PP
+Definition at line 130 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setFormX\fP (intx)"
+.PP
+Definition at line 135 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setFormY\fP (inty)"
+.PP
+Definition at line 140 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setType\fP (inttype)"
+.PP
+setteur du type de l'élément méthode qui affecte le nouveau type de l'élément 
+.PP
+Definition at line 125 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setVelX\fP (intx)"
+.PP
+setteur de la vélocité x de l'élément méthode qui affecte la vélocité x de l'élément
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentier\fP 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setVelY\fP (inty)"
+.PP
+setteur de la vélocité y de l'élément méthode qui affecte la vélocité y de l'élément
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentier\fP 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setX\fP (intx)"
+.PP
+setteur de l'abscisse x de l'élément méthode qui affecte la nouvelle abscisse à l'élément 
+.PP
+Definition at line 115 of file ElementUI\&.cpp\&.
+.SS "void \fBElementUI::setY\fP (inty)"
+.PP
+setteur de l'ordonnée y de l'élément méthode qui affecte la nouvelle ordonnée y de l'élément 
+.PP
+Definition at line 120 of file ElementUI\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Swird-Project from the source code\&.

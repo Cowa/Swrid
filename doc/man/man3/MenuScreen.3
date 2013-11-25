@@ -1,0 +1,176 @@
+.TH "MenuScreen" 3 "Mon Nov 25 2013" "Version 1.0" "Swird-Project" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MenuScreen \- 
+.PP
+La classe \fBMenuScreen\fP, Implémente l'interface \fBScreen\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <MenuScreen\&.h>\fP
+.PP
+Inherits \fBScreen\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMenuScreen\fP (\fBEngine\fP *engine)"
+.br
+.RI "\fIConstructeur\&. \fP"
+.ti -1c
+.RI "virtual \fB~MenuScreen\fP ()"
+.br
+.RI "\fIDestructeur\&. \fP"
+.ti -1c
+.RI "void \fBshow\fP (SDL_Surface *screen)"
+.br
+.RI "\fImethode show \fP"
+.ti -1c
+.RI "void \fBrender\fP (SDL_Surface *screen)"
+.br
+.RI "\fImethode render \fP"
+.ti -1c
+.RI "void \fBresize\fP (SDL_Surface *screen)"
+.br
+.RI "\fImethode resize \fP"
+.ti -1c
+.RI "void \fBhide\fP (SDL_Surface *screen)"
+.br
+.RI "\fImethode hide \fP"
+.ti -1c
+.RI "void \fBevent\fP (SDL_Event *\fBevent\fP, bool *loop)"
+.br
+.RI "\fImethode event \fP"
+.ti -1c
+.RI "void \fBmouseClick\fP (int x, int y)"
+.br
+.RI "\fImethode mouseClick \fP"
+.ti -1c
+.RI "\fBEngine\fP * \fBgetEngine\fP ()"
+.br
+.RI "\fImethode qui retourne le pointeur sur le moteur du jeux \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+La classe \fBMenuScreen\fP, Implémente l'interface \fBScreen\fP\&. 
+.PP
+Definition at line 24 of file MenuScreen\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBMenuScreen::MenuScreen\fP (\fBEngine\fP *engine)"
+.PP
+Constructeur\&. Constructeur de la classe \fBMenuScreen\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI\fBEngine\fP,le\fP moteur de jeux 
+.RE
+.PP
+
+.PP
+Definition at line 4 of file MenuScreen\&.cpp\&.
+.SS "\fBMenuScreen::~MenuScreen\fP ()\fC [virtual]\fP"
+.PP
+Destructeur\&. Destructeur de la classe \fBMenuScreen\fP 
+.PP
+Definition at line 16 of file MenuScreen\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBMenuScreen::event\fP (SDL_Event *event, bool *loop)\fC [virtual]\fP"
+.PP
+methode event methode qui gère l'ensemble des événements liés à l'écran
+.PP
+\fBParameters:\fP
+.RS 4
+\fISDL_Event,l'évenement\fP sdl 
+.br
+\fIbooléen,la\fP boucle 
+.RE
+.PP
+
+.PP
+Implements \fBScreen\fP\&.
+.PP
+Definition at line 59 of file MenuScreen\&.cpp\&.
+.SS "\fBEngine\fP* \fBMenuScreen::getEngine\fP ()"
+.PP
+methode qui retourne le pointeur sur le moteur du jeux 
+.SS "void \fBMenuScreen::hide\fP (SDL_Surface *screen)\fC [virtual]\fP"
+.PP
+methode hide methode qui 'cache' l'écran
+.PP
+\fBParameters:\fP
+.RS 4
+\fISDl_Surface\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScreen\fP\&.
+.PP
+Definition at line 51 of file MenuScreen\&.cpp\&.
+.SS "void \fBMenuScreen::mouseClick\fP (intx, inty)\fC [virtual]\fP"
+.PP
+methode mouseClick methode qui permet la gestion du clique sur l'écran
+.PP
+\fBParameters:\fP
+.RS 4
+\fIentier,l'abscisse\fP 
+.br
+\fIentier,l'ordonnée\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScreen\fP\&.
+.PP
+Definition at line 137 of file MenuScreen\&.cpp\&.
+.SS "void \fBMenuScreen::render\fP (SDL_Surface *screen)\fC [virtual]\fP"
+.PP
+methode render methode qui gère l'affichage de l'écran
+.PP
+\fBParameters:\fP
+.RS 4
+\fISDl_Surface,l'écran\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScreen\fP\&.
+.PP
+Definition at line 33 of file MenuScreen\&.cpp\&.
+.SS "void \fBMenuScreen::resize\fP (SDL_Surface *screen)\fC [virtual]\fP"
+.PP
+methode resize methode qui permet de redimensionner la taille de la fenêtre
+.PP
+\fBParameters:\fP
+.RS 4
+\fISDl_Surface,l'écran\fP a redimensionner 
+.RE
+.PP
+
+.PP
+Implements \fBScreen\fP\&.
+.PP
+Definition at line 46 of file MenuScreen\&.cpp\&.
+.SS "void \fBMenuScreen::show\fP (SDL_Surface *screen)\fC [virtual]\fP"
+.PP
+methode show methode permettant d'afficher l'écran ( appeler une fois )
+.PP
+\fBParameters:\fP
+.RS 4
+\fISDl_Surface,l'écran\fP 
+.RE
+.PP
+
+.PP
+Implements \fBScreen\fP\&.
+.PP
+Definition at line 20 of file MenuScreen\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Swird-Project from the source code\&.

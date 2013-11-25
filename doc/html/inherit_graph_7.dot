@@ -1,0 +1,11 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Screen",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_screen.html",tooltip="Interface Screen."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="GameScreen",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_game_screen.html",tooltip="La classe GameScreen, gestion de l&#39;écran de jeux implémente l&#39;interface Screen."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="MenuScreen",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_menu_screen.html",tooltip="La classe MenuScreen, Implémente l&#39;interface Screen."];
+}

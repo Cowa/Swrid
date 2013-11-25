@@ -1,0 +1,316 @@
+\section{\-Engine \-Class \-Reference}
+\label{class_engine}\index{\-Engine@{\-Engine}}
+
+
+\-La classe \doxyref{\-Engine}{p.}{class_engine}, moteur du jeux.  
+
+
+
+
+{\ttfamily \#include $<$\-Engine.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bf $\sim$\-Engine} ()
+\begin{DoxyCompactList}\small\item\em \-Destructeur. \end{DoxyCompactList}\item 
+void {\bf init} ()
+\begin{DoxyCompactList}\small\item\em initialisation de \doxyref{\-Engine}{p.}{class_engine} \end{DoxyCompactList}\item 
+void {\bf event} ()
+\item 
+void {\bf render} ()
+\item 
+void {\bf set\-Screen} ({\bf \-Screen} $\ast$screen)
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut screen l'écran principal \end{DoxyCompactList}\item 
+void {\bf set\-Grid\-Mode} ({\bf \-Grid\-Mode} $\ast$grid\-Mode)
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut grid\-Mode \end{DoxyCompactList}\item 
+{\bf \-Grid} $\ast$ {\bf get\-Grid} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut grid\-Mode \end{DoxyCompactList}\item 
+{\bf \-Screen} $\ast$ {\bf get\-Screen} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut screen \end{DoxyCompactList}\item 
+\-S\-D\-L\-\_\-\-Surface $\ast$ {\bf get\-S\-D\-Lscreen} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut \-S\-Dlscreen \end{DoxyCompactList}\item 
+{\bf \-Screen} $\ast$ {\bf get\-Menu\-Screen} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut menu\-Screen \end{DoxyCompactList}\item 
+{\bf \-Screen} $\ast$ {\bf get\-Game\-Screen} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut game\-Screen \end{DoxyCompactList}\item 
+void {\bf set\-Event} (\-S\-D\-L\-\_\-\-Event $\ast${\bf event})
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut event \end{DoxyCompactList}\item 
+void {\bf set\-Loop} (bool $\ast$loop)
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut \-Loop \end{DoxyCompactList}\item 
+void {\bf set\-S\-D\-Lscreen} (\-S\-D\-L\-\_\-\-Surface $\ast$new\-Screen)
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut \-S\-D\-Lscreen \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static {\bf \-Engine} $\ast$ {\bf get\-Instance} ()
+\begin{DoxyCompactList}\small\item\em methode du \-Singleton pour obtenir une seul instance de \doxyref{\-Engine}{p.}{class_engine} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-La classe \doxyref{\-Engine}{p.}{class_engine}, moteur du jeux. 
+
+\-Definition at line 24 of file \-Engine.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Engine@{\-Engine}!$\sim$\-Engine@{$\sim$\-Engine}}
+\index{$\sim$\-Engine@{$\sim$\-Engine}!Engine@{\-Engine}}
+\subsubsection[{$\sim$\-Engine}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Engine\-::$\sim$\-Engine} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{class_engine_a8ef7030a089ecb30bbfcb9e43094717a}
+
+
+\-Destructeur. 
+
+destructeur de la classe \doxyref{\-Engine}{p.}{class_engine} 
+
+\-Definition at line 39 of file \-Engine.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Engine@{\-Engine}!event@{event}}
+\index{event@{event}!Engine@{\-Engine}}
+\subsubsection[{event}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::event} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_af81ae123a517a8d15cff3c6a091d5050}
+
+
+\-Definition at line 61 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!get\-Game\-Screen@{get\-Game\-Screen}}
+\index{get\-Game\-Screen@{get\-Game\-Screen}!Engine@{\-Engine}}
+\subsubsection[{get\-Game\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Screen} $\ast$ {\bf \-Engine\-::get\-Game\-Screen} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_af6bb49821428d813caa8d84552456b8b}
+
+
+accesseur de l'attribut game\-Screen 
+
+méthode qui retourne l'attibut écran de jeux
+
+\begin{DoxyReturn}{\-Returns}
+screen , l'écran de jeux 
+\end{DoxyReturn}
+
+
+\-Definition at line 116 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!get\-Grid@{get\-Grid}}
+\index{get\-Grid@{get\-Grid}!Engine@{\-Engine}}
+\subsubsection[{get\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Grid} $\ast$ {\bf \-Engine\-::get\-Grid} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_a129767cedcc734ac33cf9a51121a8bc0}
+
+
+accesseur de l'attribut grid\-Mode 
+
+méthode qui retourne la grille du jeux
+
+\begin{DoxyReturn}{\-Returns}
+\doxyref{\-Grid}{p.}{class_grid} , la grille 
+\end{DoxyReturn}
+
+
+\-Definition at line 101 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!get\-Instance@{get\-Instance}}
+\index{get\-Instance@{get\-Instance}!Engine@{\-Engine}}
+\subsubsection[{get\-Instance}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf \-Engine}$\ast$ {\bf \-Engine\-::get\-Instance} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [inline, static]}}\label{class_engine_a5fd3090d4ac77870893bd27ce5623c5c}
+
+
+methode du \-Singleton pour obtenir une seul instance de \doxyref{\-Engine}{p.}{class_engine} 
+
+\begin{DoxyReturn}{\-Returns}
+\doxyref{\-Engine}{p.}{class_engine} l'instance de la classe 
+\end{DoxyReturn}
+
+
+\-Definition at line 107 of file \-Engine.\-h.
+
+\index{\-Engine@{\-Engine}!get\-Menu\-Screen@{get\-Menu\-Screen}}
+\index{get\-Menu\-Screen@{get\-Menu\-Screen}!Engine@{\-Engine}}
+\subsubsection[{get\-Menu\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Screen} $\ast$ {\bf \-Engine\-::get\-Menu\-Screen} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_abb872373f96a0f41d847a6a9a34525c4}
+
+
+accesseur de l'attribut menu\-Screen 
+
+méthode qui retourne l'attribut écran de menu
+
+\begin{DoxyReturn}{\-Returns}
+screen , l'écran du menu 
+\end{DoxyReturn}
+
+
+\-Definition at line 111 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!get\-Screen@{get\-Screen}}
+\index{get\-Screen@{get\-Screen}!Engine@{\-Engine}}
+\subsubsection[{get\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Screen} $\ast$ {\bf \-Engine\-::get\-Screen} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_a93e4859f091dfb2ee6951a7c3a177060}
+
+
+accesseur de l'attribut screen 
+
+méthode qui retourne l'écran courant
+
+\begin{DoxyReturn}{\-Returns}
+\doxyref{\-Screen}{p.}{class_screen} , l'écran courant 
+\end{DoxyReturn}
+
+
+\-Definition at line 106 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!get\-S\-D\-Lscreen@{get\-S\-D\-Lscreen}}
+\index{get\-S\-D\-Lscreen@{get\-S\-D\-Lscreen}!Engine@{\-Engine}}
+\subsubsection[{get\-S\-D\-Lscreen}]{\setlength{\rightskip}{0pt plus 5cm}\-S\-D\-L\-\_\-\-Surface $\ast$ {\bf \-Engine\-::get\-S\-D\-Lscreen} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_a18ae184ecc63dd7385178232ee49cd8b}
+
+
+accesseur de l'attribut \-S\-Dlscreen 
+
+méthode qui retourne la \-S\-D\-L\-\_\-\-Surface
+
+\begin{DoxyReturn}{\-Returns}
+\-S\-D\-L\-\_\-\-Surface , \-S\-D\-Lscreen 
+\end{DoxyReturn}
+
+
+\-Definition at line 121 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!init@{init}}
+\index{init@{init}!Engine@{\-Engine}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::init} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_ab44d76e2ff6057e73d6210cf9af0d89e}
+
+
+initialisation de \doxyref{\-Engine}{p.}{class_engine} 
+
+méthode qui initialise les attributs de \doxyref{\-Engine}{p.}{class_engine} 
+
+\-Definition at line 51 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!render@{render}}
+\index{render@{render}!Engine@{\-Engine}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::render} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_engine_a7960743aefd62e846e7f3cd92c18bc73}
+
+
+\-Definition at line 56 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!set\-Event@{set\-Event}}
+\index{set\-Event@{set\-Event}!Engine@{\-Engine}}
+\subsubsection[{set\-Event}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::set\-Event} (
+\begin{DoxyParamCaption}
+\item[{\-S\-D\-L\-\_\-\-Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)}\label{class_engine_a4a788fd99f4c92744b31085febb02c11}
+
+
+setteur de l'attribut event 
+
+méthode qui affecte la nouvelle valeur de event 
+
+\-Definition at line 89 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!set\-Grid\-Mode@{set\-Grid\-Mode}}
+\index{set\-Grid\-Mode@{set\-Grid\-Mode}!Engine@{\-Engine}}
+\subsubsection[{set\-Grid\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::set\-Grid\-Mode} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Grid\-Mode} $\ast$}]{grid\-Mode}
+\end{DoxyParamCaption}
+)}\label{class_engine_aa2c787d89892ad75da20ce4d4c5561de}
+
+
+setteur de l'attribut grid\-Mode 
+
+méthode qui affecte le mode de jeux 
+
+\-Definition at line 79 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!set\-Loop@{set\-Loop}}
+\index{set\-Loop@{set\-Loop}!Engine@{\-Engine}}
+\subsubsection[{set\-Loop}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::set\-Loop} (
+\begin{DoxyParamCaption}
+\item[{bool $\ast$}]{loop}
+\end{DoxyParamCaption}
+)}\label{class_engine_a1564feb179849566523a67cfc344c613}
+
+
+setteur de l'attribut \-Loop 
+
+méthode qui affecte la nouvelle valeur de la boucle de jeux 
+
+\-Definition at line 93 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!set\-Screen@{set\-Screen}}
+\index{set\-Screen@{set\-Screen}!Engine@{\-Engine}}
+\subsubsection[{set\-Screen}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::set\-Screen} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Screen} $\ast$}]{screen}
+\end{DoxyParamCaption}
+)}\label{class_engine_a0271409e3d247a540e1f267627dded4e}
+
+
+setteur de l'attribut screen l'écran principal 
+
+méthode qui affecte le nouvelle écran principal au moteur 
+
+\-Definition at line 69 of file \-Engine.\-cpp.
+
+\index{\-Engine@{\-Engine}!set\-S\-D\-Lscreen@{set\-S\-D\-Lscreen}}
+\index{set\-S\-D\-Lscreen@{set\-S\-D\-Lscreen}!Engine@{\-Engine}}
+\subsubsection[{set\-S\-D\-Lscreen}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Engine\-::set\-S\-D\-Lscreen} (
+\begin{DoxyParamCaption}
+\item[{\-S\-D\-L\-\_\-\-Surface $\ast$}]{new\-Screen}
+\end{DoxyParamCaption}
+)}\label{class_engine_a44eb0e03051e9057c1301f24d0551b20}
+
+
+setteur de l'attribut \-S\-D\-Lscreen 
+
+méthode qui affecte la nouvelle valeur de \-S\-D\-Lscreen
+
+\begin{DoxyReturn}{\-Returns}
+screen , l'écran de jeux 
+\end{DoxyReturn}
+
+
+\-Definition at line 84 of file \-Engine.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/{\bf \-Engine.\-h}\item 
+src/{\bf \-Engine.\-cpp}\end{DoxyCompactItemize}

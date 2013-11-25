@@ -1,0 +1,248 @@
+\section{\-Base\-Element \-Class \-Reference}
+\label{class_base_element}\index{\-Base\-Element@{\-Base\-Element}}
+
+
+décorateur de la classe \doxyref{\-Element}{p.}{class_element}  
+
+
+
+
+{\ttfamily \#include $<$\-Base\-Element.\-h$>$}
+
+
+
+\-Inheritance diagram for \-Base\-Element\-:
+
+
+\-Collaboration diagram for \-Base\-Element\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Base\-Element} ()
+\begin{DoxyCompactList}\small\item\em \-Constructeur. \end{DoxyCompactList}\item 
+{\bf \-Base\-Element} ({\bf \-Element} el)
+\begin{DoxyCompactList}\small\item\em surchage du constructeur \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Base\-Element} ()
+\begin{DoxyCompactList}\small\item\em \-Destructeur. \end{DoxyCompactList}\item 
+int {\bf get\-Value} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut value \end{DoxyCompactList}\item 
+int {\bf get\-Money} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut money \end{DoxyCompactList}\item 
+int {\bf get\-Type} ()
+\begin{DoxyCompactList}\small\item\em accesseur de l'attribut type \end{DoxyCompactList}\item 
+void {\bf set\-Type} (int type)
+\begin{DoxyCompactList}\small\item\em setteur de l'attribut value \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Element} {\bf el\-\_\-}
+\begin{DoxyCompactList}\small\item\em l'attribut de type \doxyref{\-Element}{p.}{class_element} \end{DoxyCompactList}\item 
+int {\bf bonus\-Value\-\_\-}
+\begin{DoxyCompactList}\small\item\em l'attribut valeur du bonus de type entier \end{DoxyCompactList}\item 
+int {\bf bonus\-Money\-\_\-}
+\begin{DoxyCompactList}\small\item\em l'attribut bonus \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+décorateur de la classe \doxyref{\-Element}{p.}{class_element} 
+
+\-La classe ajout d'un bonus en fonction d'un pourcentage de chance 
+
+\-Definition at line 27 of file \-Base\-Element.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Base\-Element@{\-Base\-Element}!\-Base\-Element@{\-Base\-Element}}
+\index{\-Base\-Element@{\-Base\-Element}!BaseElement@{\-Base\-Element}}
+\subsubsection[{\-Base\-Element}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Base\-Element\-::\-Base\-Element} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_base_element_a1569ee70076588b3b6d28e4e17257de0}
+
+
+\-Constructeur. 
+
+\-Constructeur de la classe \doxyref{\-Base\-Element}{p.}{class_base_element} 
+
+\-Definition at line 5 of file \-Base\-Element.\-cpp.
+
+\index{\-Base\-Element@{\-Base\-Element}!\-Base\-Element@{\-Base\-Element}}
+\index{\-Base\-Element@{\-Base\-Element}!BaseElement@{\-Base\-Element}}
+\subsubsection[{\-Base\-Element}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Base\-Element\-::\-Base\-Element} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Element}}]{el}
+\end{DoxyParamCaption}
+)}\label{class_base_element_a4b5096047820c9447786bad867495eec}
+
+
+surchage du constructeur 
+
+surcharge du constructeur de la classe \doxyref{\-Base\-Element}{p.}{class_base_element}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \doxyref{\-Element}{p.}{class_element}} & \-: l'élément à décoré \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 13 of file \-Base\-Element.\-cpp.
+
+\index{\-Base\-Element@{\-Base\-Element}!$\sim$\-Base\-Element@{$\sim$\-Base\-Element}}
+\index{$\sim$\-Base\-Element@{$\sim$\-Base\-Element}!BaseElement@{\-Base\-Element}}
+\subsubsection[{$\sim$\-Base\-Element}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Base\-Element\-::$\sim$\-Base\-Element} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{class_base_element_a7b6a3d276b26ad39bdae9e5256a32e6d}
+
+
+\-Destructeur. 
+
+destructeur de la classe \doxyref{\-Base\-Element}{p.}{class_base_element} 
+
+\-Definition at line 20 of file \-Base\-Element.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Base\-Element@{\-Base\-Element}!get\-Money@{get\-Money}}
+\index{get\-Money@{get\-Money}!BaseElement@{\-Base\-Element}}
+\subsubsection[{get\-Money}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Base\-Element\-::get\-Money} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_base_element_ad1b8117c4a21129c759bbee82e024347}
+
+
+accesseur de l'attribut money 
+
+\-Methode qui retourne la valeur de l'attribut money \begin{DoxyReturn}{\-Returns}
+entier ; 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Element} \doxyref{}{p.}{class_element_a6414cb495f6b591c7ff9009682495c01}.
+
+
+
+\-Reimplemented in {\bf \-Point\-Bonus\-Element} \doxyref{}{p.}{class_point_bonus_element_ad8cea3552abfcbb657b29575798b45cb}.
+
+
+
+\-Definition at line 40 of file \-Base\-Element.\-cpp.
+
+\index{\-Base\-Element@{\-Base\-Element}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!BaseElement@{\-Base\-Element}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Base\-Element\-::get\-Type} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_base_element_a419e6be2effe678ce8d762d267f24840}
+
+
+accesseur de l'attribut type 
+
+\-Methode qui retourne la valeur de l'attribut type \begin{DoxyReturn}{\-Returns}
+entier ; 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Element} \doxyref{}{p.}{class_element_a8bd9315dc4eb7b59f47410347375bf0e}.
+
+
+
+\-Definition at line 25 of file \-Base\-Element.\-cpp.
+
+\index{\-Base\-Element@{\-Base\-Element}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!BaseElement@{\-Base\-Element}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Base\-Element\-::get\-Value} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_base_element_a7ffb8e8f1cf88ae0a8489d8e653301a2}
+
+
+accesseur de l'attribut value 
+
+\-Methode qui retourne la valeur de l'attribut value \begin{DoxyReturn}{\-Returns}
+entier ; 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Element} \doxyref{}{p.}{class_element_ae4b8bafd59a8e6bab7bb934679c200ac}.
+
+
+
+\-Reimplemented in {\bf \-Point\-Bonus\-Element} \doxyref{}{p.}{class_point_bonus_element_a5766494f3f66abcda8bd125779b4082a}.
+
+
+
+\-Definition at line 35 of file \-Base\-Element.\-cpp.
+
+\index{\-Base\-Element@{\-Base\-Element}!set\-Type@{set\-Type}}
+\index{set\-Type@{set\-Type}!BaseElement@{\-Base\-Element}}
+\subsubsection[{set\-Type}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Base\-Element\-::set\-Type} (
+\begin{DoxyParamCaption}
+\item[{int}]{type}
+\end{DoxyParamCaption}
+)}\label{class_base_element_aa05ade655a8c57b870971fdcc5ae45e4}
+
+
+setteur de l'attribut value 
+
+\-Methode qui retourne la valeur de l'attribut value \begin{DoxyReturn}{\-Returns}
+entier ; 
+\end{DoxyReturn}
+
+
+\-Reimplemented from {\bf \-Element} \doxyref{}{p.}{class_element_a4629c727bd44fbae2a1a501edbc3a5f1}.
+
+
+
+\-Definition at line 30 of file \-Base\-Element.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\index{\-Base\-Element@{\-Base\-Element}!bonus\-Money\-\_\-@{bonus\-Money\-\_\-}}
+\index{bonus\-Money\-\_\-@{bonus\-Money\-\_\-}!BaseElement@{\-Base\-Element}}
+\subsubsection[{bonus\-Money\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Base\-Element\-::bonus\-Money\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{class_base_element_a61a308a2b91324b62ee50a3aa1235dbe}
+
+
+l'attribut bonus 
+
+
+
+\-Definition at line 105 of file \-Base\-Element.\-h.
+
+\index{\-Base\-Element@{\-Base\-Element}!bonus\-Value\-\_\-@{bonus\-Value\-\_\-}}
+\index{bonus\-Value\-\_\-@{bonus\-Value\-\_\-}!BaseElement@{\-Base\-Element}}
+\subsubsection[{bonus\-Value\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Base\-Element\-::bonus\-Value\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{class_base_element_a2e495347f94ec3a9d6622b9e69649f58}
+
+
+l'attribut valeur du bonus de type entier 
+
+
+
+\-Definition at line 101 of file \-Base\-Element.\-h.
+
+\index{\-Base\-Element@{\-Base\-Element}!el\-\_\-@{el\-\_\-}}
+\index{el\-\_\-@{el\-\_\-}!BaseElement@{\-Base\-Element}}
+\subsubsection[{el\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Element} {\bf \-Base\-Element\-::el\-\_\-}\hspace{0.3cm}{\ttfamily  [protected]}}\label{class_base_element_a55731b2b461cc786987edbf2e0236b7e}
+
+
+l'attribut de type \doxyref{\-Element}{p.}{class_element} 
+
+
+
+\-Definition at line 97 of file \-Base\-Element.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/{\bf \-Base\-Element.\-h}\item 
+src/{\bf \-Base\-Element.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,150 @@
+\section{\-Grid\-Mode\-Hard \-Class \-Reference}
+\label{class_grid_mode_hard}\index{\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}}
+
+
+\-La classe \doxyref{\-Grid\-Mode\-Hard}{p.}{class_grid_mode_hard}, implémente la \doxyref{\-Grid\-Mode}{p.}{class_grid_mode}.  
+
+
+
+
+{\ttfamily \#include $<$\-Grid\-Mode\-Hard.\-h$>$}
+
+
+
+\-Inheritance diagram for \-Grid\-Mode\-Hard\-:
+
+
+\-Collaboration diagram for \-Grid\-Mode\-Hard\-:
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bf \-Grid\-Mode\-Hard} ()
+\begin{DoxyCompactList}\small\item\em \-Constructeur. \end{DoxyCompactList}\item 
+virtual {\bf $\sim$\-Grid\-Mode\-Hard} ()
+\begin{DoxyCompactList}\small\item\em destructeur \end{DoxyCompactList}\item 
+bool {\bf purge} ({\bf \-Grid} $\ast$grid)
+\begin{DoxyCompactList}\small\item\em methode purge \end{DoxyCompactList}\item 
+{\bf \-Vector\-Array2\-I} {\bf check\-\_\-row} ({\bf \-Grid} $\ast$grid, int i\-\_\-row)
+\begin{DoxyCompactList}\small\item\em methode check\-\_\-row \end{DoxyCompactList}\item 
+{\bf \-Vector\-Array2\-I} {\bf check\-\_\-col} ({\bf \-Grid} $\ast$grid, int i\-\_\-col)
+\begin{DoxyCompactList}\small\item\em methode check\-\_\-col \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-La classe \doxyref{\-Grid\-Mode\-Hard}{p.}{class_grid_mode_hard}, implémente la \doxyref{\-Grid\-Mode}{p.}{class_grid_mode}. 
+
+\-Definition at line 23 of file \-Grid\-Mode\-Hard.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\index{\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}!\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}}
+\index{\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}!GridModeHard@{\-Grid\-Mode\-Hard}}
+\subsubsection[{\-Grid\-Mode\-Hard}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Grid\-Mode\-Hard\-::\-Grid\-Mode\-Hard} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_grid_mode_hard_a8a91a3b55990849271b8329c6a80b6a1}
+
+
+\-Constructeur. 
+
+\-Constructeur de la classe \doxyref{\-Grid\-Mode\-Hard}{p.}{class_grid_mode_hard} 
+
+\-Definition at line 5 of file \-Grid\-Mode\-Hard.\-cpp.
+
+\index{\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}!$\sim$\-Grid\-Mode\-Hard@{$\sim$\-Grid\-Mode\-Hard}}
+\index{$\sim$\-Grid\-Mode\-Hard@{$\sim$\-Grid\-Mode\-Hard}!GridModeHard@{\-Grid\-Mode\-Hard}}
+\subsubsection[{$\sim$\-Grid\-Mode\-Hard}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Grid\-Mode\-Hard\-::$\sim$\-Grid\-Mode\-Hard} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{class_grid_mode_hard_a97ff7872202272927a1cadd0360d7fe8}
+
+
+destructeur 
+
+destructeur de la classe \doxyref{\-Grid\-Mode\-Hard}{p.}{class_grid_mode_hard} 
+
+\-Definition at line 9 of file \-Grid\-Mode\-Hard.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\index{\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}!check\-\_\-col@{check\-\_\-col}}
+\index{check\-\_\-col@{check\-\_\-col}!GridModeHard@{\-Grid\-Mode\-Hard}}
+\subsubsection[{check\-\_\-col}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector\-Array2\-I} {\bf \-Grid\-Mode\-Hard\-::check\-\_\-col} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Grid} $\ast$}]{grid, }
+\item[{int}]{i\-\_\-col}
+\end{DoxyParamCaption}
+)}\label{class_grid_mode_hard_a43cc62651628b27238c653ea244c4129}
+
+
+methode check\-\_\-col 
+
+méthode qui vérifie la colonne i\-\_\-col de la grille, retourne la liste des éléments à retirer 
+\begin{DoxyParams}{\-Parameters}
+{\em \doxyref{\-Grid}{p.}{class_grid},la} & grille sur laquelle vérifier la ligne \\
+\hline
+{\em \-Entier,la} & colonne à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Vector\-Array2\-I, la liste des éléments à retirer 
+\end{DoxyReturn}
+
+
+\-Definition at line 104 of file \-Grid\-Mode\-Hard.\-cpp.
+
+\index{\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}!check\-\_\-row@{check\-\_\-row}}
+\index{check\-\_\-row@{check\-\_\-row}!GridModeHard@{\-Grid\-Mode\-Hard}}
+\subsubsection[{check\-\_\-row}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector\-Array2\-I} {\bf \-Grid\-Mode\-Hard\-::check\-\_\-row} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Grid} $\ast$}]{grid, }
+\item[{int}]{i\-\_\-row}
+\end{DoxyParamCaption}
+)}\label{class_grid_mode_hard_a9293e31f44a67ed00f24f86675368409}
+
+
+methode check\-\_\-row 
+
+méthode qui vérifie la ligne i\-\_\-row de la grille, retourne la liste des éléments à retirer 
+\begin{DoxyParams}{\-Parameters}
+{\em \doxyref{\-Grid}{p.}{class_grid},la} & grille sur laquelle vérifier la ligne \\
+\hline
+{\em \-Entier,la} & ligne à vérifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Vector\-Array2\-I, la liste des éléments à retirer 
+\end{DoxyReturn}
+
+
+\-Definition at line 49 of file \-Grid\-Mode\-Hard.\-cpp.
+
+\index{\-Grid\-Mode\-Hard@{\-Grid\-Mode\-Hard}!purge@{purge}}
+\index{purge@{purge}!GridModeHard@{\-Grid\-Mode\-Hard}}
+\subsubsection[{purge}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Grid\-Mode\-Hard\-::purge} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Grid} $\ast$}]{grid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  [virtual]}}\label{class_grid_mode_hard_a418d223c2d8e6d5af77b0bbf4c10f0e8}
+
+
+methode purge 
+
+
+
+\-Implements {\bf \-Grid\-Mode} \doxyref{}{p.}{class_grid_mode_a7be800f6198509b3143e221bb3cdde0a}.
+
+
+
+\-Definition at line 14 of file \-Grid\-Mode\-Hard.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/{\bf \-Grid\-Mode\-Hard.\-h}\item 
+src/{\bf \-Grid\-Mode\-Hard.\-cpp}\end{DoxyCompactItemize}
