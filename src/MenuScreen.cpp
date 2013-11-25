@@ -73,25 +73,20 @@ void MenuScreen::event(SDL_Event *event, bool *loop)
                     *loop = false;
                 }
 
-                if(event->button.button == SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->motion.x,event->motion.y)){
+                // Clic sur Normal
+                else if(event->button.button == SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->button.x,event->button.y))
+                {
                     engine_->setScreen(engine_->getGameScreen());
+                    engine_->getGrid()->setGridMode(new GridModeNormal());
+                    bNormalMode_->setState(NORMAL);
                 }
-
-            // Clic sur Normal
-            else if(event->button.button == SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->button.x,event->button.y))
-            {
-                engine_->setScreen(engine_->getGameScreen());
-                engine_->getGrid()->setGridMode(new GridModeNormal());
-                bNormalMode_->setState(NORMAL);
-            }
-            // Clic sur Difficile
-            else if(event->button.button == SDL_BUTTON_LEFT && bHardMode_->checkClick(event->button.x,event->button.y))
-            {
-                engine_->setScreen(engine_->getGameScreen());
-                engine_->getGrid()->setGridMode(new GridModeHard());
-                bNormalMode_->setState(NORMAL);
-
-            }
+                // Clic sur Difficile
+                else if(event->button.button == SDL_BUTTON_LEFT && bHardMode_->checkClick(event->button.x,event->button.y))
+                {
+                    engine_->setScreen(engine_->getGameScreen());
+                    engine_->getGrid()->setGridMode(new GridModeHard());
+                    bNormalMode_->setState(NORMAL);
+                }
 
             break;
 
