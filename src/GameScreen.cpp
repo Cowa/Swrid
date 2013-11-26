@@ -49,7 +49,7 @@ void GameScreen::show(SDL_Surface *screen)
     end_ = SDL_DisplayFormatAlpha(img);
     SDL_FreeSurface(img);
 
-    score_font_ = TTF_OpenFont("font/FreeMono.ttf", 30);
+    score_font_ = TTF_OpenFont("font/LiberationMono-Bold.ttf", 30);
 
     if(score_font_ == NULL)
     {
@@ -185,6 +185,7 @@ void GameScreen::render(SDL_Surface *screen)
             SDL_Rect npos;
             npos.x = 485, npos.y = 280, npos.w = 0,  npos.h = 0;
             buttonMenu_->SetbuttonPosition(npos);
+            buttonMenu_->applyButton(screen);
         }
         else
         {

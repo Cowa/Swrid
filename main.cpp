@@ -34,7 +34,7 @@ int main(void)
 		cout << "SDL TTF init error" << endl;
         exit(EXIT_FAILURE);
 	}
-    SDL_WM_SetCaption("Swrid Game Prototype", NULL); // Nom de la fenêtre
+    SDL_WM_SetCaption("Swird Game", NULL); // Nom de la fenêtre
     SDL_initFramerate(&frame_manager);
     SDL_setFramerate(&frame_manager, FPS); // on fixe le fps à 30
 
