@@ -267,7 +267,10 @@ class GameScreen : public Screen
      * attribut bouton de redirection vers le menu du jeux
      *
      */
-        Button * buttonMenu_;
+        Button *buttonMenu_;
+
+        SDL_Surface *end_;
+        SDL_Rect end_pos_;
 
       /*!
      *  \brief

@@ -1,9 +1,23 @@
 #include "../include/Grid.h"
 #include <iostream>
 
-Grid::Grid(int n_rows, int n_cols, int n_align, int n_el)
+Grid::Grid()
 {
     // Création de la matrice
+    init();
+
+    gridMode_ = new GridModeNormal();
+}
+
+Grid::~Grid()
+{
+    if(gridMode_ != NULL)
+        delete gridMode_;
+}
+
+void Grid::init(int n_rows, int n_cols, int n_align, int n_el)
+{
+    grid_.clear();
     grid_.resize(n_rows);
     for (int i = 0 ;i < n_rows; i++)
         grid_[i].resize(n_cols);
@@ -14,14 +28,6 @@ Grid::Grid(int n_rows, int n_cols, int n_align, int n_el)
     n_el_          = n_el;
     score_         = 0;
     limit_reached_ = false;
-
-    gridMode_ = new GridModeNormal();
-}
-
-Grid::~Grid()
-{
-    if(gridMode_ != NULL)
-        delete gridMode_;
 }
 
 bool Grid::swap(int tuple1[3], int tuple2[3])

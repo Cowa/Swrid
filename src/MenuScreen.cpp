@@ -77,6 +77,7 @@ void MenuScreen::event(SDL_Event *event, bool *loop)
                 else if(event->button.button == SDL_BUTTON_LEFT && bNormalMode_->checkClick(event->button.x,event->button.y))
                 {
                     engine_->setScreen(engine_->getGameScreen());
+                    engine_->new_game();
                     engine_->getGrid()->setGridMode(new GridModeNormal());
                     bNormalMode_->setState(NORMAL);
                 }
@@ -84,6 +85,7 @@ void MenuScreen::event(SDL_Event *event, bool *loop)
                 else if(event->button.button == SDL_BUTTON_LEFT && bHardMode_->checkClick(event->button.x,event->button.y))
                 {
                     engine_->setScreen(engine_->getGameScreen());
+                    engine_->new_game();
                     engine_->getGrid()->setGridMode(new GridModeHard());
                     bNormalMode_->setState(NORMAL);
                 }

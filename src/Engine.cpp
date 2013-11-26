@@ -20,10 +20,6 @@ Engine::Engine()
 Engine::Engine(SDL_Surface *sdlScreen, SDL_Event *event, bool *loop)
 {
     grid_ = new Grid();
-    grid_->new_row();
-    grid_->new_row();
-    grid_->new_row();
-    grid_->new_row();
 
     screen_ = new MenuScreen(Engine::getInstance());
     menuScreen_ = screen_;
@@ -51,6 +47,15 @@ Engine::~Engine()
 void Engine::init()
 {
     screen_->show(sdlScreen_);
+}
+
+void Engine::new_game()
+{
+    grid_->init();
+    grid_->new_row();
+    grid_->new_row();
+    grid_->new_row();
+    grid_->new_row();
 }
 
 void Engine::render()

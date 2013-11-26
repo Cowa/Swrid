@@ -129,6 +129,8 @@ class Engine
      */
         void init();
 
+        void new_game();
+
         void event();
         void render();
     /*!

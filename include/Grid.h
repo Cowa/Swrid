@@ -95,7 +95,7 @@ public:
      *  \param Entier , nombre d'éléments à aligner au minimum fixé par défaut à 3
      *  \param Entier , nombre d'éléments distincts
      */
-    Grid(int n_rows=14, int n_cols=12, int n_align=3, int n_el=4);
+    Grid();
 
     /*!
      *  \brief Destructeur
@@ -159,6 +159,8 @@ public:
      *  \return Matrix2DElement , la grille transposé
      */
     Matrix2DElement transpose(Matrix2DElement grid);
+
+    void init(int n_rows=14, int n_cols=12, int n_align=3, int n_el=4);
 
     /**********
     * GETTERS *

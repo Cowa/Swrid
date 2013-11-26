@@ -29,8 +29,6 @@ GameScreen::GameScreen(Engine *engine)
     buttonMenu_ = new Button(75,400);
 }
 
-
-
 GameScreen::~GameScreen()
 {
 }
@@ -46,6 +44,10 @@ void GameScreen::show(SDL_Surface *screen)
     SDL_FreeSurface(el_img_);
 
     buttonMenu_->init("img/btmp.png", "img/btmp_hover.png");
+
+    SDL_Surface *img = IMG_Load("img/end_dialog.png");
+    end_ = SDL_DisplayFormatAlpha(img);
+    SDL_FreeSurface(img);
 
     score_font_ = TTF_OpenFont("font/FreeMono.ttf", 30);
 
@@ -142,9 +144,6 @@ void GameScreen::render(SDL_Surface *screen)
             {
                 animation_push_ = false;
                 updateElements();
-
-                if(engine_->getGrid()->getLimitReached())
-                    cout << "Fin !" << endl;
             }
         }
         // Si l'animation du fall est en cours...
@@ -176,6 +175,23 @@ void GameScreen::render(SDL_Surface *screen)
         SDL_BlitSurface(bg_opt_, &top_grid_, screen, &top_grid_);
         SDL_BlitSurface(bg_opt_, &bottom_grid_, screen, &bottom_grid_);
 
+
+        if(engine_->getGrid()->getLimitReached())
+        {
+            SDL_Rect old_button = buttonMenu_->GetbuttonPosition();
+            old_button.h = 85, old_button.w = 85;
+            SDL_BlitSurface(bg_opt_, &old_button, screen, &old_button);
+            SDL_BlitSurface(end_, NULL, screen, &end_pos_);
+            SDL_Rect npos;
+            npos.x = 485, npos.y = 280, npos.w = 0,  npos.h = 0;
+            buttonMenu_->SetbuttonPosition(npos);
+        }
+        else
+        {
+            SDL_Rect npos;
+            npos.x = 75, npos.y = 400, npos.w = 0, npos.h = 0;
+            buttonMenu_->SetbuttonPosition(npos);
+        }
         /*******************************************
         * Libération des surfaces (de la mémoire) *
         ******************************************/
@@ -233,6 +249,16 @@ void GameScreen::resize(SDL_Surface *screen)
     bottom_grid_.h = row_h_;
     bottom_grid_.w = grid_form_.w;
 
+    /*************
+    * Dialog end *
+    *************/
+    SDL_Rect npos;
+    npos.x = 75, npos.y = 400, npos.h = 85, npos.w = 85;
+    buttonMenu_->SetbuttonPosition(npos);
+
+    end_pos_.x = 380;
+    end_pos_.y = 150;
+
     updateElements();
 }
 
@@ -240,6 +266,7 @@ void GameScreen::hide(SDL_Surface *screen)
 {
     SDL_FreeSurface(bg_opt_);
     SDL_FreeSurface(el_img_opt_);
+    SDL_FreeSurface(end_);
     TTF_CloseFont(score_font_);
 }
 
@@ -273,8 +300,11 @@ void GameScreen::event(SDL_Event *event, bool *loop)
                 engine_->setScreen(engine_->getMenuScreen());
                 buttonMenu_->setState(NORMAL);
             }
-            else if(event->button.button == SDL_BUTTON_LEFT)
-                mouseClick(event->button.x, event->button.y);
+            if(!engine_->getGrid()->getLimitReached())
+            {
+                if(event->button.button == SDL_BUTTON_LEFT)
+                    mouseClick(event->button.x, event->button.y);
+            }
             break;
         default:
             break;
