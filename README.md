@@ -150,6 +150,8 @@ Project written in C++ (100%)
 
 Using SDL, SDL_image, SDL_TTF & SDL_gfx libraries
 
+Use Makefile to compile.
+
 Progress
 --------
 
@@ -163,9 +165,9 @@ Progress
 - [x] element classes (decorator pattern)
 - [x] engine singleton
 
-**Final version, let there be light (66,6%)**
+**Final version, let there be light (100%)**
 - [x] full graphics
-- [ ] gui
+- [x] gui
 - [x] elements animation
 
 **Optional, make players addicted (0%)**
