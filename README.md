@@ -7,6 +7,11 @@ Project by **David Perrai** & **Brice Thomas**
 
 Graphics by **Maxime Dolo**
 
+Demo
+-------
+[Speed-up video](https://www.youtube.com/watch?v=TQxSR_iY0dA)
+
+
 Concept
 -------
 
