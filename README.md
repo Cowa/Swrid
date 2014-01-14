@@ -174,8 +174,3 @@ Progress
 - [x] full graphics
 - [x] gui
 - [x] elements animation
-
-**Optional, make players addicted (0%)**
-- [ ] player structure (save, load, highscore)
-- [ ] story & quests
-- [ ] shop & items
