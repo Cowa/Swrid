@@ -160,7 +160,7 @@ public:
      */
     Matrix2DElement transpose(Matrix2DElement grid);
 
-    void init(int n_rows=14, int n_cols=12, int n_align=3, int n_el=4);
+    void init(int n_rows=14, int n_cols=12, int n_align=3, int n_el=3);
 
     /**********
     * GETTERS *
