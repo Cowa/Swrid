@@ -7,10 +7,17 @@ Project by **David Perrai** & **Brice Thomas**
 
 Graphics by **Maxime Dolo**
 
-Demo
--------
+Video demo
+----------
 [Speed-up video](https://www.youtube.com/watch?v=TQxSR_iY0dA)
 
+Screenshots
+-----------
+![Menu](screenshots/swridMenu.png)
+
+![GameDebut](screenshots/swridDebut.png)
+
+![GameFar](screenshots/swridGame.png)
 
 Concept
 -------
