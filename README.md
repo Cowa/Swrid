@@ -3,7 +3,7 @@ Swrid
 
 *A kind of mixture between Tetris & Jewel*
 
-Project by **David Perrai** & **Brice Thomas**
+Project by **David Perrai** & **Brice Thomas**, 2013
 
 Graphics by **Maxime Dolo**
 
