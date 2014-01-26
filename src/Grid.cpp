@@ -63,13 +63,13 @@ void Grid::new_row()
     {
         for(unsigned int j=0; j<grid_[i].size(); j++)
         {
-            if(i == 1)
+            if(i == 0)
             {
                 // On détecte la fin de partie
-                if(grid_[i-1][j].getType() != NEUTRAL_ELEMENT)
+                if(grid_[i][j].getType() != NEUTRAL_ELEMENT)
                     limit_reached_ = true;
             }
-            if(i != 0)
+            else
                 grid_[i-1][j] = grid_[i][j];
         }
     }
