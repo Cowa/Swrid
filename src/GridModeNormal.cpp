@@ -25,7 +25,7 @@ bool GridModeNormal::purge(Grid *grid)
         for(unsigned int j=0; j<grid->getGrid()[0].size(); j++)
         {
             cur_element[0] = i, cur_element[1] = j;
-            if(!isCrossed(i, j, crossed) && grid->getGrid()[i][j].getType() != 0)
+            if(!isCrossed(i, j, crossed) && grid->getGrid()[i][j].getType() != NEUTRAL_ELEMENT)
             {
                 // On ajoute l'élément courant dans la liste des suppressions possibles
                 match = 1;
